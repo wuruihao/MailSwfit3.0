@@ -28,13 +28,12 @@ class ApplicationCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func setData(_ data:ApplicationData){
-        
-        snap.image = UIImage(named: data.snap!)
+    func setData(_ data:LeaveData){
+
+        snap.image = UIImage(named: "Login_male.png")
         name.text = data.name
-        time.text = data.time
-        title.text = data.title
-        department.text = data.subTitle
+        time.text = data.created
+        title.text = String(format: "请假申请:%@天", data.time!)
         
         //未处理:0 被驳回:1 已批准:2 待我审批:3 已驳回:4 已审批:5
         switch data.status! as String{

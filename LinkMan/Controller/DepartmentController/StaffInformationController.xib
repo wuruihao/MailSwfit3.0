@@ -46,7 +46,7 @@
                             </barButtonItem>
                             <barButtonItem key="rightBarButtonItem" style="plain" id="MyY-iC-KgY">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hE2-5E-Nuk">
-                                    <rect key="frame" x="309" y="27" width="50" height="30"/>
+                                    <rect key="frame" x="319" y="27" width="40" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="编辑">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

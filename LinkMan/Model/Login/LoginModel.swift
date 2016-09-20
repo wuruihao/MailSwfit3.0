@@ -25,8 +25,14 @@ class MemberData: NSObject {
 
 class LeaveData: NSObject {
     
-    var started:    String?
-    var ended:        String?
-    var time:     String?
-    var name:      String?
+    var started: String?
+    var ended:   String?
+    var time:    String?
+    var name:    String?
+    var status:  String?
+    var created:  String?
+    
+    var reason:  String?
+    var mobile:  String?
+    
 }

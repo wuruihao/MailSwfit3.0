@@ -26,7 +26,7 @@ class StaffInformationController: UIViewController {
         
         super.viewWillAppear(animated)
         
-        if type == "编辑" {
+        if type == "经理" {
             editBtn.isHidden = false
         }else {
             editBtn.isHidden = true
@@ -43,7 +43,7 @@ class StaffInformationController: UIViewController {
     }
     @IBAction func editInfoAction(_ sender: UIButton) {
         
-        if type == "编辑" {
+        if type == "经理" {
             
             self.navigationController?.pushViewController(AddContactsController(), animated: true)
             

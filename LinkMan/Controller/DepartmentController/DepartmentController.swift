@@ -98,8 +98,11 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
+        let department = sectionData[(indexPath as NSIndexPath).section]
+        let data = department.members?[(indexPath as NSIndexPath).row] as! MemberData
+        
         let staffInformationVC = StaffInformationController()
-        staffInformationVC.type = "添加"
+        staffInformationVC.type = data.level
         staffInformationVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(staffInformationVC, animated: true)
     }

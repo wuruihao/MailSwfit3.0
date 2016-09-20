@@ -148,9 +148,9 @@ class NetworkTool: NSObject {
     
     
     //新增联系人请求
-    func addContactsRequest(_ name: String,mobile: String,email: String,department_name: String,level: String,password: String,headImg:String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
+    func addContactsRequest(_ name: String,token:String,mobile: String,email: String,departmentName: String,level: String,password: String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/user/add"
-        let params = ["name": name,"mobile": mobile,"email": email,"department_name": department_name,"level": level,"password":password,"headImg":headImg]
+        let params = ["name": name,"token": token,"mobile": mobile,"email": email,"department_id": departmentName,"level_id": level,"password":password]
         print("url: \(url)")
         print("params: \(params)")
         
@@ -160,10 +160,9 @@ class NetworkTool: NSObject {
             print("result:\(result)")
             
             if self.isRequestSuccess(result!){
-                //json 转化成字典 并进行数据解析
-                let data = result?.object(forKey: "data") as! NSArray
-                // 字典转模型(MJExtension)
-                let success = ETSuccess.mj_object(withKeyValues: data) as ETSuccess
+                
+                let success = ETSuccess()
+                success.message = "请求成功"
                 finishedSel(success)
                 
             }else{
@@ -213,7 +212,7 @@ class NetworkTool: NSObject {
     
     //请假列表请求
     func applyleaveListRequest(_ token: String,finishedSel:@escaping (_ data:[LeaveData])->(),failedSel:@escaping (_ error:ETError)->()){
-        let url = BASE_URL+"/leave/list"
+        let url = BASE_URL+"/leave/self"
         let params = ["token": token]
         print("url: \(url)")
         print("params: \(params)")
@@ -245,7 +244,7 @@ class NetworkTool: NSObject {
     
     //请假申请请求
     func addleaveRequest(_ token: String,started: String,ended: String,time: String,finishedSel:@escaping (_ data:[ETSuccess])->(),failedSel:@escaping (_ error:ETError)->()){
-        let url = BASE_URL+"/leave/list"
+        let url = BASE_URL+"/leave/add"
         let params = ["token": token,"started": started,"ended": ended,"time": time]
         print("url: \(url)")
         print("params: \(params)")
@@ -275,10 +274,10 @@ class NetworkTool: NSObject {
         }
     }
     
-    //请假审批请求
-    func examinedAndApprovedLeaveRequest(_ token: String,status: String,id: String,finishedSel:@escaping (_ data:[ETSuccess])->(),failedSel:@escaping (_ error:ETError)->()){
+    //请假审批列表请求
+    func examinedAndApprovedLeaveRequest(_ token: String,finishedSel:@escaping (_ data:[LeaveData])->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/leave/list"
-        let params = ["token": token,"status": status,"id": id]
+        let params = ["token": token]
         print("url: \(url)")
         print("params: \(params)")
         
@@ -289,9 +288,8 @@ class NetworkTool: NSObject {
                 //json 转化成字典 并进行数据解析
                 let data = result?.object(forKey: "data") as! NSArray
                 // 字典转模型(MJExtension)
-                let success = ETSuccess.mj_objectArray(withKeyValuesArray: data).mutableCopy() as! [ETSuccess]
-                finishedSel(success)
-                
+                let leaveData = LeaveData.mj_objectArray(withKeyValuesArray: data).mutableCopy() as! [LeaveData]
+                finishedSel(leaveData)
             }else{
                 let errorDic = result?.object(forKey: "error")
                 let error = ETError.mj_object(withKeyValues: errorDic) as ETError
