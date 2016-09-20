@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ContactsCell" customModule="LinkMan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="320" height="67"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YTN-eU-d8M">
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="YTN-eU-d8M" secondAttribute="height" multiplier="1:1" id="Du9-ld-I6U"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="吴瑞豪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXu-1N-Pls">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.43529411764705883" green="0.45490196078431372" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS开发工程师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d83-Ad-khs">
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2C-yV-tL8">
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="KVv-MS-Ojq"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBt-PT-sxe">
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="UBt-PT-sxe" secondAttribute="height" multiplier="1:1" id="kRr-9A-dRn"/>
+                        </constraints>
+                        <state key="normal" image="phone.png"/>
+                        <connections>
+                            <action selector="telephone:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="f2J-mv-SWU"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="UBt-PT-sxe" secondAttribute="trailing" constant="15" id="0ng-cO-5kF"/>
+                    <constraint firstItem="QXu-1N-Pls" firstAttribute="leading" secondItem="YTN-eU-d8M" secondAttribute="trailing" constant="15" id="258-yC-7ip"/>
+                    <constraint firstItem="d83-Ad-khs" firstAttribute="leading" secondItem="QXu-1N-Pls" secondAttribute="leading" id="8Rp-ed-3fN"/>
+                    <constraint firstItem="UBt-PT-sxe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="F3o-qU-0d7"/>
+                    <constraint firstItem="YTN-eU-d8M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="IOg-0W-gej"/>
+                    <constraint firstItem="UBt-PT-sxe" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="1:2" id="JYo-zx-1eG"/>
+                    <constraint firstAttribute="bottom" secondItem="l2C-yV-tL8" secondAttribute="bottom" id="SDO-A7-h4M"/>
+                    <constraint firstAttribute="trailing" secondItem="l2C-yV-tL8" secondAttribute="trailing" id="SPH-aB-D45"/>
+                    <constraint firstItem="YTN-eU-d8M" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Tu7-4a-Scz"/>
+                    <constraint firstItem="l2C-yV-tL8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="VHd-iM-rbY"/>
+                    <constraint firstItem="YTN-eU-d8M" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="3:4" id="dFk-V4-XJN"/>
+                    <constraint firstItem="QXu-1N-Pls" firstAttribute="top" secondItem="YTN-eU-d8M" secondAttribute="top" id="laD-pA-20H"/>
+                    <constraint firstItem="d83-Ad-khs" firstAttribute="bottom" secondItem="YTN-eU-d8M" secondAttribute="bottom" id="mLy-EF-r0o"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="name" destination="QXu-1N-Pls" id="7jD-Jq-ZUl"/>
+                <outlet property="sanpImage" destination="YTN-eU-d8M" id="oQf-F8-nZR"/>
+                <outlet property="subTitle" destination="d83-Ad-khs" id="PgZ-ka-vgn"/>
+            </connections>
+            <point key="canvasLocation" x="382" y="342"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="phone.png" width="94" height="94"/>
+    </resources>
+</document>

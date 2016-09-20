@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DepartmentController" customModule="LinkMan" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="Q8l-zY-e8e" id="kv5-iU-XG7"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDI-ef-1dI">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="Yqu-5f-POZ"/>
+                    </constraints>
+                    <color key="barTintColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="部门架构" id="aDK-RF-Iyh">
+                            <barButtonItem key="rightBarButtonItem" image="clear.png" id="1f3-OY-ewU">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oK7-ng-6XN">
+                                    <rect key="frame" x="334" y="29" width="25" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="addContacts.png"/>
+                                    <connections>
+                                        <action selector="addContacts:" destination="-1" eventType="touchUpInside" id="Rxt-yA-j2g"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Q8l-zY-e8e">
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="AFa-MP-Lo3"/>
+                        <outlet property="delegate" destination="-1" id="4tE-Yw-0vf"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Q8l-zY-e8e" secondAttribute="bottom" constant="49" id="9JW-BR-jNu"/>
+                <constraint firstItem="Q8l-zY-e8e" firstAttribute="top" secondItem="zDI-ef-1dI" secondAttribute="bottom" id="MQ3-p6-Br2"/>
+                <constraint firstAttribute="trailing" secondItem="zDI-ef-1dI" secondAttribute="trailing" id="Rd7-6M-dxJ"/>
+                <constraint firstItem="zDI-ef-1dI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Wef-Xy-YUL"/>
+                <constraint firstItem="zDI-ef-1dI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Zca-gS-4cf"/>
+                <constraint firstAttribute="trailing" secondItem="Q8l-zY-e8e" secondAttribute="trailing" id="kVD-8g-62O"/>
+                <constraint firstItem="Q8l-zY-e8e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ukm-GB-8QR"/>
+            </constraints>
+            <point key="canvasLocation" x="62.5" y="74.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="addContacts.png" width="38" height="38"/>
+        <image name="clear.png" width="3" height="3"/>
+    </resources>
+</document>
