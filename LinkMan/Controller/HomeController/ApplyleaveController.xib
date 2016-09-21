@@ -10,9 +10,19 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ApplyleaveController" customModule="LinkMan" customModuleProvider="target">
             <connections>
+                <outlet property="actionView" destination="Ago-0O-Wpx" id="lrz-Tc-ELS"/>
                 <outlet property="backView" destination="LFe-LX-Gak" id="EcG-w3-eQp"/>
+                <outlet property="cancelButton" destination="Ttq-Fa-Hcs" id="D2I-fg-vBu"/>
+                <outlet property="connectButton" destination="w9r-zk-XYK" id="yLQ-gE-9GM"/>
+                <outlet property="endedLabel" destination="Ews-Y8-PQc" id="B3k-wY-J47"/>
                 <outlet property="mainView" destination="Ulc-cw-flA" id="hoL-iV-e3X"/>
+                <outlet property="nameLabel" destination="Ajn-BY-kYG" id="OgS-C2-JQI"/>
                 <outlet property="naviItem" destination="unh-ys-l9L" id="Kbb-yb-WVG"/>
+                <outlet property="phoneLabel" destination="93u-yP-raJ" id="TJe-QI-2BF"/>
+                <outlet property="reasonLabel" destination="Rlu-r0-Acz" id="2lp-Cd-9OY"/>
+                <outlet property="startedLabel" destination="k23-ul-3Qv" id="jQJ-Pq-nrC"/>
+                <outlet property="statusLabel" destination="Msq-ty-0hr" id="arg-8l-wrS"/>
+                <outlet property="timeLabel" destination="4bh-Vk-oMd" id="qy5-HZ-cOR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -79,7 +89,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13:10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93u-yP-raJ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15606016623" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93u-yP-raJ">
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -89,7 +99,7 @@
                                                 <constraint firstAttribute="width" secondItem="g5A-Pb-rBp" secondAttribute="height" multiplier="12:13" id="5En-H8-lYJ"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.5天" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwm-c2-c8f">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13:10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwm-c2-c8f">
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -139,7 +149,7 @@
                                             <color key="textColor" red="0.3843137254901961" green="0.3843137254901961" blue="0.3843137254901961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年休假" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sH-Ys-FZP">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="事假" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sH-Ys-FZP">
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -243,15 +253,21 @@
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ago-0O-Wpx">
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ttq-Fa-Hcs">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ttq-Fa-Hcs">
                             <color key="backgroundColor" red="0.75686274509999996" green="0.76078431369999999" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="删除">
                                 <color key="titleColor" red="0.96470588239999999" green="0.10980392160000001" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="changeAction:" destination="-1" eventType="touchUpInside" id="AvH-Fh-du2"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9r-zk-XYK">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9r-zk-XYK">
                             <color key="backgroundColor" red="0.47843137250000001" green="0.75686274509999996" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="再次编辑"/>
+                            <connections>
+                                <action selector="changeAction:" destination="-1" eventType="touchUpInside" id="8B0-Wh-kY7"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

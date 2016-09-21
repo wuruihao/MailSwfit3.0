@@ -16,13 +16,12 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
     
     var dataSoure : [LeaveData]! = [LeaveData]()
     var dataArray : [LeaveData]! = [LeaveData]()
-    var typeId : String!
+    var type : String!
     var selectedType :String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectedType = "1"
-        demoData()
+        selectedType = "我提交的"
         let nib = UINib(nibName: "ApplicationCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "cell")
         self.tableView.separatorStyle = .none
@@ -42,6 +41,14 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
     }
     override func viewWillAppear(_ animated: Bool) {
         
+        super.viewWillAppear(animated)
+        
+        if selectedType == "我提交的" {
+            demoData()
+        }else if selectedType == "待我审批" {
+            demoData2()
+        }
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -85,8 +92,8 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
             }, completion: nil)
         switch sender.tag {
         case 0:
-            typeId = "1"
-            selectedType = typeId
+            type = "我提交的"
+            selectedType = type
             //发送请求
             //newRequest()
             self.dataArray.removeAll()
@@ -95,8 +102,8 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
             tableView.reloadData()
             break
         case 1:
-            typeId = "2"
-            selectedType = typeId
+            type = "待我审批"
+            selectedType = type
             self.dataSoure.removeAll()
             //模拟数据
             demoData2()
@@ -116,9 +123,9 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if selectedType == "1" {
+        if selectedType == "我提交的" {
             return dataSoure.count
-        }else if selectedType == "2" {
+        }else if selectedType == "待我审批" {
             return dataArray.count
         }
         return 0
@@ -126,15 +133,27 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ApplicationCell
-        
-        let data = dataSoure[(indexPath as NSIndexPath).row] 
+        var data:LeaveData = LeaveData()
+        if selectedType == "我提交的" {
+            data = dataSoure[(indexPath as NSIndexPath).row]
+        }else if selectedType == "待我审批" {
+            data = dataArray[(indexPath as NSIndexPath).row]
+        }
         cell.type = selectedType
         cell.setData(data)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var data:LeaveData = LeaveData()
+        if selectedType == "我提交的" {
+            data = dataSoure[(indexPath as NSIndexPath).row]
+        }else if selectedType == "待我审批" {
+            data = dataArray[(indexPath as NSIndexPath).row]
+        }
         let applyleaveVC = ApplyleaveController()
         applyleaveVC.type = selectedType
+        applyleaveVC.statusType = data.status
+        applyleaveVC.leave_id = data.id
         self.navigationController?.pushViewController(applyleaveVC, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -89,9 +89,7 @@ class LoginViewController: UIViewController {
         
         var defaults:UserDefaults!
         defaults = UserDefaults()
-        if data.id != nil {
-            defaults.set(data.id! as Int, forKey: userID)
-        }
+        defaults.set(data.id as Int, forKey: userID)
         if data.sex != nil {
             defaults.set(data.sex! as String, forKey: userSex)
         }

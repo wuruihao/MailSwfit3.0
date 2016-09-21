@@ -19,8 +19,6 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //模拟数据
-        demo()
         //创建一个重用的单元格
         let nib = UINib(nibName: "ContactsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cellId")
@@ -30,6 +28,9 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
+        //模拟数据
+        demo()
     }
     
     override func didReceiveMemoryWarning() {
@@ -103,6 +104,7 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
         
         let staffInformationVC = StaffInformationController()
         staffInformationVC.type = data.level
+        staffInformationVC.memberData = data
         staffInformationVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(staffInformationVC, animated: true)
     }

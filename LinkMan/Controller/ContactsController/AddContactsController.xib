@@ -11,11 +11,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddContactsController" customModule="LinkMan" customModuleProvider="target">
             <connections>
                 <outlet property="companyTextField" destination="nMX-Ug-z1r" id="6xh-sE-N6y"/>
-                <outlet property="departmentTextField" destination="BHI-s3-n0p" id="w6Q-Ox-bHB"/>
                 <outlet property="nameTextField" destination="MYj-uh-5KJ" id="Df9-ug-oU4"/>
+                <outlet property="naviItem" destination="obA-o7-5Su" id="7Cc-LH-Z9C"/>
+                <outlet property="nickNameTextField" destination="liT-7m-5M6" id="8ov-YK-wGF"/>
                 <outlet property="phoneTextField" destination="Ium-mC-Cg6" id="Uae-wo-Ucr"/>
-                <outlet property="positionTextField" destination="liT-7m-5M6" id="0Sg-Fs-ech"/>
                 <outlet property="sanpImage" destination="FGx-06-cFL" id="k6w-Jf-fPl"/>
+                <outlet property="sexTextField" destination="BHI-s3-n0p" id="2bu-rf-DbP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="workmMailbox" destination="tRG-V8-Ah1" id="Ak8-ci-Yol"/>
                 <outletCollection property="itemArray" destination="Fqw-Df-yrj" collectionClass="NSMutableArray" id="U9l-lv-Xx8"/>
@@ -28,6 +29,7 @@
                 <outletCollection property="levelItems" destination="gMa-cb-7Pe" collectionClass="NSMutableArray" id="dry-W7-kOJ"/>
                 <outletCollection property="levelItems" destination="pEq-Ck-7Mm" collectionClass="NSMutableArray" id="hBe-KF-8as"/>
                 <outletCollection property="levelItems" destination="Jpg-tb-9mW" collectionClass="NSMutableArray" id="Ofs-Oz-xe6"/>
+                <outletCollection property="itemArray" destination="flL-E1-oju" collectionClass="NSMutableArray" id="Zjq-0p-9N1"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -81,11 +83,11 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="昵称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="liT-7m-5M6">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="昵称(非必须)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="liT-7m-5M6">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="性别" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BHI-s3-n0p">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="性别(非必须)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BHI-s3-n0p">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -113,7 +115,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXm-fi-Y4v" userLabel="部门">
                     <subviews>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqw-Df-yrj">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqw-Df-yrj">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -121,7 +123,7 @@
                                 <action selector="selectDepartmentWithTypes:" destination="-1" eventType="touchUpInside" id="GDj-BF-VEi"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGU-m6-CnX">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="董事长" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGU-m6-CnX">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -132,7 +134,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xB-TK-Ica">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xB-TK-Ica">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -140,12 +142,12 @@
                                 <action selector="selectDepartmentWithTypes:" destination="-1" eventType="touchUpInside" id="gKG-5D-0Ef"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PHP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaM-19-qmV">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RaM-19-qmV">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6U-lO-asP">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6U-lO-asP">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -153,12 +155,12 @@
                                 <action selector="selectDepartmentWithTypes:" destination="-1" eventType="touchUpInside" id="YRU-Q3-QoO"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="前端" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Kg-7r-1jH">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PHP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Kg-7r-1jH">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hur-Eo-0UM">
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hur-Eo-0UM">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -166,7 +168,7 @@
                                 <action selector="selectDepartmentWithTypes:" destination="-1" eventType="touchUpInside" id="9h2-Rt-F2j"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安卓" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEA-cf-IJC">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="前端" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEA-cf-IJC">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -179,12 +181,12 @@
                                 <action selector="selectDepartmentWithTypes:" destination="-1" eventType="touchUpInside" id="z2Y-32-xXS"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="测试" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bY-dE-Fjk">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安卓" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bY-dE-Fjk">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6f-JT-3bb">
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6f-JT-3bb">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -192,12 +194,12 @@
                                 <action selector="selectDepartmentWithTypes:" destination="-1" eventType="touchUpInside" id="2Jc-ia-lID"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人事" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Faa-lJ-ELI">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="测试" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Faa-lJ-ELI">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYe-7R-ph5">
+                        <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYe-7R-ph5">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -205,7 +207,20 @@
                                 <action selector="selectDepartmentWithTypes:" destination="-1" eventType="touchUpInside" id="E6g-MS-GLD"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="后台" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ol5-bI-5fh">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="人事" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ol5-bI-5fh">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flL-E1-oju">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" image="Recommend_s-off.png"/>
+                            <state key="selected" image="Recommend_s-on.png"/>
+                            <connections>
+                                <action selector="selectDepartmentWithTypes:" destination="-1" eventType="touchUpInside" id="Gl9-z1-wKR"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="后台" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtT-zn-adc">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -243,29 +258,40 @@
                         <constraint firstItem="HEA-cf-IJC" firstAttribute="width" secondItem="Hur-Eo-0UM" secondAttribute="width" multiplier="2:3" id="TIQ-Lj-A5T"/>
                         <constraint firstItem="Faa-lJ-ELI" firstAttribute="trailing" secondItem="u6f-JT-3bb" secondAttribute="trailing" id="Tt9-6x-uTD"/>
                         <constraint firstItem="Fqw-Df-yrj" firstAttribute="leading" secondItem="j3a-4U-zZb" secondAttribute="leading" id="Vi1-lu-bPk"/>
+                        <constraint firstItem="TtT-zn-adc" firstAttribute="top" secondItem="VE4-YF-WPb" secondAttribute="top" id="WN2-hf-Rrh"/>
+                        <constraint firstItem="u6f-JT-3bb" firstAttribute="height" secondItem="Fqw-Df-yrj" secondAttribute="height" id="XE5-3l-1Ru"/>
                         <constraint firstItem="UYe-7R-ph5" firstAttribute="width" secondItem="Fqw-Df-yrj" secondAttribute="width" id="Xff-ER-xn4"/>
+                        <constraint firstItem="flL-E1-oju" firstAttribute="height" secondItem="Fqw-Df-yrj" secondAttribute="height" id="XkZ-0B-W5c"/>
                         <constraint firstItem="Hur-Eo-0UM" firstAttribute="top" secondItem="Fqw-Df-yrj" secondAttribute="top" id="ZDG-8D-Luq"/>
+                        <constraint firstItem="UYe-7R-ph5" firstAttribute="height" secondItem="Fqw-Df-yrj" secondAttribute="height" id="adz-fY-OhC"/>
+                        <constraint firstItem="flL-E1-oju" firstAttribute="width" secondItem="Fqw-Df-yrj" secondAttribute="width" id="bjq-Wm-les"/>
+                        <constraint firstItem="flL-E1-oju" firstAttribute="leading" secondItem="Ol5-bI-5fh" secondAttribute="trailing" constant="15" id="bz3-rh-fAS"/>
                         <constraint firstItem="VE4-YF-WPb" firstAttribute="height" secondItem="Fqw-Df-yrj" secondAttribute="height" id="cUj-60-pan"/>
                         <constraint firstItem="VE4-YF-WPb" firstAttribute="width" secondItem="Fqw-Df-yrj" secondAttribute="width" id="czh-l3-lon"/>
                         <constraint firstItem="j3a-4U-zZb" firstAttribute="top" secondItem="cXm-fi-Y4v" secondAttribute="top" constant="10" id="dJ2-Ua-LSI"/>
                         <constraint firstItem="HEA-cf-IJC" firstAttribute="trailing" secondItem="Hur-Eo-0UM" secondAttribute="trailing" id="dMa-D0-AhB"/>
+                        <constraint firstItem="TtT-zn-adc" firstAttribute="top" secondItem="flL-E1-oju" secondAttribute="top" id="dgD-iz-74v"/>
                         <constraint firstItem="j3a-4U-zZb" firstAttribute="leading" secondItem="cXm-fi-Y4v" secondAttribute="leading" constant="15" id="fyz-Ea-kLA"/>
                         <constraint firstItem="j6U-lO-asP" firstAttribute="leading" secondItem="RaM-19-qmV" secondAttribute="trailing" constant="15" id="hYn-Of-4F5"/>
                         <constraint firstItem="Fqw-Df-yrj" firstAttribute="top" secondItem="j3a-4U-zZb" secondAttribute="bottom" constant="10" id="hoz-F6-m25"/>
                         <constraint firstAttribute="trailing" secondItem="j3a-4U-zZb" secondAttribute="trailing" id="iF8-jP-xSg"/>
                         <constraint firstItem="j6U-lO-asP" firstAttribute="width" secondItem="Fqw-Df-yrj" secondAttribute="width" id="jr3-Nc-Hvg"/>
+                        <constraint firstItem="TtT-zn-adc" firstAttribute="trailing" secondItem="flL-E1-oju" secondAttribute="trailing" id="jxs-64-NLu"/>
                         <constraint firstItem="6bY-dE-Fjk" firstAttribute="top" secondItem="VE4-YF-WPb" secondAttribute="top" id="knd-IZ-THR"/>
                         <constraint firstItem="3Kg-7r-1jH" firstAttribute="top" secondItem="j6U-lO-asP" secondAttribute="top" id="lOS-xP-n2P"/>
                         <constraint firstItem="VE4-YF-WPb" firstAttribute="leading" secondItem="Fqw-Df-yrj" secondAttribute="leading" id="lX6-Tq-1pC"/>
                         <constraint firstItem="RaM-19-qmV" firstAttribute="width" secondItem="4xB-TK-Ica" secondAttribute="width" multiplier="2:3" id="lcT-N5-Gm3"/>
                         <constraint firstItem="Hur-Eo-0UM" firstAttribute="width" secondItem="Fqw-Df-yrj" secondAttribute="width" id="m4s-ER-dEB"/>
+                        <constraint firstItem="flL-E1-oju" firstAttribute="top" secondItem="VE4-YF-WPb" secondAttribute="top" id="nTp-db-xiq"/>
                         <constraint firstItem="3Kg-7r-1jH" firstAttribute="top" secondItem="Fqw-Df-yrj" secondAttribute="top" id="oMW-Yi-yO3"/>
                         <constraint firstItem="u6f-JT-3bb" firstAttribute="top" secondItem="VE4-YF-WPb" secondAttribute="top" id="oea-Bd-oB1"/>
                         <constraint firstItem="6bY-dE-Fjk" firstAttribute="trailing" secondItem="VE4-YF-WPb" secondAttribute="trailing" id="pKc-1Z-Qzc"/>
+                        <constraint firstItem="TtT-zn-adc" firstAttribute="bottom" secondItem="flL-E1-oju" secondAttribute="bottom" id="pW4-rj-erI"/>
                         <constraint firstItem="UYe-7R-ph5" firstAttribute="leading" secondItem="Faa-lJ-ELI" secondAttribute="trailing" constant="15" id="rVM-BZ-YWJ"/>
                         <constraint firstItem="3Kg-7r-1jH" firstAttribute="trailing" secondItem="j6U-lO-asP" secondAttribute="trailing" id="te3-Iy-2hj"/>
                         <constraint firstItem="Ol5-bI-5fh" firstAttribute="trailing" secondItem="UYe-7R-ph5" secondAttribute="trailing" id="tma-MX-IlL"/>
                         <constraint firstAttribute="bottom" secondItem="VE4-YF-WPb" secondAttribute="bottom" constant="15" id="u3C-Ev-6IY"/>
+                        <constraint firstItem="TtT-zn-adc" firstAttribute="width" secondItem="flL-E1-oju" secondAttribute="width" multiplier="2:3" id="u5Z-RB-WOH"/>
                         <constraint firstItem="RaM-19-qmV" firstAttribute="trailing" secondItem="4xB-TK-Ica" secondAttribute="trailing" id="ul3-15-1IA"/>
                         <constraint firstItem="Faa-lJ-ELI" firstAttribute="bottom" secondItem="u6f-JT-3bb" secondAttribute="bottom" id="v6g-OO-J5n"/>
                         <constraint firstItem="yGU-m6-CnX" firstAttribute="trailing" secondItem="Fqw-Df-yrj" secondAttribute="trailing" id="wib-Yf-J2n"/>
@@ -280,7 +306,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gV6-vg-162" userLabel="职位">
                     <subviews>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMa-cb-7Pe">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMa-cb-7Pe">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -306,7 +332,7 @@
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jpg-tb-9mW">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jpg-tb-9mW">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>

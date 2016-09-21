@@ -62,8 +62,6 @@ class EditApplyleaveController: UIViewController {
     var datePicker: UIDatePicker!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -98,27 +96,38 @@ class EditApplyleaveController: UIViewController {
         //更新提醒时间文本框
         let formatter = DateFormatter()
         //日期样式
-        formatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         print(formatter.string(from: datePicker.date))
         print("datePicker.date\(datePicker.date)")
+        
+        var fromDate = Date()
+        var toDate = Date()
+        
         if datePicker.tag == 1 {
-            
+            fromDate = datePicker.date
             beginDay.text = formatter.string(from: datePicker.date)
             
         }else if datePicker.tag == 2 {
+            toDate = datePicker.date
             endDay.text = formatter.string(from: datePicker.date)
         }
+        
+        
+        let gregorian = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
+        let r = gregorian!.components(NSCalendar.Unit.day, from: fromDate, to: toDate, options: NSCalendar.Options.init(rawValue: 0))
+        
+        self.leaveDay.text = String(format: "%d", r.day!)
     }
     
     func handleTap(_ sender:UITapGestureRecognizer){
         
         UIView.animate(withDuration: 0.4, animations: {
             self.datePicker.y = kScreenHeight
-        }, completion: { (finished:Bool) in
-            
-            self.datePicker.removeFromSuperview()
-            self.backView.removeFromSuperview()
-        }) 
+            }, completion: { (finished:Bool) in
+                
+                self.datePicker.removeFromSuperview()
+                self.backView.removeFromSuperview()
+        })
     }
     
     @IBAction func selectedLeaveType(_ sender: UITapGestureRecognizer) {
@@ -132,7 +141,49 @@ class EditApplyleaveController: UIViewController {
     
     @IBAction func nextAction(_ sender: UIButton) {
         
+        let alertView = UIAlertView()
         
+        if beginDay.text == "" {
+            alertView.title = "请点击选择开始时间"
+            alertView.show()
+            let time: TimeInterval = 1.0
+            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
+                alertView.dismiss(withClickedButtonIndex: 0, animated: true)
+            }
+            return
+        }
+        
+        if beginDay.text == "" {
+            alertView.title = "请点击选择结束时间"
+            alertView.show()
+            let time: TimeInterval = 1.0
+            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
+                alertView.dismiss(withClickedButtonIndex: 0, animated: true)
+            }
+            return
+        }
+        
+        
+        
+        
+        
+        let token = UserDefaults().object(forKey: userToken) as! String!
+        NetworkTool.shareNetworkTool.addleaveRequest(token!, started: beginDay.text!, ended: endDay.text!, time: leaveDay.text!,reason:reasonTextView.text!, finishedSel: { (data:ETSuccess) in
+            
+            self.navigationController?.popViewController(animated: true)
+            
+        }) { (error:ETError) in
+            let alertView = UIAlertView()
+            alertView.title = error.message!
+            alertView.show()
+            let time: TimeInterval = 1.0
+            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
+                alertView.dismiss(withClickedButtonIndex: 0, animated: true)
+            }
+        }
         
     }
     @IBAction func beginTime(_ sender: UIButton) {
@@ -140,14 +191,14 @@ class EditApplyleaveController: UIViewController {
         addDatePicker(1)
         UIView.animate(withDuration: 0.4, animations: {
             self.datePicker.y = kScreenHeight*0.7
-        }) 
+        })
     }
     @IBAction func endTime(_ sender: UIButton) {
         
         addDatePicker(2)
         UIView.animate(withDuration: 0.4, animations: {
             self.datePicker.y = kScreenHeight*0.7
-        }) 
+        })
     }
     
     /*

@@ -51,6 +51,9 @@
                                     <state key="normal" title="编辑">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="editInfoAction:" destination="-1" eventType="touchUpInside" id="Def-9n-IhE"/>
+                                    </connections>
                                 </button>
                             </barButtonItem>
                         </navigationItem>

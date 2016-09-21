@@ -178,6 +178,37 @@ class NetworkTool: NSObject {
         }
     }
     
+    //新增联系人请求
+    func editContactsRequest(_ id: String,token:String,mobile: String,email: String,departmentName: String,level: String,headImg: String,nickname: String,name: String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
+        let url = BASE_URL+"/user/save"
+        let params = ["id": id,"token": token,"mobile": mobile,"email": email,"department_id": departmentName,"level_id": level,"head_img":headImg,"nickname":nickname,"name":name]
+        print("url: \(url)")
+        print("params: \(params)")
+        
+        NetworkTool.manager.get(url,parameters:params,success: { (task:URLSessionDataTask?, response:Any?) in
+            
+            let result = response as? NSDictionary
+            print("result:\(result)")
+            
+            if self.isRequestSuccess(result!){
+                
+                let success = ETSuccess()
+                success.message = "请求成功"
+                finishedSel(success)
+                
+            }else{
+                
+                let errorDic = result?.object(forKey: "error")
+                let error = ETError.mj_object(withKeyValues: errorDic) as ETError
+                failedSel(error)
+            }
+            
+        }) { (task:URLSessionDataTask?, error:Error?) in
+            
+            print("加载失败...")
+        }
+    }
+
     //添加联系人请求
     func addFriendsContactsRequest(_ token: String,id: String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/user/add"
@@ -243,9 +274,9 @@ class NetworkTool: NSObject {
     }
     
     //请假申请请求
-    func addleaveRequest(_ token: String,started: String,ended: String,time: String,finishedSel:@escaping (_ data:[ETSuccess])->(),failedSel:@escaping (_ error:ETError)->()){
+    func addleaveRequest(_ token: String,started: String,ended: String,time: String,reason: String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/leave/add"
-        let params = ["token": token,"started": started,"ended": ended,"time": time]
+        let params = ["token": token,"started": started,"ended": ended,"time": time,"reason": reason]
         print("url: \(url)")
         print("params: \(params)")
         
@@ -255,10 +286,8 @@ class NetworkTool: NSObject {
             print("result:\(result)")
             
             if self.isRequestSuccess(result!){
-                //json 转化成字典 并进行数据解析
-                let data = result?.object(forKey: "data") as! NSArray
-                // 字典转模型(MJExtension)
-                let success = ETSuccess.mj_objectArray(withKeyValuesArray: data).mutableCopy() as! [ETSuccess]
+                let success = ETSuccess()
+                success.message = "请求成功"
                 finishedSel(success)
                 
             }else{
@@ -299,6 +328,63 @@ class NetworkTool: NSObject {
             print("加载失败...")
         }
     }
+    //请假审批请求
+    func approvedLeaveRequest(_ token: String,status: Int,id: Int,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
+        let url = BASE_URL+"/leave/save"
+        let params = ["token": token,"status": status,"id": id] as [String : Any]
+        print("url: \(url)")
+        print("params: \(params)")
+        
+        NetworkTool.manager.get(url,parameters:params,success: { (task:URLSessionDataTask?, response:Any?) in
+            
+            let result = response as? NSDictionary
+            print("result:\(result)")
+            
+            if self.isRequestSuccess(result!){
+                
+                let success = ETSuccess()
+                success.message = "请求成功"
+                finishedSel(success)
+                
+            }else{
+                
+                let errorDic = result?.object(forKey: "error")
+                let error = ETError.mj_object(withKeyValues: errorDic) as ETError
+                failedSel(error)
+            }
+            
+        }) { (task:URLSessionDataTask?, error:Error?) in
+            
+            print("加载失败...")
+        }
+    }
+
+    //请假详情请求
+    func leaveDetailsRequest(_ token: String,id: Int,finishedSel:@escaping (_ data:LeaveData)->(),failedSel:@escaping (_ error:ETError)->()){
+        let url = BASE_URL+"/leave/detail"
+        let params = ["token": token,"id": id] as [String : Any]
+        print("url: \(url)")
+        print("params: \(params)")
+        
+        NetworkTool.manager.get(url,parameters:params,success: { (task:URLSessionDataTask?, response:Any?) in
+            let result = response as? NSDictionary
+            print("result:\(result)")
+            if self.isRequestSuccess(result!){
+                //json 转化成字典 并进行数据解析
+                let data = result?.object(forKey: "data")
+                // 字典转模型(MJExtension)
+                let leaveData = LeaveData.mj_object(withKeyValues: data) as LeaveData
+                finishedSel(leaveData)
+            }else{
+                let errorDic = result?.object(forKey: "error")
+                let error = ETError.mj_object(withKeyValues: errorDic) as ETError
+                failedSel(error)
+            }
+        }) { (task:URLSessionDataTask?, error:Error?) in
+            print("加载失败...")
+        }
+    }
+
 }
 /*
  //注册请求

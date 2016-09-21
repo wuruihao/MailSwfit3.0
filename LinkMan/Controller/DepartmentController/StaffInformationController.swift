@@ -16,6 +16,7 @@ class StaffInformationController: UIViewController {
     @IBOutlet weak var workMailbox: UILabel!
     @IBOutlet weak var editBtn: UIButton!
     
+    var memberData: MemberData!
     var type: String!
     
     override func viewDidLoad() {
@@ -31,6 +32,8 @@ class StaffInformationController: UIViewController {
         }else {
             editBtn.isHidden = true
         }
+        
+        setData(data: memberData)
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,7 +48,10 @@ class StaffInformationController: UIViewController {
         
         if type == "经理" {
             
-            self.navigationController?.pushViewController(AddContactsController(), animated: true)
+            let addContactsVC = AddContactsController()
+            addContactsVC.type = "编辑"
+            addContactsVC.memberData = memberData
+            self.navigationController?.pushViewController(addContactsVC, animated: true)
             
         }else {
             
@@ -54,4 +60,13 @@ class StaffInformationController: UIViewController {
         }
         
     }
+    
+    func setData(data:MemberData){
+        
+        name.text = data.name
+        subTitle.text = data.department
+        phoneNum.text = data.mobile
+        workMailbox.text = data.email
+    }
+    
 }
