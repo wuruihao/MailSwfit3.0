@@ -40,16 +40,24 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
     
     func demo(){
         
-        NetworkTool.shareNetworkTool.departmentRequest(finishedSel: { (data:[DepartmentData]) in
-            
+        let token = UserDefaults().object(forKey: userToken) as! String!
+        NetworkTool.shareNetworkTool.departmentRequest(token!, finishedSel: { (data:[DepartmentData]) in
+
             print("data\(data)")
             
             self.sectionData = data
             self.tableView.reloadData()
             
+            CoreDataTool.shared.addDepartmentsCoreData(data: data)
+            
         }) { (error:ETError) in
             
             print("error\(error)")
+            
+            let array = CoreDataTool.shared.printAllDataWithCoreData()
+            let dep = array.mutableCopy() as! [DepartmentData]
+            self.sectionData = dep
+            self.tableView.reloadData()
         }
         
     }

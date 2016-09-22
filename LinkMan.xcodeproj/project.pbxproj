@@ -133,14 +133,15 @@
 		E00BFE461D8FB87C007A6773 /* MemberInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00BFDC81D8FB87C007A6773 /* MemberInfoController.xib */; };
 		E00BFE471D8FB87C007A6773 /* MineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDC91D8FB87C007A6773 /* MineController.swift */; };
 		E00BFE481D8FB87C007A6773 /* MineController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00BFDCA1D8FB87C007A6773 /* MineController.xib */; };
-		E00BFE491D8FB87C007A6773 /* ContactsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDCC1D8FB87C007A6773 /* ContactsEntity.swift */; };
-		E00BFE4A1D8FB87C007A6773 /* ContactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDCD1D8FB87C007A6773 /* ContactsModel.swift */; };
 		E08C36821D91128E00609A31 /* Recommend_s-on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E08C367C1D91128E00609A31 /* Recommend_s-on@3x.png */; };
 		E08C36831D91128E00609A31 /* Recommend_s-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E08C367D1D91128E00609A31 /* Recommend_s-on@2x.png */; };
 		E08C36841D91128E00609A31 /* Recommend_s-on.png in Resources */ = {isa = PBXBuildFile; fileRef = E08C367E1D91128E00609A31 /* Recommend_s-on.png */; };
 		E08C36851D91128E00609A31 /* Recommend_s-off@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E08C367F1D91128E00609A31 /* Recommend_s-off@3x.png */; };
 		E08C36861D91128E00609A31 /* Recommend_s-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E08C36801D91128E00609A31 /* Recommend_s-off@2x.png */; };
 		E08C36871D91128E00609A31 /* Recommend_s-off.png in Resources */ = {isa = PBXBuildFile; fileRef = E08C36811D91128E00609A31 /* Recommend_s-off.png */; };
+		E09584331D93AAB700304915 /* CoreDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09584321D93AAB700304915 /* CoreDataTool.swift */; };
+		E09584521D93D4AD00304915 /* Contacts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09584501D93D4AD00304915 /* Contacts+CoreDataClass.swift */; };
+		E09584531D93D4AD00304915 /* Contacts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09584511D93D4AD00304915 /* Contacts+CoreDataProperties.swift */; };
 		E0D3137F1D90F8C20053CEA7 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D3137D1D90F8C20053CEA7 /* HomeController.swift */; };
 		E0D313801D90F8C20053CEA7 /* HomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D3137E1D90F8C20053CEA7 /* HomeController.xib */; };
 		E0D313E61D910CA60053CEA7 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D313C61D910CA60053CEA7 /* MKAnnotationView+WebCache.m */; };
@@ -159,6 +160,10 @@
 		E0D313F31D910CA60053CEA7 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D313E11D910CA60053CEA7 /* UIImageView+HighlightedWebCache.m */; };
 		E0D313F41D910CA60053CEA7 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D313E31D910CA60053CEA7 /* UIImageView+WebCache.m */; };
 		E0D313F51D910CA60053CEA7 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D313E51D910CA60053CEA7 /* UIView+WebCacheOperation.m */; };
+		E0E2D8641D937FC800FC7DD0 /* XTPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0E2D8621D937FC800FC7DD0 /* XTPopView.m */; };
+		E0E2D8681D9380BB00FC7DD0 /* Brand_sort@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0E2D8651D9380BB00FC7DD0 /* Brand_sort@3x.png */; };
+		E0E2D8691D9380BB00FC7DD0 /* Brand_sort@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0E2D8661D9380BB00FC7DD0 /* Brand_sort@2x.png */; };
+		E0E2D86A1D9380BB00FC7DD0 /* Brand_sort.png in Resources */ = {isa = PBXBuildFile; fileRef = E0E2D8671D9380BB00FC7DD0 /* Brand_sort.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -314,8 +319,6 @@
 		E00BFDC81D8FB87C007A6773 /* MemberInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemberInfoController.xib; sourceTree = "<group>"; };
 		E00BFDC91D8FB87C007A6773 /* MineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineController.swift; sourceTree = "<group>"; };
 		E00BFDCA1D8FB87C007A6773 /* MineController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineController.xib; sourceTree = "<group>"; };
-		E00BFDCC1D8FB87C007A6773 /* ContactsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsEntity.swift; sourceTree = "<group>"; };
-		E00BFDCD1D8FB87C007A6773 /* ContactsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsModel.swift; sourceTree = "<group>"; };
 		E00BFE4E1D8FB9F7007A6773 /* LinkMan-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LinkMan-Bridging-Header.h"; sourceTree = "<group>"; };
 		E08C367C1D91128E00609A31 /* Recommend_s-on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Recommend_s-on@3x.png"; sourceTree = "<group>"; };
 		E08C367D1D91128E00609A31 /* Recommend_s-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Recommend_s-on@2x.png"; sourceTree = "<group>"; };
@@ -323,6 +326,9 @@
 		E08C367F1D91128E00609A31 /* Recommend_s-off@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Recommend_s-off@3x.png"; sourceTree = "<group>"; };
 		E08C36801D91128E00609A31 /* Recommend_s-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Recommend_s-off@2x.png"; sourceTree = "<group>"; };
 		E08C36811D91128E00609A31 /* Recommend_s-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Recommend_s-off.png"; sourceTree = "<group>"; };
+		E09584321D93AAB700304915 /* CoreDataTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTool.swift; sourceTree = "<group>"; };
+		E09584501D93D4AD00304915 /* Contacts+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contacts+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E09584511D93D4AD00304915 /* Contacts+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contacts+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E0D3137D1D90F8C20053CEA7 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		E0D3137E1D90F8C20053CEA7 /* HomeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeController.xib; sourceTree = "<group>"; };
 		E0D313C51D910CA60053CEA7 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -358,6 +364,11 @@
 		E0D313E31D910CA60053CEA7 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		E0D313E41D910CA60053CEA7 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		E0D313E51D910CA60053CEA7 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		E0E2D8621D937FC800FC7DD0 /* XTPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTPopView.m; sourceTree = "<group>"; };
+		E0E2D8631D937FC800FC7DD0 /* XTPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTPopView.h; sourceTree = "<group>"; };
+		E0E2D8651D9380BB00FC7DD0 /* Brand_sort@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Brand_sort@3x.png"; sourceTree = "<group>"; };
+		E0E2D8661D9380BB00FC7DD0 /* Brand_sort@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Brand_sort@2x.png"; sourceTree = "<group>"; };
+		E0E2D8671D9380BB00FC7DD0 /* Brand_sort.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Brand_sort.png; sourceTree = "<group>"; };
 		FED3F980A94670D8B355057B /* Pods-LinkMan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinkMan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LinkMan/Pods-LinkMan.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -507,7 +518,6 @@
 		E00BFD431D8FB87C007A6773 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				E00BFDCB1D8FB87C007A6773 /* CodeData */,
 				E00BFD441D8FB87C007A6773 /* Contacts */,
 				E00BFD461D8FB87C007A6773 /* Department */,
 				E00BFD4C1D8FB87C007A6773 /* Home */,
@@ -548,6 +558,9 @@
 		E00BFD4C1D8FB87C007A6773 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E0E2D8651D9380BB00FC7DD0 /* Brand_sort@3x.png */,
+				E0E2D8661D9380BB00FC7DD0 /* Brand_sort@2x.png */,
+				E0E2D8671D9380BB00FC7DD0 /* Brand_sort.png */,
 				E00BFD4D1D8FB87C007A6773 /* addLeave.png */,
 				E00BFD4E1D8FB87C007A6773 /* backline.png */,
 				E00BFD4F1D8FB87C007A6773 /* chat.png */,
@@ -683,6 +696,8 @@
 		E00BFD981D8FB87C007A6773 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				E0E2D8621D937FC800FC7DD0 /* XTPopView.m */,
+				E0E2D8631D937FC800FC7DD0 /* XTPopView.h */,
 				E0D313C41D910CA60053CEA7 /* SDWebImage */,
 				E00BFD991D8FB87C007A6773 /* EaseChineseToPinyin.h */,
 				E00BFD9A1D8FB87C007A6773 /* EaseChineseToPinyin.m */,
@@ -709,8 +724,11 @@
 		E00BFDA71D8FB87C007A6773 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E09584501D93D4AD00304915 /* Contacts+CoreDataClass.swift */,
+				E09584511D93D4AD00304915 /* Contacts+CoreDataProperties.swift */,
 				E00BFDA81D8FB87C007A6773 /* NetworkTool.swift */,
 				E00BFDAA1D8FB87C007A6773 /* YMConst.swift */,
+				E09584321D93AAB700304915 /* CoreDataTool.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -786,16 +804,6 @@
 				E00BFDCA1D8FB87C007A6773 /* MineController.xib */,
 			);
 			path = MineController;
-			sourceTree = "<group>";
-		};
-		E00BFDCB1D8FB87C007A6773 /* CodeData */ = {
-			isa = PBXGroup;
-			children = (
-				E00BFDCC1D8FB87C007A6773 /* ContactsEntity.swift */,
-				E00BFDCD1D8FB87C007A6773 /* ContactsModel.swift */,
-			);
-			name = CodeData;
-			path = ../CodeData;
 			sourceTree = "<group>";
 		};
 		E0D313C41D910CA60053CEA7 /* SDWebImage */ = {
@@ -988,10 +996,12 @@
 				E00BFDE51D8FB87C007A6773 /* Login_code_blue.png in Resources */,
 				E00BFDD61D8FB87C007A6773 /* NotifyCell.xib in Resources */,
 				E00BFE191D8FB87C007A6773 /* TabBar_product@2x.png in Resources */,
+				E0E2D8681D9380BB00FC7DD0 /* Brand_sort@3x.png in Resources */,
 				E00BFE0A1D8FB87C007A6773 /* TabBar_home_sel@2x.png in Resources */,
 				E00BFE3A1D8FB87C007A6773 /* ApplyleaveController.xib in Resources */,
 				E08C36831D91128E00609A31 /* Recommend_s-on@2x.png in Resources */,
 				E00BFE161D8FB87C007A6773 /* TabBar_mine_sel@2x.png in Resources */,
+				E0E2D8691D9380BB00FC7DD0 /* Brand_sort@2x.png in Resources */,
 				E00BFE3C1D8FB87C007A6773 /* EditApplyleaveController.xib in Resources */,
 				E00BFE111D8FB87C007A6773 /* TabBar_interesting_sel@3x.png in Resources */,
 				E00BFDEA1D8FB87C007A6773 /* Login_male@3x.png in Resources */,
@@ -1000,6 +1010,7 @@
 				E00BFE381D8FB87C007A6773 /* ApplicationController.xib in Resources */,
 				E00BFDE21D8FB87C007A6773 /* notify.png in Resources */,
 				E00BFE1D1D8FB87C007A6773 /* TabBar_product_sel@3x.png in Resources */,
+				E0E2D86A1D9380BB00FC7DD0 /* Brand_sort.png in Resources */,
 				E00BFDE11D8FB87C007A6773 /* member.png in Resources */,
 				E00BFE141D8FB87C007A6773 /* TabBar_mine@3x.png in Resources */,
 				E00BFDD81D8FB87C007A6773 /* addContacts.png in Resources */,
@@ -1126,11 +1137,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0E2D8641D937FC800FC7DD0 /* XTPopView.m in Sources */,
 				E00BFE411D8FB87C007A6773 /* LoginViewController.swift in Sources */,
 				E00BFDD01D8FB87C007A6773 /* MemberCell.swift in Sources */,
 				E00BFE2F1D8FB87C007A6773 /* AddContactsController.swift in Sources */,
 				E00BFE2E1D8FB87C007A6773 /* YMConst.swift in Sources */,
 				E00BFE201D8FB87C007A6773 /* LoginModel.swift in Sources */,
+				E09584331D93AAB700304915 /* CoreDataTool.swift in Sources */,
 				E0D313F01D910CA60053CEA7 /* UIImage+GIF.m in Sources */,
 				E00BFDD71D8FB87C007A6773 /* MineView.swift in Sources */,
 				E0D313EC1D910CA60053CEA7 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -1143,7 +1156,6 @@
 				E00BFE211D8FB87C007A6773 /* EaseChineseToPinyin.m in Sources */,
 				E00BFE2A1D8FB87C007A6773 /* ETNavigationController.swift in Sources */,
 				E0D313F51D910CA60053CEA7 /* UIView+WebCacheOperation.m in Sources */,
-				E00BFE4A1D8FB87C007A6773 /* ContactsModel.swift in Sources */,
 				E00BFDD31D8FB87C007A6773 /* HomeCell.swift in Sources */,
 				E00BFE281D8FB87C007A6773 /* UITableView+Extension.swift in Sources */,
 				E00BFE391D8FB87C007A6773 /* ApplyleaveController.swift in Sources */,
@@ -1168,15 +1180,16 @@
 				E0D313F31D910CA60053CEA7 /* UIImageView+HighlightedWebCache.m in Sources */,
 				E00BFBF31D8FA3DC007A6773 /* LinkMan.xcdatamodeld in Sources */,
 				E00BFE331D8FB87C007A6773 /* DepartmentController.swift in Sources */,
+				E09584521D93D4AD00304915 /* Contacts+CoreDataClass.swift in Sources */,
 				E0D313EF1D910CA60053CEA7 /* UIButton+WebCache.m in Sources */,
 				E00BFE1F1D8FB87C007A6773 /* MemberData.swift in Sources */,
 				E0D313F41D910CA60053CEA7 /* UIImageView+WebCache.m in Sources */,
 				E00BFE291D8FB87C007A6773 /* UIView+Extension.swift in Sources */,
 				E0D313EB1D910CA60053CEA7 /* SDWebImageDownloader.m in Sources */,
 				E00BFE431D8FB87C007A6773 /* EditNickNameController.swift in Sources */,
+				E09584531D93D4AD00304915 /* Contacts+CoreDataProperties.swift in Sources */,
 				E00BFE3F1D8FB87C007A6773 /* NotifyController.swift in Sources */,
 				E00BFE251D8FB87C007A6773 /* RealtimeSearchUtil.m in Sources */,
-				E00BFE491D8FB87C007A6773 /* ContactsEntity.swift in Sources */,
 				E00BFBEB1D8FA3DC007A6773 /* AppDelegate.swift in Sources */,
 				E0D3137F1D90F8C20053CEA7 /* HomeController.swift in Sources */,
 				E00BFE1E1D8FB87C007A6773 /* DepartmentModel.swift in Sources */,

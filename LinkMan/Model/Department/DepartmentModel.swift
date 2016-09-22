@@ -11,7 +11,7 @@ import UIKit
 
 class DepartmentData: NSObject {
     
-    var id:      Int?
+    var id:      Int = 0
     var name:    String?
     var number:  String?
     var members: NSMutableArray?

@@ -5,3 +5,4 @@
 #import "EaseChineseToPinyin.h"
 #import "RealtimeSearchUtil.h"
 #import "UIImageView+WebCache.h"
+#import "XTPopView.h"

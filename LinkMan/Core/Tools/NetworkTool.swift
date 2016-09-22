@@ -75,11 +75,13 @@ class NetworkTool: NSObject {
         }
     }
     //组织结构请求
-    func departmentRequest(finishedSel:@escaping (_ data:[DepartmentData])->(),failedSel:@escaping (_ error:ETError)->()){
+    func departmentRequest(_ token: String, finishedSel:@escaping (_ data:[DepartmentData])->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/user/list"
+        let params = ["token": token]
         print("url: \(url)")
-        
-        NetworkTool.manager.get(url,parameters:nil,success: { (task:URLSessionDataTask?, response:Any?) in
+        print("params: \(params)")
+
+        NetworkTool.manager.get(url,parameters:params,success: { (task:URLSessionDataTask?, response:Any?) in
             
             let result = response as? NSDictionary
             print("result:\(result)")
@@ -242,9 +244,16 @@ class NetworkTool: NSObject {
     }
     
     //请假列表请求
-    func applyleaveListRequest(_ token: String,finishedSel:@escaping (_ data:[LeaveData])->(),failedSel:@escaping (_ error:ETError)->()){
+    func applyleaveListRequest(_ token: String, status: Int, isMust: Bool,finishedSel:@escaping (_ data:[LeaveData])->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/leave/self"
-        let params = ["token": token]
+        
+        let params:[String : Any]
+        if isMust == true {
+            params = ["token": token,"status": status] as [String : Any]
+        }else{
+            params = ["token": token]
+        }
+        
         print("url: \(url)")
         print("params: \(params)")
         
@@ -304,9 +313,15 @@ class NetworkTool: NSObject {
     }
     
     //请假审批列表请求
-    func examinedAndApprovedLeaveRequest(_ token: String,finishedSel:@escaping (_ data:[LeaveData])->(),failedSel:@escaping (_ error:ETError)->()){
+    func examinedAndApprovedLeaveRequest(_ token: String, status: Int, isMust: Bool,finishedSel:@escaping (_ data:[LeaveData])->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/leave/list"
-        let params = ["token": token]
+        let params:[String : Any]
+        if isMust == true {
+            params = ["token": token,"status": status] as [String : Any]
+        }else{
+            params = ["token": token]
+        }
+        
         print("url: \(url)")
         print("params: \(params)")
         
@@ -361,6 +376,56 @@ class NetworkTool: NSObject {
 
     //请假详情请求
     func leaveDetailsRequest(_ token: String,id: Int,finishedSel:@escaping (_ data:LeaveData)->(),failedSel:@escaping (_ error:ETError)->()){
+        let url = BASE_URL+"/leave/detail"
+        let params = ["token": token,"id": id] as [String : Any]
+        print("url: \(url)")
+        print("params: \(params)")
+        
+        NetworkTool.manager.get(url,parameters:params,success: { (task:URLSessionDataTask?, response:Any?) in
+            let result = response as? NSDictionary
+            print("result:\(result)")
+            if self.isRequestSuccess(result!){
+                //json 转化成字典 并进行数据解析
+                let data = result?.object(forKey: "data")
+                // 字典转模型(MJExtension)
+                let leaveData = LeaveData.mj_object(withKeyValues: data) as LeaveData
+                finishedSel(leaveData)
+            }else{
+                let errorDic = result?.object(forKey: "error")
+                let error = ETError.mj_object(withKeyValues: errorDic) as ETError
+                failedSel(error)
+            }
+        }) { (task:URLSessionDataTask?, error:Error?) in
+            print("加载失败...")
+        }
+    }
+
+    //删除请假请求
+    func deleteleaveRequest(_ token: String,id: Int,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
+        let url = BASE_URL+"/leave/delete"
+        let params = ["token": token,"id": id] as [String : Any]
+        print("url: \(url)")
+        print("params: \(params)")
+        
+        NetworkTool.manager.get(url,parameters:params,success: { (task:URLSessionDataTask?, response:Any?) in
+            let result = response as? NSDictionary
+            print("result:\(result)")
+            if self.isRequestSuccess(result!){
+                let success = ETSuccess()
+                success.message = "请求成功"
+                finishedSel(success)
+            }else{
+                let errorDic = result?.object(forKey: "error")
+                let error = ETError.mj_object(withKeyValues: errorDic) as ETError
+                failedSel(error)
+            }
+        }) { (task:URLSessionDataTask?, error:Error?) in
+            print("加载失败...")
+        }
+    }
+
+    //请假详情请求
+    func destroyleaveDetailsRequest(_ token: String,id: Int,finishedSel:@escaping (_ data:LeaveData)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/leave/detail"
         let params = ["token": token,"id": id] as [String : Any]
         print("url: \(url)")

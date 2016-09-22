@@ -38,18 +38,21 @@ class ApplicationCell: UITableViewCell {
         
         //未处理:0 被驳回:1 已批准:2 待我审批:3 已驳回:4 已审批:5
         switch data.status! as String{
-        case "0":
+        case "1":
             status.text = "未审批"
             status.textColor = RGBA(r: 122.0, g: 193.0, b: 229.0, a: 1.0)
             break
-        case "1":
+        case "2":
             status.text = "已通过"
             status.textColor = RGBA(r: 140.0, g: 140.0, b: 140.0, a: 1.0)
             break
-        case "2":
+        case "3":
             status.text = "未通过"
             status.textColor = UIColor.red
-            
+            break
+        case "4":
+            status.text = "已销毁"
+            status.textColor = RGBA(r: 140.0, g: 140.0, b: 140.0, a: 1.0)
             break
         default:
             break

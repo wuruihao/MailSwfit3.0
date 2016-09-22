@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ApplicationController: UIViewController ,UITableViewDataSource, UITableViewDelegate{
+class ApplicationController: UIViewController ,UITableViewDataSource, UITableViewDelegate, SelectIndexPathDelegate{
     
     @IBOutlet weak var selectLine: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -18,7 +18,9 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
     var dataArray : [LeaveData]! = [LeaveData]()
     var type : String!
     var selectedType :String!
+    var popView :XTPopView!
     
+    @IBOutlet weak var sortButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedType = "我提交的"
@@ -37,26 +39,29 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
         
     }
     func addApplyleave(){
-        self.navigationController?.pushViewController(EditApplyleaveController(), animated: true)
+       let editVC =  EditApplyleaveController()
+        editVC.type = "添加请假"
+        self.navigationController?.pushViewController(editVC, animated: true)
     }
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        
+    
         if selectedType == "我提交的" {
-            demoData()
+            sendMyleaveListRequest(status: 0, isMust: false)
         }else if selectedType == "待我审批" {
-            demoData2()
+            sendApprovedLeaveListRequest(status: 0, isMust: false)
         }
-
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    func demoData(){
+    func sendMyleaveListRequest(status:Int, isMust:Bool){
         
         let token = UserDefaults().object(forKey: userToken) as! String!
-        NetworkTool.shareNetworkTool.applyleaveListRequest(token!, finishedSel: { (data:[LeaveData]) in
+        NetworkTool.shareNetworkTool.applyleaveListRequest(token!, status: status, isMust: isMust, finishedSel: { (data:[LeaveData]) in
+
             self.dataSoure = data
             self.tableView.reloadData()
         }) { (error:ETError) in
@@ -70,9 +75,10 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
             }
         }
     }
-    func demoData2(){
+    func sendApprovedLeaveListRequest(status:Int, isMust:Bool){
         let token = UserDefaults().object(forKey: userToken) as! String!
-        NetworkTool.shareNetworkTool.examinedAndApprovedLeaveRequest(token!, finishedSel: { (data:[LeaveData]) in
+        NetworkTool.shareNetworkTool.examinedAndApprovedLeaveRequest(token!, status: status, isMust: isMust, finishedSel: { (data:[LeaveData]) in
+
             self.dataArray = data
             self.tableView.reloadData()
         }) { (error:ETError) in
@@ -98,7 +104,7 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
             //newRequest()
             self.dataArray.removeAll()
             //模拟数据
-            demoData()
+            sendMyleaveListRequest(status: 0, isMust: false)
             tableView.reloadData()
             break
         case 1:
@@ -106,7 +112,7 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
             selectedType = type
             self.dataSoure.removeAll()
             //模拟数据
-            demoData2()
+            sendApprovedLeaveListRequest(status: 0, isMust: false)
             tableView.reloadData()
             break
         default:
@@ -118,6 +124,30 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
         
         self.navigationController?.popViewController(animated: true)
     }
+    @IBAction func selectedSortList(_ sender: UIButton) {
+        
+        let point = CGPoint(x: sortButton.centerX-kFitWidth(value: 20), y: sortButton.y+sortButton.height)
+        
+        popView = XTPopView(origin: point, width: kFitWidth(value: 200), height: kFitHeight(value: 120)*4, type: .typeOfUpRight, color: RGBA(r: 0.2737, g: 0.2737, b: 0.2737, a: 1.0))
+        popView.dataArray = ["未审批","已通过","未通过","销假单"]
+        popView.fontSize = 14*kScreenHeight/667
+        popView.row_height = kFitHeight(value: 120)
+        popView.titleTextColor = UIColor.white
+        popView.delegate = self
+        popView.popView()
+    }
+    
+    func selectIndexPathRow(_ index: Int) {
+
+        if selectedType == "我提交的" {
+            sendMyleaveListRequest(status: index+1, isMust: true)
+        }else if selectedType == "待我审批" {
+            sendApprovedLeaveListRequest(status: index+1, isMust: true)
+        }
+
+        popView.dismiss()
+    }
+    
     //网络请求
     func newRequest(){
     }
