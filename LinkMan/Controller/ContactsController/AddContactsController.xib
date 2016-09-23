@@ -72,10 +72,14 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_male.png" translatesAutoresizingMaskIntoConstraints="NO" id="FGx-06-cFL">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_male.png" translatesAutoresizingMaskIntoConstraints="NO" id="FGx-06-cFL">
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="FGx-06-cFL" secondAttribute="height" multiplier="1:1" id="FOK-1f-x2O"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="YHX-Us-l7x" appends="YES" id="YZd-7O-iKp"/>
+                    </connections>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17M-nT-YEV" userLabel="姓名">
                     <subviews>
@@ -126,12 +130,6 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="董事长" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGU-m6-CnX">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="部门" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3a-4U-zZb">
-                            <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xB-TK-Ica">
@@ -223,6 +221,12 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="后台" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtT-zn-adc">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="部门" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3a-4U-zZb">
+                            <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -459,19 +463,19 @@
                 <constraint firstItem="gV6-vg-162" firstAttribute="top" secondItem="cXm-fi-Y4v" secondAttribute="bottom" constant="10" id="3rb-Kw-feQ"/>
                 <constraint firstAttribute="trailing" secondItem="17M-nT-YEV" secondAttribute="trailing" constant="15" id="52d-jv-s9l"/>
                 <constraint firstItem="pXG-Ws-psW" firstAttribute="leading" secondItem="cXm-fi-Y4v" secondAttribute="leading" id="5Hw-Th-fPf"/>
+                <constraint firstItem="cXm-fi-Y4v" firstAttribute="top" secondItem="pXG-Ws-psW" secondAttribute="bottom" constant="15" id="7X9-2f-EVm"/>
                 <constraint firstItem="dVD-Xi-vgc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7mq-fX-628"/>
+                <constraint firstItem="pXG-Ws-psW" firstAttribute="top" secondItem="17M-nT-YEV" secondAttribute="bottom" constant="15" id="7ud-m3-NTx"/>
                 <constraint firstItem="Ium-mC-Cg6" firstAttribute="leading" secondItem="liT-7m-5M6" secondAttribute="leading" id="91P-pv-Z6M"/>
                 <constraint firstItem="FGx-06-cFL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="EHE-K5-253"/>
                 <constraint firstItem="dVD-Xi-vgc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Eup-F3-1oE"/>
                 <constraint firstItem="pXG-Ws-psW" firstAttribute="trailing" secondItem="cXm-fi-Y4v" secondAttribute="trailing" id="H5B-HC-tV5"/>
-                <constraint firstItem="cXm-fi-Y4v" firstAttribute="top" secondItem="17M-nT-YEV" secondAttribute="bottom" constant="15" id="Iyw-Z7-sYL"/>
                 <constraint firstItem="pXG-Ws-psW" firstAttribute="trailing" secondItem="17M-nT-YEV" secondAttribute="trailing" id="JKG-Sh-LU0"/>
                 <constraint firstAttribute="trailing" secondItem="dVD-Xi-vgc" secondAttribute="trailing" id="LQ0-jf-rHt"/>
                 <constraint firstItem="FGx-06-cFL" firstAttribute="top" secondItem="dVD-Xi-vgc" secondAttribute="bottom" constant="30" id="VcE-RL-FcX"/>
                 <constraint firstItem="17M-nT-YEV" firstAttribute="leading" secondItem="FGx-06-cFL" secondAttribute="trailing" constant="15" id="Yfs-g1-DwS"/>
                 <constraint firstItem="Ium-mC-Cg6" firstAttribute="trailing" secondItem="liT-7m-5M6" secondAttribute="trailing" id="agb-BN-4rn"/>
                 <constraint firstItem="17M-nT-YEV" firstAttribute="top" secondItem="FGx-06-cFL" secondAttribute="top" id="arH-ra-W3n"/>
-                <constraint firstItem="pXG-Ws-psW" firstAttribute="top" secondItem="gV6-vg-162" secondAttribute="bottom" constant="15" id="iqB-4W-KN4"/>
                 <constraint firstItem="FGx-06-cFL" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:10" id="kNa-kO-gB5"/>
                 <constraint firstItem="gV6-vg-162" firstAttribute="trailing" secondItem="cXm-fi-Y4v" secondAttribute="trailing" id="nPI-Qs-yHJ"/>
                 <constraint firstItem="gV6-vg-162" firstAttribute="leading" secondItem="cXm-fi-Y4v" secondAttribute="leading" id="pcI-QQ-O5U"/>
@@ -479,6 +483,11 @@
             </constraints>
             <point key="canvasLocation" x="21.5" y="39.5"/>
         </view>
+        <tapGestureRecognizer id="YHX-Us-l7x">
+            <connections>
+                <action selector="editSanpInfo:" destination="-1" id="DN8-fF-eOz"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="Login_male.png" width="75" height="75"/>

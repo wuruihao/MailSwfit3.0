@@ -33,9 +33,18 @@ class EditApplyleaveController: UIViewController {
         super.viewWillAppear(animated)
         
         if type == "再次编辑" {
+            
             leaveDay.text = String(format: "%d", leaveData.time)
-            beginDay.text = leaveData.started
-            endDay.text = leaveData.ended
+            
+            if leaveData.started != "" {
+                let array = leaveData.started?.components(separatedBy: " ")
+                beginDay.text = array?[0]
+            }
+            if leaveData.ended != "" {
+                let array = leaveData.ended?.components(separatedBy: " ")
+               endDay.text = array?[0]
+            }
+            
             reasonTextView.text = leaveData.reason
             naviItem.title = "编辑请假信息"
         }else{
@@ -72,10 +81,11 @@ class EditApplyleaveController: UIViewController {
     
     //日期选择器响应方法
     func dateChanged(_ datePicker : UIDatePicker){
+       
         //更新提醒时间文本框
         let formatter = DateFormatter()
         //日期样式
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-dd"
         print(formatter.string(from: datePicker.date))
         print("datePicker.date\(datePicker.date)")
         
@@ -92,7 +102,12 @@ class EditApplyleaveController: UIViewController {
         let gregorian = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
         let r = gregorian!.components(NSCalendar.Unit.day, from: fromDate, to: toDate, options: NSCalendar.Options.init(rawValue: 0))
         
-        self.leaveDay.text = String(format: "%d", r.day!)
+        if r.day! < 0 {
+            self.leaveDay.text = "0"
+        }else{
+            self.leaveDay.text = String(format: "%d", r.day!)
+        }
+        
     }
     
     func handleTap(_ sender:UITapGestureRecognizer){
@@ -106,65 +121,45 @@ class EditApplyleaveController: UIViewController {
         })
     }
     
-    /// <#Description#>
-    ///
-    /// - parameter sender: <#sender description#>
     @IBAction func selectedLeaveType(_ sender: UITapGestureRecognizer) {
         
         
     }
     @IBAction func backAction(_ sender: AnyObject) {
-        
-        self.navigationController?.popViewController(animated: true)
+ 
+      _ =  self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func nextAction(_ sender: UIButton) {
-        
-        let alertView = UIAlertView()
+
         
         if beginDay.text == "" {
-            alertView.title = "请点击选择开始时间"
-            alertView.show()
-            let time: TimeInterval = 1.0
-            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-                alertView.dismiss(withClickedButtonIndex: 0, animated: true)
-            }
+            self.showHint("请点击选择开始时间")
             return
         }
         
         if beginDay.text == "" {
-            alertView.title = "请点击选择结束时间"
-            alertView.show()
-            let time: TimeInterval = 1.0
-            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-                alertView.dismiss(withClickedButtonIndex: 0, animated: true)
-            }
+            self.showHint("请点击选择结束时间")
             return
         }
-        
+        if leaveDay.text == "" || leaveDay.text == "0"{
+            self.showHint("请选择请假时间")
+            return
+        }
         
         let token = UserDefaults().object(forKey: userToken) as! String!
         NetworkTool.shareNetworkTool.addleaveRequest(token!, started: beginDay.text!, ended: endDay.text!, time: leaveDay.text!,reason:reasonTextView.text!, finishedSel: { (data:ETSuccess) in
             
             if self.type == "再次编辑" {
                 
-                self.navigationController?.popToRootViewController(animated: true)
+                 _ = self.navigationController?.popToRootViewController(animated: true)
                 
             }else{
-                self.navigationController?.popViewController(animated: true)
+                _ = self.navigationController?.popViewController(animated: true)
             }
             
         }) { (error:ETError) in
-            let alertView = UIAlertView()
-            alertView.title = error.message!
-            alertView.show()
-            let time: TimeInterval = 1.0
-            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-                alertView.dismiss(withClickedButtonIndex: 0, animated: true)
-            }
+           self.showHint(error.message!)
         }
         
     }

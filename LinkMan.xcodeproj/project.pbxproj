@@ -101,7 +101,6 @@
 		E00BFE211D8FB87C007A6773 /* EaseChineseToPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = E00BFD9A1D8FB87C007A6773 /* EaseChineseToPinyin.m */; };
 		E00BFE221D8FB87C007A6773 /* FoldingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFD9B1D8FB87C007A6773 /* FoldingTableView.swift */; };
 		E00BFE231D8FB87C007A6773 /* MyCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFD9C1D8FB87C007A6773 /* MyCollectionViewLayout.swift */; };
-		E00BFE241D8FB87C007A6773 /* NSString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFD9D1D8FB87C007A6773 /* NSString+Extension.swift */; };
 		E00BFE251D8FB87C007A6773 /* RealtimeSearchUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E00BFD9F1D8FB87C007A6773 /* RealtimeSearchUtil.m */; };
 		E00BFE281D8FB87C007A6773 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDA21D8FB87C007A6773 /* UITableView+Extension.swift */; };
 		E00BFE291D8FB87C007A6773 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDA31D8FB87C007A6773 /* UIView+Extension.swift */; };
@@ -123,7 +122,6 @@
 		E00BFE3A1D8FB87C007A6773 /* ApplyleaveController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00BFDBA1D8FB87C007A6773 /* ApplyleaveController.xib */; };
 		E00BFE3B1D8FB87C007A6773 /* EditApplyleaveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDBB1D8FB87C007A6773 /* EditApplyleaveController.swift */; };
 		E00BFE3C1D8FB87C007A6773 /* EditApplyleaveController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00BFDBC1D8FB87C007A6773 /* EditApplyleaveController.xib */; };
-		E00BFE3F1D8FB87C007A6773 /* NotifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDBF1D8FB87C007A6773 /* NotifyController.swift */; };
 		E00BFE401D8FB87C007A6773 /* NotifyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00BFDC01D8FB87C007A6773 /* NotifyController.xib */; };
 		E00BFE411D8FB87C007A6773 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDC21D8FB87C007A6773 /* LoginViewController.swift */; };
 		E00BFE421D8FB87C007A6773 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00BFDC31D8FB87C007A6773 /* LoginViewController.xib */; };
@@ -142,6 +140,8 @@
 		E09584331D93AAB700304915 /* CoreDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09584321D93AAB700304915 /* CoreDataTool.swift */; };
 		E09584521D93D4AD00304915 /* Contacts+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09584501D93D4AD00304915 /* Contacts+CoreDataClass.swift */; };
 		E09584531D93D4AD00304915 /* Contacts+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09584511D93D4AD00304915 /* Contacts+CoreDataProperties.swift */; };
+		E0C02BB21D94C08F00BB68AC /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E0C02BB01D94C08F00BB68AC /* UIViewController+HUD.m */; };
+		E0C02BE21D95051300BB68AC /* NotifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDBF1D8FB87C007A6773 /* NotifyController.swift */; };
 		E0D3137F1D90F8C20053CEA7 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D3137D1D90F8C20053CEA7 /* HomeController.swift */; };
 		E0D313801D90F8C20053CEA7 /* HomeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D3137E1D90F8C20053CEA7 /* HomeController.xib */; };
 		E0D313E61D910CA60053CEA7 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D313C61D910CA60053CEA7 /* MKAnnotationView+WebCache.m */; };
@@ -286,7 +286,6 @@
 		E00BFD9A1D8FB87C007A6773 /* EaseChineseToPinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EaseChineseToPinyin.m; sourceTree = "<group>"; };
 		E00BFD9B1D8FB87C007A6773 /* FoldingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldingTableView.swift; sourceTree = "<group>"; };
 		E00BFD9C1D8FB87C007A6773 /* MyCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewLayout.swift; sourceTree = "<group>"; };
-		E00BFD9D1D8FB87C007A6773 /* NSString+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Extension.swift"; sourceTree = "<group>"; };
 		E00BFD9E1D8FB87C007A6773 /* RealtimeSearchUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealtimeSearchUtil.h; sourceTree = "<group>"; };
 		E00BFD9F1D8FB87C007A6773 /* RealtimeSearchUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealtimeSearchUtil.m; sourceTree = "<group>"; };
 		E00BFDA21D8FB87C007A6773 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -329,6 +328,8 @@
 		E09584321D93AAB700304915 /* CoreDataTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTool.swift; sourceTree = "<group>"; };
 		E09584501D93D4AD00304915 /* Contacts+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contacts+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E09584511D93D4AD00304915 /* Contacts+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Contacts+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E0C02BB01D94C08F00BB68AC /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
+		E0C02BB11D94C08F00BB68AC /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
 		E0D3137D1D90F8C20053CEA7 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		E0D3137E1D90F8C20053CEA7 /* HomeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeController.xib; sourceTree = "<group>"; };
 		E0D313C51D910CA60053CEA7 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -696,6 +697,8 @@
 		E00BFD981D8FB87C007A6773 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				E0C02BB01D94C08F00BB68AC /* UIViewController+HUD.m */,
+				E0C02BB11D94C08F00BB68AC /* UIViewController+HUD.h */,
 				E0E2D8621D937FC800FC7DD0 /* XTPopView.m */,
 				E0E2D8631D937FC800FC7DD0 /* XTPopView.h */,
 				E0D313C41D910CA60053CEA7 /* SDWebImage */,
@@ -703,7 +706,6 @@
 				E00BFD9A1D8FB87C007A6773 /* EaseChineseToPinyin.m */,
 				E00BFD9B1D8FB87C007A6773 /* FoldingTableView.swift */,
 				E00BFD9C1D8FB87C007A6773 /* MyCollectionViewLayout.swift */,
-				E00BFD9D1D8FB87C007A6773 /* NSString+Extension.swift */,
 				E00BFD9E1D8FB87C007A6773 /* RealtimeSearchUtil.h */,
 				E00BFD9F1D8FB87C007A6773 /* RealtimeSearchUtil.m */,
 				E00BFDA21D8FB87C007A6773 /* UITableView+Extension.swift */,
@@ -1137,6 +1139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0C02BE21D95051300BB68AC /* NotifyController.swift in Sources */,
 				E0E2D8641D937FC800FC7DD0 /* XTPopView.m in Sources */,
 				E00BFE411D8FB87C007A6773 /* LoginViewController.swift in Sources */,
 				E00BFDD01D8FB87C007A6773 /* MemberCell.swift in Sources */,
@@ -1147,7 +1150,6 @@
 				E0D313F01D910CA60053CEA7 /* UIImage+GIF.m in Sources */,
 				E00BFDD71D8FB87C007A6773 /* MineView.swift in Sources */,
 				E0D313EC1D910CA60053CEA7 /* SDWebImageDownloaderOperation.m in Sources */,
-				E00BFE241D8FB87C007A6773 /* NSString+Extension.swift in Sources */,
 				E00BFE451D8FB87C007A6773 /* MemberInfoController.swift in Sources */,
 				E00BFE2C1D8FB87C007A6773 /* NetworkTool.swift in Sources */,
 				E00BFE471D8FB87C007A6773 /* MineController.swift in Sources */,
@@ -1161,6 +1163,7 @@
 				E00BFE391D8FB87C007A6773 /* ApplyleaveController.swift in Sources */,
 				E00BFE351D8FB87C007A6773 /* StaffInformationController.swift in Sources */,
 				E0D313E91D910CA60053CEA7 /* SDWebImageCompat.m in Sources */,
+				E0C02BB21D94C08F00BB68AC /* UIViewController+HUD.m in Sources */,
 				E0D313F11D910CA60053CEA7 /* UIImage+MultiFormat.m in Sources */,
 				E00BFDCE1D8FB87C007A6773 /* ContactsCell.swift in Sources */,
 				E00BFDD11D8FB87C007A6773 /* ApplicationCell.swift in Sources */,
@@ -1188,7 +1191,6 @@
 				E0D313EB1D910CA60053CEA7 /* SDWebImageDownloader.m in Sources */,
 				E00BFE431D8FB87C007A6773 /* EditNickNameController.swift in Sources */,
 				E09584531D93D4AD00304915 /* Contacts+CoreDataProperties.swift in Sources */,
-				E00BFE3F1D8FB87C007A6773 /* NotifyController.swift in Sources */,
 				E00BFE251D8FB87C007A6773 /* RealtimeSearchUtil.m in Sources */,
 				E00BFBEB1D8FA3DC007A6773 /* AppDelegate.swift in Sources */,
 				E0D3137F1D90F8C20053CEA7 /* HomeController.swift in Sources */,

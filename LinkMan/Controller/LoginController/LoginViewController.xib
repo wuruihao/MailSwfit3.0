@@ -115,18 +115,6 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
-                            <barButtonItem key="rightBarButtonItem" image="clear.png" id="qNp-TF-ogl">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="byi-Hb-DFf">
-                                    <rect key="frame" x="276" y="27" width="83" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="注册">
-                                        <color key="titleColor" red="0.40784313729999999" green="0.72941176470000002" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="registerAction:" destination="-1" eventType="touchUpInside" id="Qhw-8Z-fUv"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>

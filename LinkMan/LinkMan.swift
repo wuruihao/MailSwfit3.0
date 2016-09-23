@@ -18,6 +18,9 @@ let userHeadImg = "userHeadImg"
 let userNickname = "userNickname"
 let userDepartment = "userDepartment"
 
+let messageLogin = "加载中..."
+let messageLoading = "正在登录中…"
+
 
 let kScreenWidth = UIScreen.main.bounds.size.width
 let kScreenHeight = UIScreen.main.bounds.size.height

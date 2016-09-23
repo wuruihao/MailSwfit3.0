@@ -14,6 +14,7 @@
                 <outlet property="backView" destination="LFe-LX-Gak" id="EcG-w3-eQp"/>
                 <outlet property="cancelButton" destination="Ttq-Fa-Hcs" id="D2I-fg-vBu"/>
                 <outlet property="connectButton" destination="w9r-zk-XYK" id="yLQ-gE-9GM"/>
+                <outlet property="createdLabel" destination="xwm-c2-c8f" id="uHS-H5-muS"/>
                 <outlet property="endedLabel" destination="Ews-Y8-PQc" id="B3k-wY-J47"/>
                 <outlet property="mainView" destination="Ulc-cw-flA" id="hoL-iV-e3X"/>
                 <outlet property="nameLabel" destination="Ajn-BY-kYG" id="OgS-C2-JQI"/>

@@ -40,24 +40,29 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
     
     func demo(){
         
+        self.showHud(in: self.view, hint: messageLogin)
+        
         let token = UserDefaults().object(forKey: userToken) as! String!
         NetworkTool.shareNetworkTool.departmentRequest(token!, finishedSel: { (data:[DepartmentData]) in
-
+            
             print("data\(data)")
+            self.hideHud()
             
             self.sectionData = data
             self.tableView.reloadData()
             
             CoreDataTool.shared.addDepartmentsCoreData(data: data)
-            
+
         }) { (error:ETError) in
             
             print("error\(error)")
+            self.hideHud()
             
             let array = CoreDataTool.shared.printAllDataWithCoreData()
             let dep = array.mutableCopy() as! [DepartmentData]
             self.sectionData = dep
             self.tableView.reloadData()
+            
         }
         
     }
@@ -65,6 +70,7 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
     @IBAction func addContacts(_ sender: UIButton) {
         
         let addContactsVC = AddContactsController()
+        addContactsVC.type = "添加"
         addContactsVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(addContactsVC, animated: true)
         

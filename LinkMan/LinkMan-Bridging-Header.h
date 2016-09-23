@@ -6,3 +6,4 @@
 #import "RealtimeSearchUtil.h"
 #import "UIImageView+WebCache.h"
 #import "XTPopView.h"
+#import "UIViewController+HUD.h"

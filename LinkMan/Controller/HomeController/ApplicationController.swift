@@ -13,7 +13,6 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
     @IBOutlet weak var selectLine: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    
     var dataSoure : [LeaveData]! = [LeaveData]()
     var dataArray : [LeaveData]! = [LeaveData]()
     var type : String!
@@ -39,20 +38,21 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
         
     }
     func addApplyleave(){
-       let editVC =  EditApplyleaveController()
+        let editVC =  EditApplyleaveController()
         editVC.type = "添加请假"
         self.navigationController?.pushViewController(editVC, animated: true)
     }
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-    
+        
         if selectedType == "我提交的" {
+            self.showHud(in: self.view, hint: messageLogin)
             sendMyleaveListRequest(status: 0, isMust: false)
-        }else if selectedType == "待我审批" {
+        }else {
+            self.showHud(in: self.view, hint: messageLogin)
             sendApprovedLeaveListRequest(status: 0, isMust: false)
         }
-        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,59 +61,56 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
         
         let token = UserDefaults().object(forKey: userToken) as! String!
         NetworkTool.shareNetworkTool.applyleaveListRequest(token!, status: status, isMust: isMust, finishedSel: { (data:[LeaveData]) in
-
+            
+            self.hideHud()
             self.dataSoure = data
             self.tableView.reloadData()
+            
         }) { (error:ETError) in
-            let alertView = UIAlertView()
-            alertView.title = error.message!
-            alertView.show()
-            let time: TimeInterval = 1.0
-            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-                alertView.dismiss(withClickedButtonIndex: 0, animated: true)
-            }
+            
+            self.hideHud()
+            self.showHint(error.message!)
         }
     }
     func sendApprovedLeaveListRequest(status:Int, isMust:Bool){
+        
         let token = UserDefaults().object(forKey: userToken) as! String!
         NetworkTool.shareNetworkTool.examinedAndApprovedLeaveRequest(token!, status: status, isMust: isMust, finishedSel: { (data:[LeaveData]) in
-
+            
+            self.hideHud()
             self.dataArray = data
             self.tableView.reloadData()
+            
         }) { (error:ETError) in
-            let alertView = UIAlertView()
-            alertView.title = error.message!
-            alertView.show()
-            let time: TimeInterval = 1.0
-            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-                alertView.dismiss(withClickedButtonIndex: 0, animated: true)
-            }
+            
+            self.hideHud()
+            self.showHint(error.message!)
         }
     }
     @IBAction func selectType(_ sender: UIButton) {
+        
         UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
             self.selectLine.x = sender.frame.origin.x
             }, completion: nil)
         switch sender.tag {
         case 0:
-            type = "我提交的"
-            selectedType = type
-            //发送请求
-            //newRequest()
-            self.dataArray.removeAll()
-            //模拟数据
-            sendMyleaveListRequest(status: 0, isMust: false)
-            tableView.reloadData()
+            if selectedType != "我提交的" {
+                selectedType = "我提交的"
+                //发送请求
+                self.dataArray.removeAll()
+                //网络请求数据
+                self.sendMyleaveListRequest(status: 0, isMust: false)
+                self.tableView.reloadData()
+            }
             break
         case 1:
-            type = "待我审批"
-            selectedType = type
-            self.dataSoure.removeAll()
-            //模拟数据
-            sendApprovedLeaveListRequest(status: 0, isMust: false)
-            tableView.reloadData()
+            if selectedType != "待我审批" {
+                selectedType = "待我审批"
+                self.dataSoure.removeAll()
+                //网络请求数据
+                self.sendApprovedLeaveListRequest(status: 0, isMust: false)
+                self.tableView.reloadData()
+            }
             break
         default:
             break
@@ -122,7 +119,7 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
     
     @IBAction func backAction(_ sender: AnyObject) {
         
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     @IBAction func selectedSortList(_ sender: UIButton) {
         
@@ -138,19 +135,16 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
     }
     
     func selectIndexPathRow(_ index: Int) {
-
+        
         if selectedType == "我提交的" {
             sendMyleaveListRequest(status: index+1, isMust: true)
-        }else if selectedType == "待我审批" {
+        }else {
             sendApprovedLeaveListRequest(status: index+1, isMust: true)
         }
-
+        
         popView.dismiss()
     }
     
-    //网络请求
-    func newRequest(){
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if selectedType == "我提交的" {

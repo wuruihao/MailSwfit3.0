@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNickNameController" customModule="Mail" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditNickNameController" customModule="LinkMan" customModuleProvider="target">
             <connections>
                 <outlet property="textField" destination="xdR-Ie-SWW" id="O24-rE-fhL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -18,14 +19,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9g-bC-Ovv">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="83e-Sh-OcF"/>
                     </constraints>
-                    <color key="barTintColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </textAttributes>
                     <items>
                         <navigationItem title="编辑昵称" id="50c-sX-EdM">
@@ -35,7 +35,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <inset key="contentEdgeInsets" minX="-50" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="取消">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
                                         <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="Avg-Ot-7eq"/>
@@ -48,7 +48,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-40" maxY="0.0"/>
                                     <state key="normal" title="完成">
-                                        <color key="titleColor" red="0.40784313729999999" green="0.72941176470000002" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleColor" red="0.40784313729999999" green="0.72941176470000002" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <connections>
                                         <action selector="finishedEdit:" destination="-1" eventType="touchUpInside" id="iW7-eU-l75"/>
@@ -59,11 +59,9 @@
                     </items>
                 </navigationBar>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nkc-br-k8R">
-                    <rect key="frame" x="0.0" y="84" width="375" height="56"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="122" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xdR-Ie-SWW">
-                            <rect key="frame" x="15" y="0.0" width="360" height="56"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -71,7 +69,7 @@
                             </connections>
                         </textField>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="xdR-Ie-SWW" firstAttribute="leading" secondItem="nkc-br-k8R" secondAttribute="leading" constant="15" id="DRc-5g-guu"/>
                         <constraint firstAttribute="trailing" secondItem="xdR-Ie-SWW" secondAttribute="trailing" id="YHK-VR-S6B"/>
@@ -80,7 +78,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="i9g-bC-Ovv" secondAttribute="trailing" id="1GS-AD-oND"/>
                 <constraint firstItem="i9g-bC-Ovv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="KLF-Ic-YCw"/>
@@ -90,8 +88,7 @@
                 <constraint firstItem="i9g-bC-Ovv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="k7h-nz-Jya"/>
                 <constraint firstAttribute="trailing" secondItem="nkc-br-k8R" secondAttribute="trailing" id="lmP-gK-O1f"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="587.5" y="382.5"/>
+            <point key="canvasLocation" x="312" y="92"/>
         </view>
     </objects>
     <resources>

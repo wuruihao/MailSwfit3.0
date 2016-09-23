@@ -12,7 +12,6 @@ import AssetsLibrary
 
 class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    let imagePickerController: UIImagePickerController = UIImagePickerController()
     var isFullScreen: Bool = false
     
     @IBOutlet weak var sanpImage: UIImageView!
@@ -33,49 +32,36 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func backAction(_ sender: AnyObject) {
         
-        self.navigationController?.popViewController(animated: true)
+         _ = self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func touchChangegAction(_ sender: UITapGestureRecognizer) {
         
         switch (sender.view?.tag)! as Int {
-            //头像编辑
+        //头像编辑
         case 0:
-            
-            imagePickerController.delegate = self;
-            imagePickerController.allowsEditing = true
-            
-            
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            
             alertController.addAction(UIAlertAction(title: "照相机", style: .default, handler: { (action:UIAlertAction) in
-                self.openCameraAction()
+                self.openPhotoAction(type: .camera)
             }))
             alertController.addAction(UIAlertAction(title: "从相册选择", style: .default, handler: { (action:UIAlertAction) in
-                
-                self.openPhotoLibraryAction()
+                self.openPhotoAction(type: .photoLibrary)
             }))
             alertController.addAction(UIAlertAction(title: "取消", style: .cancel, handler:nil))
             self.present(alertController, animated: true, completion: nil)
             
             break
-            //昵称编辑
+        //昵称编辑
         case 1:
-            
             self.navigationController?.pushViewController(EditNickNameController(), animated: true)
-            
             break
         case 2:
             
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            
             alertController.addAction(UIAlertAction(title: "男", style: .default, handler: { (action:UIAlertAction) in
-                
                 self.sexLabel.text = "男"
-                
             }))
             alertController.addAction(UIAlertAction(title: "女", style: .default, handler: { (action:UIAlertAction) in
-                
                 self.sexLabel.text = "女"
             }))
             alertController.addAction(UIAlertAction(title: "取消", style: .cancel, handler:nil))
@@ -90,55 +76,43 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
         }
         
     }
-    
-    
-    func openPhotoLibraryAction(){
+    func openPhotoAction(type: UIImagePickerControllerSourceType){
         
-        //是否获得权限
-        let authorizationStatus = ALAssetsLibrary.authorizationStatus()
-        if (authorizationStatus == .denied || authorizationStatus == .restricted){
-            //无权限
-            // 展示提示语
-            let mainInfoDictionary = Bundle.main.infoDictionary! as NSDictionary
-            let appName = mainInfoDictionary.object(forKey: "CFBundleName")
-            let alertView = UIAlertView(title: "无法访问相册", message: "请在设备的\"设置-隐私-照片\"选项中,允许\(appName)访问你的手机相册", delegate: self, cancelButtonTitle: "知道了")
-            alertView.show()
+        let imagePickerController: UIImagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self;
+        imagePickerController.allowsEditing = true
+        
+        // 判断是否支持相册
+        if UIImagePickerController.isSourceTypeAvailable(type){
+            if type == .photoLibrary {
+                // 设置类型
+                imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                //改navigationBar背景色
+                imagePickerController.navigationBar.barTintColor = UIColor(red: 171/255, green: 202/255, blue: 41/255, alpha: 1.0)
+                //改navigationBar标题色
+                imagePickerController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+                //改navigationBar的button字体色
+                imagePickerController.navigationBar.tintColor = UIColor.white
+                self.present(imagePickerController, animated: true, completion: nil)
+            }else{
+                // 设置类型
+                imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            }
+            
+        }else{
+            // 创建
+            let alertController = UIAlertController(title: "提示", message: "设备不支持此功能", preferredStyle:.alert)
+            // 设置UIAlertAction
+            let cancelAction = UIAlertAction(title: "知道了", style: .cancel, handler: nil)
+            // 添加
+            alertController.addAction(cancelAction)
+            // 弹出
+            self.present(alertController, animated: true, completion: nil)
             return
         }
-        // 设置类型
-        self.imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        //改navigationBar背景色
-        self.imagePickerController.navigationBar.barTintColor = UIColor(red: 171/255, green: 202/255, blue: 41/255, alpha: 1.0)
-        //改navigationBar标题色
-        self.imagePickerController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        //改navigationBar的button字体色
-        self.imagePickerController.navigationBar.tintColor = UIColor.white
-        self.present(self.imagePickerController, animated: true, completion: nil)
-        
     }
-    
-    func openCameraAction(){
-        
-        //是否获得权限
-        let authStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
-        if (authStatus == .notDetermined || authStatus == .denied || authStatus == .restricted){
-            //无权限
-            let alertView = UIAlertView(title: "无法访问相机", message: "请在'设置->隐私->相机'设置为打开状态", delegate: self, cancelButtonTitle: "知道了")
-            alertView.show()
-            return
-        }
-        // 判断是否支持相机
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera){
-            //判断如果没有相机就调用图片库
-            let alertView = UIAlertView(title: nil, message: "设备不支持照相功能", delegate: self, cancelButtonTitle: "知道了")
-            alertView.show()
-            return
-        }
-        // 设置类型
-        self.imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
-        self.present(self.imagePickerController, animated: true, completion: nil)
-    }
-    
+
     //实现ImagePicker delegate 事件
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
         
@@ -163,12 +137,22 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
          */
         // 保存图片至本地，方法见下文
         //self.saveImage(image, newSize: CGSize(width: 256, height: 256), percent: 0.5, imageName: "currentImage.png")
-        let fullPath = NSHomeDirectory() + "/Documents/currentImage.png"
-        print("fullPath=\(fullPath)")
-        let savedImage: UIImage = UIImage(contentsOfFile: fullPath)!
-        self.isFullScreen = false
-        self.sanpImage.image = savedImage
+        //let fullPath = NSHomeDirectory() + "/Documents/currentImage.png"
+        //print("fullPath=\(fullPath)")
+        //let savedImage: UIImage = UIImage(contentsOfFile: fullPath)!
+        //self.isFullScreen = false
+        //self.sanpImage.image = savedImage
         //在这里调用网络通讯方法，上传头像至服务器...
+        
+        let images = NSArray(objects: image,"jpeg")
+        let uploads = NSMutableArray()
+        uploads.add(images)
+        NetworkTool.shareNetworkTool.postImageRequest(uploads, finishedSel: { (data:ImageData) in
+            
+        }) { (error:ETError) in
+                
+        }
+        
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
         

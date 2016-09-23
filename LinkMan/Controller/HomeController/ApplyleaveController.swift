@@ -27,6 +27,7 @@ class ApplyleaveController: UIViewController {
     @IBOutlet weak var startedLabel: UILabel!
     @IBOutlet weak var endedLabel: UILabel!
     @IBOutlet weak var reasonLabel: UILabel!
+    @IBOutlet weak var createdLabel: UILabel!
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var connectButton: UIButton!
@@ -88,15 +89,35 @@ class ApplyleaveController: UIViewController {
     }
     
     func sendRequest(){
+        
+        self.showHud(in: self.view, hint: messageLogin)
+        
         NetworkTool.shareNetworkTool.leaveDetailsRequest(token!, id: leave_id, finishedSel: { (data:LeaveData) in
+            
+            self.hideHud()
             
             self.leaveData = data
             self.nameLabel.text = data.name
             self.phoneLabel.text = data.mobile
             self.timeLabel.text = String(format: "%d天", data.time)
-            self.startedLabel.text = data.started
-            self.endedLabel.text = data.ended
+            if data.created != " " || data.created != nil || data.created != "nil" || !(data.created?.isEmpty)!{
+                let array = data.started?.components(separatedBy: " ")
+                self.startedLabel.text = array?[0]
+            }
+            if data.created != " " || data.created != nil || data.created != "nil" || !(data.created?.isEmpty)!{
+                let array = data.ended?.components(separatedBy: " ")
+                self.endedLabel.text = array?[0]
+            }
             self.reasonLabel.text = data.reason
+            if data.created != " " || data.created != nil || data.created != "nil" || !(data.created?.isEmpty)!{
+                
+                let array = data.created?.components(separatedBy: " ")
+                let strArray = array?[0].components(separatedBy: "-")
+                let created = String(format: "%@月%@日", (strArray?[1])!,(strArray?[2])!)
+                self.createdLabel.text = created
+            }
+            
+            
             //未处理:0 被驳回:1 已批准:2 待我审批:3 已驳回:4 已审批:5
             switch data.status! as String{
             case "1":
@@ -120,38 +141,32 @@ class ApplyleaveController: UIViewController {
             }
             
         }) { (error:ETError) in
-            let alertView = UIAlertView()
-            alertView.title = error.message!
-            alertView.show()
-            let time: TimeInterval = 1.0
-            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-                alertView.dismiss(withClickedButtonIndex: 0, animated: true)
-            }
+            
+            self.hideHud()
+            self.showHint(error.message!)
         }
     }
     
     func sendleaveRequest(status:Int){
         
+        self.showHud(in: self.view, hint: messageLogin)
+        
         NetworkTool.shareNetworkTool.approvedLeaveRequest(token!, status: status, id: leave_id, finishedSel: { (data:ETSuccess) in
             
-            self.navigationController?.popViewController(animated: true)
+            self.hideHud()
+            
+             _ = self.navigationController?.popViewController(animated: true)
             
         }) { (error:ETError) in
-            let alertView = UIAlertView()
-            alertView.title = error.message!
-            alertView.show()
-            let time: TimeInterval = 1.0
-            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-                alertView.dismiss(withClickedButtonIndex: 0, animated: true)
-            }
+            
+            self.hideHud()
+            self.showHint(error.message!)
         }
     }
     
     @IBAction func backAction(_ sender: AnyObject) {
         
-        self.navigationController?.popViewController(animated: true)
+        _ =  self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func changeAction(_ sender: UIButton) {
@@ -166,18 +181,11 @@ class ApplyleaveController: UIViewController {
             case 1:
                 //调用删除接口
                 NetworkTool.shareNetworkTool.deleteleaveRequest(token!, id: leave_id, finishedSel: { (data:ETSuccess) in
-                    
-                    self.navigationController?.popViewController(animated: true)
+
+                     _ = self.navigationController?.popViewController(animated: true)
                     
                     }, failedSel: { (error:ETError) in
-                        let alertView = UIAlertView()
-                        alertView.title = error.message!
-                        alertView.show()
-                        let time: TimeInterval = 1.0
-                        let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-                        DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-                            alertView.dismiss(withClickedButtonIndex: 0, animated: true)
-                        }
+                        self.showHint(error.message!)
                 })
                 break
             case 2:

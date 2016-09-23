@@ -42,7 +42,7 @@ class StaffInformationController: UIViewController {
     
     @IBAction func backAction(_ sender: UIButton) {
         
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     @IBAction func editInfoAction(_ sender: UIButton) {
         

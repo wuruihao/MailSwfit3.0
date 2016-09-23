@@ -32,7 +32,17 @@ class ApplicationCell: UITableViewCell {
         
         snap.image = UIImage(named: "Login_male.png")
         name.text = data.name
-        time.text = data.created
+        
+        /// 这些判断都没有用
+        if data.created != " " || data.created != nil || data.created != "nil" || !(data.created?.isEmpty)!{
+            
+            /// 这些判断都没有用
+            let array = data.created?.components(separatedBy: " ")
+            let strArray = array?[0].components(separatedBy: "-")
+            let created = String(format: "%@月%@日", (strArray?[1])!,(strArray?[2])!)
+            time.text = created
+            
+        }
         title.text = String(format: "请假申请:%d天", data.time)
         department.text = data.department
         

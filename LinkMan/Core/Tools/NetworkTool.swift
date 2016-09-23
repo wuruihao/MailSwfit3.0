@@ -26,6 +26,12 @@ class ETSuccess: NSObject {
     var message: String?
 }
 
+class ImageData: NSObject {
+    
+    var url: String?
+    var _url: String?
+}
+
 class NetworkTool: NSObject {
     /// 单例
     static let shareNetworkTool = NetworkTool()
@@ -72,6 +78,9 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             
             print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
         }
     }
     //组织结构请求
@@ -80,7 +89,7 @@ class NetworkTool: NSObject {
         let params = ["token": token]
         print("url: \(url)")
         print("params: \(params)")
-
+        
         NetworkTool.manager.get(url,parameters:params,success: { (task:URLSessionDataTask?, response:Any?) in
             
             let result = response as? NSDictionary
@@ -92,7 +101,7 @@ class NetworkTool: NSObject {
                 // 字典转模型(MJExtension)
                 
                 let departData = DepartmentData.mj_objectArray(withKeyValuesArray: data).mutableCopy() as! [DepartmentData]
-        
+                
                 for i in 0...data.count-1 {
                     let dic = data[i] as! NSDictionary
                     let members = dic.object(forKey: "member") as! NSArray
@@ -112,6 +121,9 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             
             print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
         }
     }
     
@@ -145,6 +157,9 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             
             print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
         }
     }
     
@@ -177,6 +192,9 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             
             print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
         }
     }
     
@@ -208,9 +226,12 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             
             print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
         }
     }
-
+    
     //添加联系人请求
     func addFriendsContactsRequest(_ token: String,id: String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/user/add"
@@ -240,6 +261,9 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             
             print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
         }
     }
     
@@ -279,6 +303,9 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             
             print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
         }
     }
     
@@ -309,6 +336,9 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             
             print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
         }
     }
     
@@ -341,6 +371,9 @@ class NetworkTool: NSObject {
             }
         }) { (task:URLSessionDataTask?, error:Error?) in
             print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
         }
     }
     //请假审批请求
@@ -371,9 +404,12 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             
             print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
         }
     }
-
+    
     //请假详情请求
     func leaveDetailsRequest(_ token: String,id: Int,finishedSel:@escaping (_ data:LeaveData)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/leave/detail"
@@ -397,9 +433,12 @@ class NetworkTool: NSObject {
             }
         }) { (task:URLSessionDataTask?, error:Error?) in
             print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
         }
     }
-
+    
     //删除请假请求
     func deleteleaveRequest(_ token: String,id: Int,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/leave/delete"
@@ -421,9 +460,12 @@ class NetworkTool: NSObject {
             }
         }) { (task:URLSessionDataTask?, error:Error?) in
             print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
         }
     }
-
+    
     //请假详情请求
     func destroyleaveDetailsRequest(_ token: String,id: Int,finishedSel:@escaping (_ data:LeaveData)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/leave/detail"
@@ -447,9 +489,53 @@ class NetworkTool: NSObject {
             }
         }) { (task:URLSessionDataTask?, error:Error?) in
             print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
         }
     }
+    
+    //图片上传请求
+    func postImageRequest(_ images: NSArray,finishedSel:@escaping (_ data:ImageData)->(),failedSel:@escaping (_ error:ETError)->()){
+        let url = BASE_URL+"/user/uploadsurl"
+        print("url: \(url)")
+        
+        NetworkTool.manager.post(url, parameters: nil, constructingBodyWith: { (formData:AFMultipartFormData?) in
 
+            for i in 0...images.count-1 {
+                let proptys = images.object(at: i) as! NSArray
+                let data = proptys[0] as! Data
+                let type = proptys[1] as! String
+                let fileName = String(format: "upload.%@", type)
+                let contentType = String(format: "image/%@",type)
+                formData?.appendPart(withFileData: data, name: "file[]", fileName: fileName, mimeType: contentType)
+            }
+            
+            }, success: { (task:URLSessionDataTask?, response:Any?) in
+                
+                let result = response as? NSDictionary
+                print("result:\(result)")
+                if self.isRequestSuccess(result!){
+                    //json 转化成字典 并进行数据解析
+                    let data = result?.object(forKey: "data")
+                    // 字典转模型(MJExtension)
+                    let imageData = ImageData.mj_object(withKeyValues: data) as ImageData
+                    finishedSel(imageData)
+                }else{
+                    let errorDic = result?.object(forKey: "error")
+                    let error = ETError.mj_object(withKeyValues: errorDic) as ETError
+                    failedSel(error)
+                }
+                
+        }) { (task:URLSessionDataTask?, error:Error?) in
+            
+            print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
+        }
+    }
+    
 }
 /*
  //注册请求

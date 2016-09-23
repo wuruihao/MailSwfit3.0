@@ -12,10 +12,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EaseChineseToPinyin : NSObject
+@interface UIViewController (HUD)
 
-- (NSString *)pinyinFromChineseString:(NSString *)string;
+- (void)showHudInView:(UIView *)view hint:(NSString *)hint;
 
-- (char)sortSectionTitle:(NSString *)string;
+- (void)hideHud;
+
+- (void)showHint:(NSString *)hint;
+
+// 从默认(showHint:)显示的位置再往上(下)yOffset
+- (void)showHint:(NSString *)hint yOffset:(float)yOffset;
 
 @end

@@ -25,65 +25,41 @@ class LoginViewController: UIViewController {
         
         super.didReceiveMemoryWarning()
     }
-    @IBAction func registerAction(_ sender: UIButton) {
+    //@IBAction func registerAction(_ sender: UIButton) {
         
-        print("注册事件")
-    }
+       // print("注册事件")
+   // }
     @IBAction func cancelAction(_ sender: UIButton) {
         
         UIApplication.shared.keyWindow?.rootViewController = ETTabBarController()
     }
     @IBAction func login(_ sender: UIButton) {
         
-        let alertView = UIAlertView()
-        
         if userName.text == nil {
-            alertView.title = "请输入手机号"
-            alertView.show()
-            
-            let time: TimeInterval = 1.0
-            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-                alertView.dismiss(withClickedButtonIndex: 0, animated: true)
-            }
+            self.showHint("请输入手机号")
             userName.becomeFirstResponder()
             return
         }
         if password.text == nil {
-            alertView.title = "请输入密码"
-            alertView.show()
-            let time: TimeInterval = 1.0
-            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-                alertView.dismiss(withClickedButtonIndex: 0, animated: true)
-            }
+            self.showHint("请输入密码")
             password.becomeFirstResponder()
             return
         }
-        
+        self.showHud(in: self.view, hint: messageLoading)
         NetworkTool.shareNetworkTool.loginRequest(userName.text!, password: password.text!, finishedSel: { (data:MemberData) in
             
             print("data:\(data)")
-            
+            self.hideHud()
             self.saveUserDefaults(data)
-            
             UIApplication.shared.keyWindow?.rootViewController = ETTabBarController()
-            
             
         }) { (error:ETError) in
             
-            alertView.title = error.message!
-            alertView.show()
-            let time: TimeInterval = 1.0
-            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-                alertView.dismiss(withClickedButtonIndex: 0, animated: true)
-            }
-            
+            self.hideHud()
+            self.showHint(error.message!)
             print("error:\(error)")
         }
     }
-    
     
     func saveUserDefaults(_ data:MemberData){
         

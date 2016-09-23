@@ -65,11 +65,18 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
         timer.fire()
     }
     func timerFireMethod(_ timer: Timer) {
+        
         let formatter = DateFormatter();
         formatter.dateFormat = "yyyy年MM月dd日 EEEE HH:mm"
         let strNow = formatter.string(from: Date())
         timeLabel.text  = "\(strNow)"
         print("timeLabel:\(strNow)")
+        
+        /*
+        let strNow = Date().toString(format: DateFormat.custom("yyyy年MM月dd日 EEEE HH:mm"))
+        timeLabel.text  =  String(format: "%@", strNow!)
+        print("timeLabel:\(strNow)")
+        */
     }
     func demoData(){
         
@@ -108,8 +115,6 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
-        let alert = UIAlertView()
-        
         switch (indexPath as NSIndexPath).row {
         case 0:
             let notifyVC =  NotifyController()
@@ -141,22 +146,10 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
              */
             break
         case 4:
-            alert.title = "备忘录"
-            alert.show()
-            let time: TimeInterval = 1.0
-            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-                alert.dismiss(withClickedButtonIndex: 0, animated: true)
-            }
+            self.showHint("备忘录")
             break
         case 5:
-            alert.title = "辅助工具"
-            alert.show()
-            let time: TimeInterval = 1.0
-            let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-                alert.dismiss(withClickedButtonIndex: 0, animated: true)
-            }
+             self.showHint("辅助工具")
             break
             
         default:

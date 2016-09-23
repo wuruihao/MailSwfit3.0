@@ -25,7 +25,7 @@ class EditNickNameController: UIViewController , UITextFieldDelegate{
     
     @IBAction func cancelAction(_ sender: UIButton) {
         
-        self.navigationController?.popViewController(animated: true)
+       _ = self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func finishedEdit(_ sender: UIButton) {

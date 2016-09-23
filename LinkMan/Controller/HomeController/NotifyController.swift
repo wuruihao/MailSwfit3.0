@@ -39,7 +39,7 @@ class NotifyController: UIViewController,UITableViewDataSource, UITableViewDeleg
         super.didReceiveMemoryWarning()
     }
     @IBAction func backAction(_ sender: AnyObject) {
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
