@@ -9,10 +9,17 @@
 import UIKit
 
 class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
+ 
     
-    var sectionData : [DepartmentData]! = [DepartmentData]()
-    var rowData : NSMutableArray!
+    @IBOutlet weak var searchView: UIView!
     
+    @IBOutlet weak var searchTextField: UITextField!
+    
+    
+    
+    var dataSoure : [DepartmentData]! = [DepartmentData]()
+    var filteredArray : [DepartmentData]! = [DepartmentData]()
+    var shouldShowSearchResults = false
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,6 +30,7 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
         let nib = UINib(nibName: "ContactsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cellId")
         tableView.separatorStyle = .none
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,34 +45,28 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
         super.didReceiveMemoryWarning()
         
     }
-    
     func demo(){
-        
-        self.showHud(in: self.view, hint: messageLogin)
-        
+
         let token = UserDefaults().object(forKey: userToken) as! String!
         NetworkTool.shareNetworkTool.departmentRequest(token!, finishedSel: { (data:[DepartmentData]) in
             
             print("data\(data)")
-            self.hideHud()
-            
-            self.sectionData = data
+
+            self.dataSoure = data
             self.tableView.reloadData()
             
             CoreDataTool.shared.addDepartmentsCoreData(data: data)
-
+            
         }) { (error:ETError) in
             
             print("error\(error)")
-            self.hideHud()
-            
-            let array = CoreDataTool.shared.printAllDataWithCoreData()
-            let dep = array.mutableCopy() as! [DepartmentData]
-            self.sectionData = dep
-            self.tableView.reloadData()
             
         }
         
+        let array = CoreDataTool.shared.printAllDataWithCoreData()
+        let dep = array.mutableCopy() as! [DepartmentData]
+        self.dataSoure = dep
+        self.tableView.reloadData()
     }
     
     @IBAction func addContacts(_ sender: UIButton) {
@@ -77,32 +79,38 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
     }
     func numberOfSections(in tableView: UITableView) -> Int{
         
-        return sectionData.count
+        if shouldShowSearchResults {
+            return filteredArray.count
+        }
+        else {
+            return dataSoure.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if shouldShowSearchResults {
+            let department = filteredArray[section]
+            return department.members!.count
+        }
+        else {
+            let department = dataSoure[section]
+            return department.members!.count
+        }
         
-        let department = sectionData[section]
-        rowData = department.members
-        return rowData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId") as! ContactsCell
-        let department = sectionData[(indexPath as NSIndexPath).section]
-        let data = department.members?[(indexPath as NSIndexPath).row] as! MemberData
-        if data.head_img != nil {
-            cell.sanpImage.sd_setImage(with: URL.init(string: data.head_img!), placeholderImage: UIImage(named: "Login_male.png"))
+        var department:DepartmentData
+        if shouldShowSearchResults {
+            department = filteredArray[(indexPath as NSIndexPath).section]
         }else{
-            cell.sanpImage.image = UIImage(named: "Login_male.png")
+            department = dataSoure[(indexPath as NSIndexPath).section]
         }
-        if data.name != nil {
-            cell.name.text = data.name
-        }
-        if data.level != nil {
-            cell.subTitle.text = data.level
-        }
+        let data = department.members?[(indexPath as NSIndexPath).row] as! MemberData
+        cell.setData(data: data)
         return cell
         
     }
@@ -113,7 +121,12 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
-        let department = sectionData[(indexPath as NSIndexPath).section]
+        var department:DepartmentData
+        if shouldShowSearchResults {
+            department = filteredArray[(indexPath as NSIndexPath).section]
+        }else{
+            department = dataSoure[(indexPath as NSIndexPath).section]
+        }
         let data = department.members?[(indexPath as NSIndexPath).row] as! MemberData
         
         let staffInformationVC = StaffInformationController()
@@ -123,8 +136,13 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
         self.navigationController?.pushViewController(staffInformationVC, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        let department = self.sectionData[section]
+        var department:DepartmentData
+        if shouldShowSearchResults {
+            department = self.filteredArray[section]
+            
+        }else{
+            department = self.dataSoure[section]
+        }
         if department.number == "0" {
             return 0.1
         }
@@ -134,9 +152,15 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
     // UITableViewDataSource协议中的方法，该方法的返回值决定指定分区的头部
     func tableView(_ tableView:UITableView, titleForHeaderInSection
         section:Int)->String?{
-        
-        let department = self.sectionData[section]
-        
+        var department:DepartmentData
+        if shouldShowSearchResults {
+            department = self.filteredArray[section]
+        }else{
+            department = self.dataSoure[section]
+        }
+        if department.number == "0" {
+            return ""
+        }
         return department.name
     }
     //设置分组尾部高度（不需要尾部，设0.0好像无效）

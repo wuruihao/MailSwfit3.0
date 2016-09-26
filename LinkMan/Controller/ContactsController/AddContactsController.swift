@@ -19,8 +19,9 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var sanpImage: UIImageView!
     @IBOutlet var itemArray: [UIButton]!
     @IBOutlet var levelItems: [UIButton]!
-    
     @IBOutlet weak var naviItem: UINavigationItem!
+
+    let imagePickerController: UIImagePickerController = UIImagePickerController()
     
     var departmentName: String! = String()
     var level: String! = String()
@@ -34,6 +35,9 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
         
         //registerKeyBoardShow(target: self)
         //registerKeyBoardHide(target: self)
+        
+        imagePickerController.delegate = self;
+        imagePickerController.allowsEditing = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,10 +64,6 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
         self.present(alertController, animated: true, completion: nil)
     }
     func openPhotoAction(type: UIImagePickerControllerSourceType){
-        
-        let imagePickerController: UIImagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self;
-        imagePickerController.allowsEditing = true
        
         // 判断是否支持相册
         if UIImagePickerController.isSourceTypeAvailable(type){
@@ -191,7 +191,11 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
         let token = UserDefaults().object(forKey: userToken) as! String!
         if type == "编辑" {
             let id = String(format: "%d", memberData.id)
-            NetworkTool.shareNetworkTool.editContactsRequest(id, token: token!, mobile: phoneTextField.text!, email: workmMailbox.text!, departmentName: description, level: level, headImg: "", nickname: nickNameTextField.text!, name: nameTextField.text!, finishedSel: { (data:ETSuccess) in
+            
+            let params = ["id": id,"token": token!,"mobile": phoneTextField.text!,"email": workmMailbox.text!,"department_id": description,"level_id": level,"head_img":"","nickname":nickNameTextField.text!,"name":nameTextField.text!]
+
+            NetworkTool.shareNetworkTool.editContactsRequest(params as NSDictionary, finishedSel: { (data:ETSuccess) in
+                
                  _ =  self.navigationController?.popToRootViewController(animated: true)
                 
                 }, failedSel: { (error:ETError) in

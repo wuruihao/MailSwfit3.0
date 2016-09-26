@@ -47,10 +47,8 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
         super.viewWillAppear(animated)
         
         if selectedType == "我提交的" {
-            self.showHud(in: self.view, hint: messageLogin)
             sendMyleaveListRequest(status: 0, isMust: false)
         }else {
-            self.showHud(in: self.view, hint: messageLogin)
             sendApprovedLeaveListRequest(status: 0, isMust: false)
         }
     }
@@ -61,14 +59,12 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
         
         let token = UserDefaults().object(forKey: userToken) as! String!
         NetworkTool.shareNetworkTool.applyleaveListRequest(token!, status: status, isMust: isMust, finishedSel: { (data:[LeaveData]) in
-            
-            self.hideHud()
+
             self.dataSoure = data
             self.tableView.reloadData()
             
         }) { (error:ETError) in
-            
-            self.hideHud()
+
             self.showHint(error.message!)
         }
     }
@@ -77,13 +73,11 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
         let token = UserDefaults().object(forKey: userToken) as! String!
         NetworkTool.shareNetworkTool.examinedAndApprovedLeaveRequest(token!, status: status, isMust: isMust, finishedSel: { (data:[LeaveData]) in
             
-            self.hideHud()
             self.dataArray = data
             self.tableView.reloadData()
             
         }) { (error:ETError) in
-            
-            self.hideHud()
+
             self.showHint(error.message!)
         }
     }

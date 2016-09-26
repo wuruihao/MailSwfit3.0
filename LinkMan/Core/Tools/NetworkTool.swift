@@ -12,7 +12,6 @@ import MJRefresh
 import MJExtension
 import MBProgressHUD
 
-
 class ETError: NSObject {
     
     var code:    String?
@@ -29,7 +28,7 @@ class ETSuccess: NSObject {
 class ImageData: NSObject {
     
     var url: String?
-    var _url: String?
+    var uri: String?
 }
 
 class NetworkTool: NSObject {
@@ -46,6 +45,33 @@ class NetworkTool: NSObject {
             return true
         }
         return false
+    }
+    
+    /**
+     判断网络是否可用
+     
+     - returns: true 可用 false 不可用
+     */
+    func judgeNetWork() ->String {
+        
+        AFNetworkReachabilityManager.shared().startMonitoring()
+        var message:String!
+        switch AFNetworkReachabilityManager.shared().networkReachabilityStatus{
+        case .unknown:
+            message = messageUnknown
+            break
+        case .notReachable:
+            message = messageNotReachable
+            break
+        case .reachableViaWWAN:
+            message = messageViaWWAN
+            break
+        case .reachableViaWiFi:
+            message = messageViaWiFi
+            break
+        }
+        AFNetworkReachabilityManager.shared().stopMonitoring()
+        return message
     }
     
     //登陆请求
@@ -198,10 +224,9 @@ class NetworkTool: NSObject {
         }
     }
     
-    //新增联系人请求
-    func editContactsRequest(_ id: String,token:String,mobile: String,email: String,departmentName: String,level: String,headImg: String,nickname: String,name: String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
+    //编辑联系人请求
+    func editContactsRequest(_ params:NSDictionary,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/user/save"
-        let params = ["id": id,"token": token,"mobile": mobile,"email": email,"department_id": departmentName,"level_id": level,"head_img":headImg,"nickname":nickname,"name":name]
         print("url: \(url)")
         print("params: \(params)")
         
@@ -494,16 +519,43 @@ class NetworkTool: NSObject {
             failedSel(error)
         }
     }
+    //头像上传请求
+    func snapImageRequest(_ token: String,uri: String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
+        let url = BASE_URL+"/user/saveHeadImg"
+        print("url: \(url)")
+        let params = ["token": token,"uri": uri]
+        print("params: \(params)")
+        NetworkTool.manager.get(url,parameters:params,success: { (task:URLSessionDataTask?, response:Any?) in
+            let result = response as? NSDictionary
+            print("result:\(result)")
+            if self.isRequestSuccess(result!){
+                let success = ETSuccess()
+                success.message = "请求成功"
+                finishedSel(success)
+            }else{
+                let errorDic = result?.object(forKey: "error")
+                let error = ETError.mj_object(withKeyValues: errorDic) as ETError
+                failedSel(error)
+            }
+        }) { (task:URLSessionDataTask?, error:Error?) in
+            print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
+        }
+    }
     
     //图片上传请求
     func postImageRequest(_ images: NSArray,finishedSel:@escaping (_ data:ImageData)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/user/uploadsurl"
         print("url: \(url)")
         
+        let uploads = self.getImageDatasWithImages(images: images)
+        
         NetworkTool.manager.post(url, parameters: nil, constructingBodyWith: { (formData:AFMultipartFormData?) in
-
-            for i in 0...images.count-1 {
-                let proptys = images.object(at: i) as! NSArray
+            
+            for i in 0...uploads.count-1 {
+                let proptys = uploads.object(at: i) as! NSArray
                 let data = proptys[0] as! Data
                 let type = proptys[1] as! String
                 let fileName = String(format: "upload.%@", type)
@@ -534,6 +586,73 @@ class NetworkTool: NSObject {
             error.message = "网络不给力"
             failedSel(error)
         }
+    }
+    
+    
+    func getImageDatasWithImages(images: NSArray) -> NSArray {
+        
+        let uploadDatas = NSMutableArray()
+        for item in images {
+            var data = Data()
+            let meta = (item as AnyObject).firstObject as! UIImage
+            let type = (item as AnyObject).lastObject as! String
+            
+            let image = meta;
+            if "png" == type{
+                data = self.compressImage(image: image, maxFileSize: 300000, isPngType: true)
+            }else{
+                data = self.compressImage(image: image, maxFileSize: 300000, isPngType: false)
+            }
+            uploadDatas.add([data,type])
+        }
+        return uploadDatas
+    }
+    func compressImage(image:UIImage, maxFileSize:NSInteger, isPngType:Bool) -> Data {
+        
+        var compression = 0.9
+        let maxCompression = 0.1
+        let scale = image.size.height/image.size.width;
+        var size:CGSize
+        var imageData = Data()
+        if isPngType == true{
+            imageData = UIImagePNGRepresentation(image)!
+        }else{
+            imageData = UIImageJPEGRepresentation(image, 1.0)!
+        }
+        //750宽或高的直接压缩到1280（720P）
+        if image.size.height>1280||image.size.width>1280 {
+            if(scale>1){
+                size = CGSize(width: image.size.width*1280/image.size.height, height: 1280)
+                if (scale>3) {
+                    size = CGSize(width:image.size.width,height:image.size.height);
+                }
+            }else{
+                size = CGSize(width:1280, height:image.size.height*1280/image.size.width);
+            }
+            imageData = self.scaledToSizeImage(image: image, newSize: size, compression: 1.0, isPngType: isPngType)
+        }
+        if imageData.count > maxFileSize && !isPngType{
+            
+            let imageTemp = UIImage(data: imageData)
+            
+            while (imageData.count > maxFileSize && compression > maxCompression) {
+                
+                imageData = UIImageJPEGRepresentation(imageTemp!, CGFloat(compression))!
+                compression -= 0.1;
+            }
+        }
+        return imageData;
+    }
+    func scaledToSizeImage(image:UIImage, newSize:CGSize, compression:CGFloat, isPngType:Bool) -> Data {
+        
+        UIGraphicsBeginImageContext(newSize)
+        image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        if isPngType {
+            return UIImagePNGRepresentation(newImage!)!
+        }
+        return UIImageJPEGRepresentation(newImage!, compression)!
     }
     
 }

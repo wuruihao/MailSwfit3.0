@@ -1,52 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="gTV-IL-0wX" customClass="HomeCell" customModule="Mail" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="106" height="114"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeCell" customModule="LinkMan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="106" height="114"/>
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公告中心" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMB-hf-anX">
-                        <rect key="frame" x="0.0" y="76" width="106" height="38"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notify.png" translatesAutoresizingMaskIntoConstraints="NO" id="oHH-Iv-IxI">
-                        <rect key="frame" x="15" y="0.0" width="76" height="76"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o7q-iS-cLN">
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="oHH-Iv-IxI" secondAttribute="height" multiplier="1:1" id="nDr-q7-Nbx"/>
+                            <constraint firstAttribute="width" secondItem="o7q-iS-cLN" secondAttribute="height" multiplier="1:1" id="sH1-Vh-Z2O"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBS-GY-X9X">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="XMB-hf-anX" secondAttribute="trailing" id="He8-ZN-558"/>
-                <constraint firstItem="XMB-hf-anX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="I94-aL-2nw"/>
-                <constraint firstItem="oHH-Iv-IxI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="J0W-I8-Iul"/>
-                <constraint firstItem="oHH-Iv-IxI" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="2:3" id="Qfh-Fc-0xc"/>
-                <constraint firstAttribute="bottom" secondItem="XMB-hf-anX" secondAttribute="bottom" id="kY3-dC-0H1"/>
-                <constraint firstItem="XMB-hf-anX" firstAttribute="top" secondItem="oHH-Iv-IxI" secondAttribute="bottom" id="mJP-x2-zpg"/>
-                <constraint firstItem="oHH-Iv-IxI" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="w3B-hh-1r3"/>
+                <constraint firstItem="kBS-GY-X9X" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1xM-in-vjQ"/>
+                <constraint firstItem="o7q-iS-cLN" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="34e-jF-pRY"/>
+                <constraint firstItem="kBS-GY-X9X" firstAttribute="top" secondItem="o7q-iS-cLN" secondAttribute="bottom" id="MXn-8v-9bf"/>
+                <constraint firstAttribute="bottom" secondItem="kBS-GY-X9X" secondAttribute="bottom" id="MbV-Yw-gjn"/>
+                <constraint firstAttribute="trailing" secondItem="kBS-GY-X9X" secondAttribute="trailing" id="a5H-sP-IYH"/>
+                <constraint firstItem="o7q-iS-cLN" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="2:3" id="cV5-BZ-sZt"/>
+                <constraint firstItem="o7q-iS-cLN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eo2-AP-hCp"/>
             </constraints>
-            <size key="customSize" width="106" height="114"/>
             <connections>
-                <outlet property="icon" destination="oHH-Iv-IxI" id="RTw-NG-R6M"/>
-                <outlet property="title" destination="XMB-hf-anX" id="aeE-5J-n4z"/>
+                <outlet property="icon" destination="o7q-iS-cLN" id="wOY-He-EER"/>
+                <outlet property="title" destination="kBS-GY-X9X" id="YGF-FL-jfB"/>
             </connections>
-            <point key="canvasLocation" x="210" y="-28"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="notify.png" width="84" height="84"/>
-    </resources>
 </document>

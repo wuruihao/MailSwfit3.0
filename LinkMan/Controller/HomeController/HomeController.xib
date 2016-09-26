@@ -25,10 +25,15 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="div-DS-lpW">
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_male.png" translatesAutoresizingMaskIntoConstraints="NO" id="dzh-ca-YsC">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_male.png" translatesAutoresizingMaskIntoConstraints="NO" id="dzh-ca-YsC">
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="dzh-ca-YsC" secondAttribute="height" multiplier="1:1" id="jxM-Ba-BXj"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你好，某某某" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nI2-M2-ZLo">
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -45,9 +50,9 @@
                     <constraints>
                         <constraint firstItem="0op-WB-OOj" firstAttribute="top" secondItem="dzh-ca-YsC" secondAttribute="centerY" id="0AZ-oj-p0m"/>
                         <constraint firstItem="nI2-M2-ZLo" firstAttribute="centerX" secondItem="div-DS-lpW" secondAttribute="centerX" id="8zV-Dy-93C"/>
-                        <constraint firstItem="dzh-ca-YsC" firstAttribute="height" secondItem="div-DS-lpW" secondAttribute="height" multiplier="1:2" id="N5h-Ru-m7v"/>
+                        <constraint firstItem="dzh-ca-YsC" firstAttribute="height" secondItem="div-DS-lpW" secondAttribute="height" multiplier="1:2.5" id="N5h-Ru-m7v"/>
                         <constraint firstItem="nI2-M2-ZLo" firstAttribute="width" secondItem="div-DS-lpW" secondAttribute="width" multiplier="1:3" id="Ncp-gI-3kt"/>
-                        <constraint firstItem="dzh-ca-YsC" firstAttribute="leading" secondItem="div-DS-lpW" secondAttribute="leading" constant="15" id="WxZ-3d-FtM"/>
+                        <constraint firstItem="dzh-ca-YsC" firstAttribute="leading" secondItem="div-DS-lpW" secondAttribute="leading" constant="20" id="WxZ-3d-FtM"/>
                         <constraint firstItem="dzh-ca-YsC" firstAttribute="centerY" secondItem="div-DS-lpW" secondAttribute="centerY" id="dNi-LF-Aga"/>
                         <constraint firstItem="0op-WB-OOj" firstAttribute="width" secondItem="nI2-M2-ZLo" secondAttribute="width" id="usH-yL-RWj"/>
                         <constraint firstItem="0op-WB-OOj" firstAttribute="centerX" secondItem="div-DS-lpW" secondAttribute="centerX" id="vWU-vw-8xx"/>

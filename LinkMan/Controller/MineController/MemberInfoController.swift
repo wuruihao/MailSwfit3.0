@@ -19,20 +19,53 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var sexLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     
-    
+    let imagePickerController: UIImagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sanpImage.layer.cornerRadius = sanpImage.width*0.5
+        
+        imagePickerController.delegate = self;
+        imagePickerController.allowsEditing = true
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        let headImage = UserDefaults().object(forKey: userHeadImg) as! String!
+        if headImage != nil {
+            sanpImage.sd_setImage(with: URL.init(string: headImage!), placeholderImage: UIImage(named: "Login_male.png"))
+        }
+        let nickname = UserDefaults().object(forKey: userNickname) as! String!
+        if nickname != nil {
+            nameLabel.text = nickname
+        }
+
+        let sex = UserDefaults().object(forKey: userSex) as! String!
+        if sex != nil {
+            if sex == "1" {
+                sexLabel.text = "男"
+            }else{
+                sexLabel.text = "女"
+            }
+        }
+
+        //let mobile = UserDefaults().object(forKey: userMobile) as! String!
+        //if mobile != nil {
+        //    phoneLabel.text = mobile
+       // }
+
+    }
+    
     @IBAction func backAction(_ sender: AnyObject) {
         
-         _ = self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func touchChangegAction(_ sender: UITapGestureRecognizer) {
@@ -40,6 +73,7 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
         switch (sender.view?.tag)! as Int {
         //头像编辑
         case 0:
+            
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             alertController.addAction(UIAlertAction(title: "照相机", style: .default, handler: { (action:UIAlertAction) in
                 self.openPhotoAction(type: .camera)
@@ -71,6 +105,9 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
         case 3:
             
             break
+        case 4:
+            
+            break
         default:
             break
         }
@@ -78,9 +115,6 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
     }
     func openPhotoAction(type: UIImagePickerControllerSourceType){
         
-        let imagePickerController: UIImagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self;
-        imagePickerController.allowsEditing = true
         
         // 判断是否支持相册
         if UIImagePickerController.isSourceTypeAvailable(type){
@@ -112,7 +146,7 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
             return
         }
     }
-
+    
     //实现ImagePicker delegate 事件
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
         
@@ -149,8 +183,27 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
         uploads.add(images)
         NetworkTool.shareNetworkTool.postImageRequest(uploads, finishedSel: { (data:ImageData) in
             
-        }) { (error:ETError) in
+            if data.url != nil {
+                self.sanpImage.sd_setImage(with: URL.init(string: data.url!), placeholderImage: UIImage(named: "Login_male.png"))
                 
+                UserDefaults().set(data.url! as String, forKey: userHeadImg)
+                let token = UserDefaults().object(forKey: userToken) as! String!
+                NetworkTool.shareNetworkTool.snapImageRequest(token!, uri: data.uri!, finishedSel: { (data:ETSuccess) in
+                    
+                    self.showHint(data.message!)
+                    
+                    }, failedSel: { (error:ETError) in
+                        self.hideHud()
+                        self.showHint(error.message!)
+                        print("error:\(error)")
+                })
+            }
+            
+        }) { (error:ETError) in
+            
+            self.hideHud()
+            self.showHint(error.message!)
+            print("error:\(error)")
         }
         
     }

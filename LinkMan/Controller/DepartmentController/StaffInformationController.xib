@@ -139,15 +139,38 @@
                             <color key="textColor" red="0.43633484840393066" green="0.42865628004074097" blue="0.44014614820480347" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkc-rn-4Ym">
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="tkc-rn-4Ym" secondAttribute="height" multiplier="1:1" id="Udm-W9-xyn"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="phone.png"/>
+                            <connections>
+                                <action selector="calPhone:" destination="-1" eventType="touchUpInside" id="e7O-hH-TiV"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKK-FF-eUa">
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="IKK-FF-eUa" secondAttribute="height" multiplier="1:1" id="5xE-Yw-JD0"/>
+                            </constraints>
+                            <state key="normal" image="message.png"/>
+                            <connections>
+                                <action selector="calPhone:" destination="-1" eventType="touchUpInside" id="9hz-Td-5E7"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="tkc-rn-4Ym" firstAttribute="centerY" secondItem="SSs-Wh-9dQ" secondAttribute="centerY" id="0yY-cM-hY7"/>
                         <constraint firstAttribute="trailing" secondItem="FAw-0h-ntx" secondAttribute="trailing" id="2DG-S7-RhO"/>
+                        <constraint firstAttribute="trailing" secondItem="tkc-rn-4Ym" secondAttribute="trailing" constant="20" id="5O0-Kb-e0a"/>
                         <constraint firstItem="Opf-sI-h2N" firstAttribute="leading" secondItem="gGK-m9-t2U" secondAttribute="trailing" constant="10" id="9fX-40-KzG"/>
                         <constraint firstItem="gGK-m9-t2U" firstAttribute="leading" secondItem="NBB-gO-TUM" secondAttribute="leading" id="Cr6-Ur-5bL"/>
                         <constraint firstItem="NBB-gO-TUM" firstAttribute="top" secondItem="QLg-3T-utm" secondAttribute="top" constant="20" id="Fke-Da-OyV"/>
                         <constraint firstItem="NBB-gO-TUM" firstAttribute="leading" secondItem="QLg-3T-utm" secondAttribute="leading" constant="20" id="IlU-cV-6Dw"/>
+                        <constraint firstItem="tkc-rn-4Ym" firstAttribute="leading" secondItem="IKK-FF-eUa" secondAttribute="trailing" constant="15" id="MWv-cC-xxr"/>
+                        <constraint firstItem="tkc-rn-4Ym" firstAttribute="height" secondItem="QLg-3T-utm" secondAttribute="height" multiplier="1:12" id="Noe-LZ-YJU"/>
                         <constraint firstItem="Auk-DG-f8P" firstAttribute="width" secondItem="AAv-vu-Rc4" secondAttribute="width" id="SB3-rX-ael"/>
                         <constraint firstItem="gGK-m9-t2U" firstAttribute="top" secondItem="Auk-DG-f8P" secondAttribute="bottom" constant="10" id="SuD-qU-PNR"/>
+                        <constraint firstItem="tkc-rn-4Ym" firstAttribute="height" secondItem="IKK-FF-eUa" secondAttribute="height" id="TWB-Kv-wv7"/>
                         <constraint firstItem="Auk-DG-f8P" firstAttribute="trailing" secondItem="AAv-vu-Rc4" secondAttribute="trailing" id="U51-nw-1Po"/>
                         <constraint firstItem="iUF-jk-fB1" firstAttribute="leading" secondItem="NBB-gO-TUM" secondAttribute="leading" id="XYx-bG-y5T"/>
                         <constraint firstItem="Auk-DG-f8P" firstAttribute="top" secondItem="iUF-jk-fB1" secondAttribute="bottom" constant="15" id="YbP-Jd-Dy9"/>
@@ -157,7 +180,8 @@
                         <constraint firstItem="Opf-sI-h2N" firstAttribute="top" secondItem="gGK-m9-t2U" secondAttribute="top" id="i7P-kC-OA7"/>
                         <constraint firstItem="iUF-jk-fB1" firstAttribute="top" secondItem="BOX-fH-B1N" secondAttribute="bottom" constant="20" id="ivV-dF-dVH"/>
                         <constraint firstItem="SSs-Wh-9dQ" firstAttribute="leading" secondItem="BOX-fH-B1N" secondAttribute="trailing" constant="10" id="kIg-C4-4jb"/>
-                        <constraint firstItem="BOX-fH-B1N" firstAttribute="top" secondItem="AAv-vu-Rc4" secondAttribute="bottom" constant="10" id="ov9-Cd-h3e"/>
+                        <constraint firstItem="tkc-rn-4Ym" firstAttribute="centerY" secondItem="IKK-FF-eUa" secondAttribute="centerY" id="loh-Y1-gx1"/>
+                        <constraint firstItem="BOX-fH-B1N" firstAttribute="top" secondItem="AAv-vu-Rc4" secondAttribute="bottom" constant="20" id="ov9-Cd-h3e"/>
                         <constraint firstItem="SSs-Wh-9dQ" firstAttribute="top" secondItem="BOX-fH-B1N" secondAttribute="top" id="prc-hu-dKH"/>
                         <constraint firstItem="AAv-vu-Rc4" firstAttribute="leading" secondItem="QLg-3T-utm" secondAttribute="leading" constant="10" id="qTX-cF-ZjV"/>
                         <constraint firstItem="AAv-vu-Rc4" firstAttribute="top" secondItem="NBB-gO-TUM" secondAttribute="bottom" constant="15" id="qw6-gb-l6b"/>
@@ -218,6 +242,8 @@
         <image name="Login_male.png" width="75" height="75"/>
         <image name="NaviBar_back.png" width="25" height="25"/>
         <image name="clear.png" width="3" height="3"/>
+        <image name="message.png" width="98" height="98"/>
+        <image name="phone.png" width="94" height="94"/>
         <image name="pic.png" width="411" height="177"/>
     </resources>
 </document>

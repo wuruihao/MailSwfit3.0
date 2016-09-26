@@ -3,17 +3,20 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DepartmentController" customModule="LinkMan" customModuleProvider="target">
             <connections>
+                <outlet property="searchTextField" destination="A1j-YY-8vd" id="Cp3-0e-p6m"/>
                 <outlet property="tableView" destination="Q8l-zY-e8e" id="kv5-iU-XG7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -40,6 +43,55 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVy-C4-Yc5">
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMf-kT-hhs">
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FgG-88-Hpo">
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="搜索联系人" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="A1j-YY-8vd">
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                </textField>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_find.png" translatesAutoresizingMaskIntoConstraints="NO" id="5RM-aD-MdK">
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="5RM-aD-MdK" secondAttribute="height" multiplier="1:1" id="vVs-Sm-Ema"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="5RM-aD-MdK" firstAttribute="leading" secondItem="FgG-88-Hpo" secondAttribute="leading" constant="10" id="INa-fH-Hx9"/>
+                                <constraint firstAttribute="bottom" secondItem="5RM-aD-MdK" secondAttribute="bottom" constant="8" id="ecz-Fb-usG"/>
+                                <constraint firstItem="5RM-aD-MdK" firstAttribute="top" secondItem="FgG-88-Hpo" secondAttribute="top" constant="8" id="kIU-zm-yL3"/>
+                                <constraint firstItem="A1j-YY-8vd" firstAttribute="leading" secondItem="5RM-aD-MdK" secondAttribute="trailing" constant="10" id="mTY-FW-Lsx"/>
+                                <constraint firstAttribute="bottom" secondItem="A1j-YY-8vd" secondAttribute="bottom" id="qBA-bu-De5"/>
+                                <constraint firstItem="A1j-YY-8vd" firstAttribute="top" secondItem="FgG-88-Hpo" secondAttribute="top" id="yIi-Ht-1Zc"/>
+                                <constraint firstAttribute="trailing" secondItem="A1j-YY-8vd" secondAttribute="trailing" constant="10" id="yU8-KV-hfs"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="FgG-88-Hpo" firstAttribute="leading" secondItem="xVy-C4-Yc5" secondAttribute="leading" constant="15" id="7p5-bv-vdM"/>
+                        <constraint firstAttribute="height" constant="60" id="F2o-Fh-XXn"/>
+                        <constraint firstItem="FgG-88-Hpo" firstAttribute="top" secondItem="xVy-C4-Yc5" secondAttribute="top" constant="10" id="JED-6t-t46"/>
+                        <constraint firstItem="FgG-88-Hpo" firstAttribute="width" secondItem="xVy-C4-Yc5" secondAttribute="width" multiplier="7.5:10" id="Yyk-dN-7cP"/>
+                        <constraint firstItem="pMf-kT-hhs" firstAttribute="leading" secondItem="FgG-88-Hpo" secondAttribute="trailing" constant="10" id="haA-IV-836"/>
+                        <constraint firstAttribute="trailing" secondItem="pMf-kT-hhs" secondAttribute="trailing" constant="20" id="iB1-AI-9nT"/>
+                        <constraint firstAttribute="bottom" secondItem="FgG-88-Hpo" secondAttribute="bottom" constant="10" id="pim-WD-Dea"/>
+                        <constraint firstItem="pMf-kT-hhs" firstAttribute="centerY" secondItem="xVy-C4-Yc5" secondAttribute="centerY" id="sdd-14-td3"/>
+                    </constraints>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Q8l-zY-e8e">
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
@@ -50,11 +102,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Q8l-zY-e8e" firstAttribute="top" secondItem="xVy-C4-Yc5" secondAttribute="bottom" id="8jz-Ev-pgg"/>
                 <constraint firstAttribute="bottom" secondItem="Q8l-zY-e8e" secondAttribute="bottom" constant="49" id="9JW-BR-jNu"/>
-                <constraint firstItem="Q8l-zY-e8e" firstAttribute="top" secondItem="zDI-ef-1dI" secondAttribute="bottom" id="MQ3-p6-Br2"/>
+                <constraint firstAttribute="trailing" secondItem="xVy-C4-Yc5" secondAttribute="trailing" id="HIy-E8-nB5"/>
+                <constraint firstItem="xVy-C4-Yc5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jly-ui-GBS"/>
                 <constraint firstAttribute="trailing" secondItem="zDI-ef-1dI" secondAttribute="trailing" id="Rd7-6M-dxJ"/>
                 <constraint firstItem="zDI-ef-1dI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Wef-Xy-YUL"/>
                 <constraint firstItem="zDI-ef-1dI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Zca-gS-4cf"/>
+                <constraint firstItem="xVy-C4-Yc5" firstAttribute="top" secondItem="zDI-ef-1dI" secondAttribute="bottom" id="fCI-tq-sot"/>
                 <constraint firstAttribute="trailing" secondItem="Q8l-zY-e8e" secondAttribute="trailing" id="kVD-8g-62O"/>
                 <constraint firstItem="Q8l-zY-e8e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ukm-GB-8QR"/>
             </constraints>
@@ -64,5 +119,6 @@
     <resources>
         <image name="addContacts.png" width="38" height="38"/>
         <image name="clear.png" width="3" height="3"/>
+        <image name="home_find.png" width="25" height="25"/>
     </resources>
 </document>

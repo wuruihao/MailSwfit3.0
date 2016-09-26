@@ -29,10 +29,10 @@ class LoginViewController: UIViewController {
         
        // print("注册事件")
    // }
-    @IBAction func cancelAction(_ sender: UIButton) {
+    //@IBAction func cancelAction(_ sender: UIButton) {
         
-        UIApplication.shared.keyWindow?.rootViewController = ETTabBarController()
-    }
+      //  UIApplication.shared.keyWindow?.rootViewController = ETTabBarController()
+   // }
     @IBAction func login(_ sender: UIButton) {
         
         if userName.text == nil {

@@ -121,6 +121,10 @@ class CoreDataTool: NSObject {
         for item in array {
             let user = item as! Contacts
             let des = DepartmentData.mj_object(withKeyValues: user.departmentjson) as DepartmentData
+            
+           let memberData = MemberData.mj_objectArray(withKeyValuesArray: des.members)
+            des.members = memberData
+            
             data.add(des)
             
         }

@@ -20,6 +20,10 @@ let userDepartment = "userDepartment"
 
 let messageLogin = "加载中..."
 let messageLoading = "正在登录中…"
+let messageUnknown = "未知网络"
+let messageNotReachable = "网络不给力"
+let messageViaWWAN = "移动网络"
+let messageViaWiFi = "WiFi网络"
 
 
 let kScreenWidth = UIScreen.main.bounds.size.width
@@ -43,4 +47,5 @@ func kBoldFitSize(value : CGFloat) -> UIFont {
 func RGBA (r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor{
     return UIColor (red: r/255.0, green: g/255.0, blue: b/255.0, alpha: a)
 }
+
 

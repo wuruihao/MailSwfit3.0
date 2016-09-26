@@ -43,12 +43,9 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBt-PT-sxe">
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="UBt-PT-sxe" secondAttribute="height" multiplier="1:1" id="kRr-9A-dRn"/>
+                            <constraint firstAttribute="width" secondItem="UBt-PT-sxe" secondAttribute="height" multiplier="12:13" id="kRr-9A-dRn"/>
                         </constraints>
-                        <state key="normal" image="phone.png"/>
-                        <connections>
-                            <action selector="telephone:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="f2J-mv-SWU"/>
-                        </connections>
+                        <state key="normal" image="Mine_gray_arrow.png"/>
                     </button>
                 </subviews>
                 <constraints>
@@ -57,7 +54,7 @@
                     <constraint firstItem="d83-Ad-khs" firstAttribute="leading" secondItem="QXu-1N-Pls" secondAttribute="leading" id="8Rp-ed-3fN"/>
                     <constraint firstItem="UBt-PT-sxe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="F3o-qU-0d7"/>
                     <constraint firstItem="YTN-eU-d8M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="IOg-0W-gej"/>
-                    <constraint firstItem="UBt-PT-sxe" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="1:2" id="JYo-zx-1eG"/>
+                    <constraint firstItem="UBt-PT-sxe" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="1:4" id="JYo-zx-1eG"/>
                     <constraint firstAttribute="bottom" secondItem="l2C-yV-tL8" secondAttribute="bottom" id="SDO-A7-h4M"/>
                     <constraint firstAttribute="trailing" secondItem="l2C-yV-tL8" secondAttribute="trailing" id="SPH-aB-D45"/>
                     <constraint firstItem="YTN-eU-d8M" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Tu7-4a-Scz"/>
@@ -76,6 +73,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="phone.png" width="94" height="94"/>
+        <image name="Mine_gray_arrow.png" width="27" height="27"/>
     </resources>
 </document>

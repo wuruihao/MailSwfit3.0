@@ -25,10 +25,21 @@ class ContactsCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    @IBAction func telephone(_ sender: UIButton) {
+    
+    func setData(data:MemberData){
         
-        
-        
+        if data.head_img != nil {
+            sanpImage.sd_setImage(with: URL.init(string: data.head_img!), placeholderImage: UIImage(named: "Login_male.png"))
+        }else{
+            sanpImage.image = UIImage(named: "Login_male.png")
+        }
+        if data.name != nil {
+            name.text = data.name
+        }
+        if data.level != nil {
+            subTitle.text = data.level
+        }
+
     }
     
 }

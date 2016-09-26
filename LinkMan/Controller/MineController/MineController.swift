@@ -15,9 +15,28 @@ class MineController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var online: UILabel!
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        let headImage = UserDefaults().object(forKey: userHeadImg) as! String!
+        if headImage != nil {
+            snapImage.sd_setImage(with: URL.init(string: headImage!), placeholderImage: UIImage(named: "Login_male.png"))
+        }
 
+        let realName = UserDefaults().object(forKey: userRealName) as! String!
+        if realName != nil {
+            name.text = realName
+        }
+        
+        online.text = NetworkTool.shareNetworkTool.judgeNetWork()
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

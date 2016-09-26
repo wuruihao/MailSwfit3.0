@@ -20,15 +20,7 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let title = UserDefaults().object(forKey: userRealName) as! String!
-        if title != nil {
-            titleLabel.text = String(format: "您好,%@", title!)
-        }
-        let headImage = UserDefaults().object(forKey: userHeadImg) as! String!
-        if headImage != nil {
-            sanpImage.sd_setImage(with: URL.init(string: headImage!), placeholderImage: UIImage(named: "Login_male.png"))
-        }
+
         //模拟数据
         demoData()
         
@@ -51,8 +43,19 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
         super.didReceiveMemoryWarning()
     }
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
+        
         doTimer()
+        
+        let title = UserDefaults().object(forKey: userRealName) as! String!
+        if title != nil {
+            titleLabel.text = String(format: "您好,%@", title!)
+        }
+        let headImage = UserDefaults().object(forKey: userHeadImg) as! String!
+        if headImage != nil {
+            sanpImage.sd_setImage(with: URL.init(string: headImage!), placeholderImage: UIImage(named: "Login_male.png"))
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -73,10 +76,10 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
         print("timeLabel:\(strNow)")
         
         /*
-        let strNow = Date().toString(format: DateFormat.custom("yyyy年MM月dd日 EEEE HH:mm"))
-        timeLabel.text  =  String(format: "%@", strNow!)
-        print("timeLabel:\(strNow)")
-        */
+         let strNow = Date().toString(format: DateFormat.custom("yyyy年MM月dd日 EEEE HH:mm"))
+         timeLabel.text  =  String(format: "%@", strNow!)
+         print("timeLabel:\(strNow)")
+         */
     }
     func demoData(){
         
@@ -149,7 +152,7 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
             self.showHint("备忘录")
             break
         case 5:
-             self.showHint("辅助工具")
+            self.showHint("辅助工具")
             break
             
         default:
