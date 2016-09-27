@@ -99,7 +99,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="liT-7m-5M6" firstAttribute="height" secondItem="MYj-uh-5KJ" secondAttribute="height" id="CMk-Rc-1Ff"/>
-                        <constraint firstItem="MYj-uh-5KJ" firstAttribute="top" secondItem="17M-nT-YEV" secondAttribute="top" constant="10" id="G8P-k6-fiY"/>
+                        <constraint firstItem="MYj-uh-5KJ" firstAttribute="top" secondItem="17M-nT-YEV" secondAttribute="top" id="G8P-k6-fiY"/>
                         <constraint firstItem="MYj-uh-5KJ" firstAttribute="leading" secondItem="17M-nT-YEV" secondAttribute="leading" constant="10" id="N5T-4U-qEn"/>
                         <constraint firstItem="liT-7m-5M6" firstAttribute="leading" secondItem="MYj-uh-5KJ" secondAttribute="leading" id="QYk-Ws-aXI"/>
                         <constraint firstAttribute="bottom" secondItem="liT-7m-5M6" secondAttribute="bottom" constant="10" id="aaE-2w-ITv"/>
@@ -270,7 +270,7 @@
                         <constraint firstItem="j3a-4U-zZb" firstAttribute="top" secondItem="cXm-fi-Y4v" secondAttribute="top" constant="10" id="dJ2-Ua-LSI"/>
                         <constraint firstItem="HEA-cf-IJC" firstAttribute="trailing" secondItem="Hur-Eo-0UM" secondAttribute="trailing" id="dMa-D0-AhB"/>
                         <constraint firstItem="TtT-zn-adc" firstAttribute="top" secondItem="flL-E1-oju" secondAttribute="top" id="dgD-iz-74v"/>
-                        <constraint firstItem="j3a-4U-zZb" firstAttribute="leading" secondItem="cXm-fi-Y4v" secondAttribute="leading" constant="15" id="fyz-Ea-kLA"/>
+                        <constraint firstItem="j3a-4U-zZb" firstAttribute="leading" secondItem="cXm-fi-Y4v" secondAttribute="leading" id="fyz-Ea-kLA"/>
                         <constraint firstItem="j6U-lO-asP" firstAttribute="leading" secondItem="RaM-19-qmV" secondAttribute="trailing" constant="15" id="hYn-Of-4F5"/>
                         <constraint firstItem="Fqw-Df-yrj" firstAttribute="top" secondItem="j3a-4U-zZb" secondAttribute="bottom" constant="10" id="hoz-F6-m25"/>
                         <constraint firstAttribute="trailing" secondItem="j3a-4U-zZb" secondAttribute="trailing" id="iF8-jP-xSg"/>
@@ -362,7 +362,7 @@
                         <constraint firstItem="Jpg-tb-9mW" firstAttribute="leading" secondItem="Ayj-aO-fhP" secondAttribute="trailing" constant="15" id="7R6-5u-CtP"/>
                         <constraint firstAttribute="bottom" secondItem="gMa-cb-7Pe" secondAttribute="bottom" constant="30" id="BDA-Bf-Zp9"/>
                         <constraint firstItem="uR6-Ch-W7d" firstAttribute="width" secondItem="gMa-cb-7Pe" secondAttribute="width" multiplier="2:3" id="Dxd-FF-5Co"/>
-                        <constraint firstItem="nEZ-dv-OnB" firstAttribute="leading" secondItem="gV6-vg-162" secondAttribute="leading" constant="15" id="HPf-M6-7lq"/>
+                        <constraint firstItem="nEZ-dv-OnB" firstAttribute="leading" secondItem="gV6-vg-162" secondAttribute="leading" id="HPf-M6-7lq"/>
                         <constraint firstItem="Jpg-tb-9mW" firstAttribute="width" secondItem="gMa-cb-7Pe" secondAttribute="width" id="IIk-Id-4rG"/>
                         <constraint firstItem="Ayj-aO-fhP" firstAttribute="top" secondItem="pEq-Ck-7Mm" secondAttribute="top" id="J8u-cK-L3m"/>
                         <constraint firstItem="Jpg-tb-9mW" firstAttribute="height" secondItem="gMa-cb-7Pe" secondAttribute="height" id="Oid-fT-55h"/>
@@ -397,7 +397,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEH-CK-nta">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEH-CK-nta">
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -406,7 +406,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作邮箱" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8T-Wg-bmM">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作邮箱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8T-Wg-bmM">
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
@@ -415,7 +415,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBK-qk-uDo">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBK-qk-uDo">
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
@@ -460,13 +460,13 @@
                 <constraint firstItem="dVD-Xi-vgc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7mq-fX-628"/>
                 <constraint firstItem="pXG-Ws-psW" firstAttribute="top" secondItem="17M-nT-YEV" secondAttribute="bottom" constant="15" id="7ud-m3-NTx"/>
                 <constraint firstItem="Ium-mC-Cg6" firstAttribute="leading" secondItem="liT-7m-5M6" secondAttribute="leading" id="91P-pv-Z6M"/>
-                <constraint firstItem="FGx-06-cFL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="EHE-K5-253"/>
+                <constraint firstItem="FGx-06-cFL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="EHE-K5-253"/>
                 <constraint firstItem="dVD-Xi-vgc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Eup-F3-1oE"/>
                 <constraint firstItem="pXG-Ws-psW" firstAttribute="trailing" secondItem="cXm-fi-Y4v" secondAttribute="trailing" id="H5B-HC-tV5"/>
                 <constraint firstItem="pXG-Ws-psW" firstAttribute="trailing" secondItem="17M-nT-YEV" secondAttribute="trailing" id="JKG-Sh-LU0"/>
                 <constraint firstAttribute="trailing" secondItem="dVD-Xi-vgc" secondAttribute="trailing" id="LQ0-jf-rHt"/>
                 <constraint firstItem="FGx-06-cFL" firstAttribute="top" secondItem="dVD-Xi-vgc" secondAttribute="bottom" constant="30" id="VcE-RL-FcX"/>
-                <constraint firstItem="17M-nT-YEV" firstAttribute="leading" secondItem="FGx-06-cFL" secondAttribute="trailing" constant="15" id="Yfs-g1-DwS"/>
+                <constraint firstItem="17M-nT-YEV" firstAttribute="leading" secondItem="FGx-06-cFL" secondAttribute="trailing" constant="10" id="Yfs-g1-DwS"/>
                 <constraint firstItem="Ium-mC-Cg6" firstAttribute="trailing" secondItem="liT-7m-5M6" secondAttribute="trailing" id="agb-BN-4rn"/>
                 <constraint firstItem="17M-nT-YEV" firstAttribute="top" secondItem="FGx-06-cFL" secondAttribute="top" id="arH-ra-W3n"/>
                 <constraint firstItem="FGx-06-cFL" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:10" id="kNa-kO-gB5"/>

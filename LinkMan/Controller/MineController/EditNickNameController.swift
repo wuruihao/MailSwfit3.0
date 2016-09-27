@@ -33,7 +33,7 @@ class EditNickNameController: UIViewController , UITextFieldDelegate{
             //text = UserDefaults().object(forKey: userMobile) as! String!
             break
         case "邮箱":
-            text = UserDefaults().object(forKey: userEmail) as! String!
+            //text = UserDefaults().object(forKey: userEmail) as! String!
             break
         default:
             break
@@ -55,10 +55,40 @@ class EditNickNameController: UIViewController , UITextFieldDelegate{
     @IBAction func finishedEdit(_ sender: UIButton) {
         
         let token = UserDefaults().object(forKey: userToken) as! String!
-        let params = ["token": token,"nickname":textField.text!]
-        NetworkTool.shareNetworkTool.editMyInfoRequest(params as! [String : String], finishedSel: { (data:ETSuccess) in
-
-            UserDefaults().set(self.textField.text! as String, forKey: userNickname)
+        var params = [String:String]()
+        switch type {
+        case "昵称":
+            params = ["token": token!,"nickname":textField.text!]
+            break
+        case "手机":
+            params = ["token": token!,"mobile":textField.text!]
+            break
+        case "邮箱":
+            params = ["token": token!,"email":textField.text!]
+            break
+        default:
+            break
+        }
+        sendRequest(params: params)
+    }
+    
+    func sendRequest(params:[String:String]){
+        
+        NetworkTool.shareNetworkTool.editMyInfoRequest(params, finishedSel: { (data:ETSuccess) in
+            switch self.type {
+            case "昵称":
+                 UserDefaults().set(self.textField.text! as String, forKey: userNickname)
+                break
+            case "手机":
+                 UserDefaults().set(self.textField.text! as String, forKey: userMobile)
+                break
+            case "邮箱":
+                 UserDefaults().set(self.textField.text! as String, forKey: userEmail)
+                break
+            default:
+                break
+            }
+           
             _ = self.navigationController?.popViewController(animated: true)
             
         }) { (error:ETError) in
@@ -66,7 +96,6 @@ class EditNickNameController: UIViewController , UITextFieldDelegate{
             self.showHint(error.message!)
             print("error:\(error)")
         }
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

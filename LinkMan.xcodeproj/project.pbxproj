@@ -107,8 +107,6 @@
 		E00BFE301D8FB87C007A6773 /* AddContactsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00BFDAE1D8FB87C007A6773 /* AddContactsController.xib */; };
 		E00BFE311D8FB87C007A6773 /* ContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDAF1D8FB87C007A6773 /* ContactsController.swift */; };
 		E00BFE321D8FB87C007A6773 /* ContactsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00BFDB01D8FB87C007A6773 /* ContactsController.xib */; };
-		E00BFE331D8FB87C007A6773 /* DepartmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDB21D8FB87C007A6773 /* DepartmentController.swift */; };
-		E00BFE341D8FB87C007A6773 /* DepartmentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00BFDB31D8FB87C007A6773 /* DepartmentController.xib */; };
 		E00BFE351D8FB87C007A6773 /* StaffInformationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDB41D8FB87C007A6773 /* StaffInformationController.swift */; };
 		E00BFE361D8FB87C007A6773 /* StaffInformationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00BFDB51D8FB87C007A6773 /* StaffInformationController.xib */; };
 		E00BFE371D8FB87C007A6773 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDB71D8FB87C007A6773 /* ApplicationController.swift */; };
@@ -169,6 +167,8 @@
 		E0DFE6991D9A72C100E4B6F0 /* sanp@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0DFE6961D9A72C100E4B6F0 /* sanp@3x.png */; };
 		E0DFE69A1D9A72C100E4B6F0 /* sanp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0DFE6971D9A72C100E4B6F0 /* sanp@2x.png */; };
 		E0DFE69B1D9A72C100E4B6F0 /* sanp.png in Resources */ = {isa = PBXBuildFile; fileRef = E0DFE6981D9A72C100E4B6F0 /* sanp.png */; };
+		E0DFE6AA1D9A861100E4B6F0 /* DepartmentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0DFE6A81D9A861100E4B6F0 /* DepartmentController.xib */; };
+		E0DFE6AB1D9A861100E4B6F0 /* DepartmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DFE6A91D9A861100E4B6F0 /* DepartmentController.swift */; };
 		E0E2D8641D937FC800FC7DD0 /* XTPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0E2D8621D937FC800FC7DD0 /* XTPopView.m */; };
 		E0E2D8681D9380BB00FC7DD0 /* Brand_sort@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0E2D8651D9380BB00FC7DD0 /* Brand_sort@3x.png */; };
 		E0E2D8691D9380BB00FC7DD0 /* Brand_sort@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0E2D8661D9380BB00FC7DD0 /* Brand_sort@2x.png */; };
@@ -302,8 +302,6 @@
 		E00BFDAE1D8FB87C007A6773 /* AddContactsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddContactsController.xib; sourceTree = "<group>"; };
 		E00BFDAF1D8FB87C007A6773 /* ContactsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsController.swift; sourceTree = "<group>"; };
 		E00BFDB01D8FB87C007A6773 /* ContactsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactsController.xib; sourceTree = "<group>"; };
-		E00BFDB21D8FB87C007A6773 /* DepartmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentController.swift; sourceTree = "<group>"; };
-		E00BFDB31D8FB87C007A6773 /* DepartmentController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepartmentController.xib; sourceTree = "<group>"; };
 		E00BFDB41D8FB87C007A6773 /* StaffInformationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffInformationController.swift; sourceTree = "<group>"; };
 		E00BFDB51D8FB87C007A6773 /* StaffInformationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaffInformationController.xib; sourceTree = "<group>"; };
 		E00BFDB71D8FB87C007A6773 /* ApplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
@@ -384,6 +382,8 @@
 		E0DFE6961D9A72C100E4B6F0 /* sanp@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sanp@3x.png"; sourceTree = "<group>"; };
 		E0DFE6971D9A72C100E4B6F0 /* sanp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sanp@2x.png"; sourceTree = "<group>"; };
 		E0DFE6981D9A72C100E4B6F0 /* sanp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sanp.png; sourceTree = "<group>"; };
+		E0DFE6A81D9A861100E4B6F0 /* DepartmentController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DepartmentController.xib; sourceTree = "<group>"; };
+		E0DFE6A91D9A861100E4B6F0 /* DepartmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartmentController.swift; sourceTree = "<group>"; };
 		E0E2D8621D937FC800FC7DD0 /* XTPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTPopView.m; sourceTree = "<group>"; };
 		E0E2D8631D937FC800FC7DD0 /* XTPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTPopView.h; sourceTree = "<group>"; };
 		E0E2D8651D9380BB00FC7DD0 /* Brand_sort@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Brand_sort@3x.png"; sourceTree = "<group>"; };
@@ -789,8 +789,8 @@
 		E00BFDB11D8FB87C007A6773 /* DepartmentController */ = {
 			isa = PBXGroup;
 			children = (
-				E00BFDB21D8FB87C007A6773 /* DepartmentController.swift */,
-				E00BFDB31D8FB87C007A6773 /* DepartmentController.xib */,
+				E0DFE6A91D9A861100E4B6F0 /* DepartmentController.swift */,
+				E0DFE6A81D9A861100E4B6F0 /* DepartmentController.xib */,
 				E00BFDB41D8FB87C007A6773 /* StaffInformationController.swift */,
 				E00BFDB51D8FB87C007A6773 /* StaffInformationController.xib */,
 			);
@@ -1020,12 +1020,12 @@
 				E00BFDF91D8FB87C007A6773 /* Mine_pinpai@3x.png in Resources */,
 				E00BFE461D8FB87C007A6773 /* MemberInfoController.xib in Resources */,
 				E00BFDFC1D8FB87C007A6773 /* Mine_quchu@3x.png in Resources */,
-				E00BFE341D8FB87C007A6773 /* DepartmentController.xib in Resources */,
 				E00BFE0E1D8FB87C007A6773 /* TabBar_interesting@3x.png in Resources */,
 				E00BFE151D8FB87C007A6773 /* TabBar_mine_sel.png in Resources */,
 				E08C36841D91128E00609A31 /* Recommend_s-on.png in Resources */,
 				E00BFDDA1D8FB87C007A6773 /* icon.png in Resources */,
 				E00BFDE51D8FB87C007A6773 /* Login_code_blue.png in Resources */,
+				E0DFE6AA1D9A861100E4B6F0 /* DepartmentController.xib in Resources */,
 				E00BFDD61D8FB87C007A6773 /* NotifyCell.xib in Resources */,
 				E00BFE191D8FB87C007A6773 /* TabBar_product@2x.png in Resources */,
 				E0E2D8681D9380BB00FC7DD0 /* Brand_sort@3x.png in Resources */,
@@ -1219,7 +1219,6 @@
 				E00BFE231D8FB87C007A6773 /* MyCollectionViewLayout.swift in Sources */,
 				E0D313F31D910CA60053CEA7 /* UIImageView+HighlightedWebCache.m in Sources */,
 				E00BFBF31D8FA3DC007A6773 /* LinkMan.xcdatamodeld in Sources */,
-				E00BFE331D8FB87C007A6773 /* DepartmentController.swift in Sources */,
 				E09584521D93D4AD00304915 /* Contacts+CoreDataClass.swift in Sources */,
 				E0D313EF1D910CA60053CEA7 /* UIButton+WebCache.m in Sources */,
 				E00BFE1F1D8FB87C007A6773 /* MemberData.swift in Sources */,
@@ -1231,6 +1230,7 @@
 				E09584531D93D4AD00304915 /* Contacts+CoreDataProperties.swift in Sources */,
 				E00BFE251D8FB87C007A6773 /* RealtimeSearchUtil.m in Sources */,
 				E00BFBEB1D8FA3DC007A6773 /* AppDelegate.swift in Sources */,
+				E0DFE6AB1D9A861100E4B6F0 /* DepartmentController.swift in Sources */,
 				E0D3137F1D90F8C20053CEA7 /* HomeController.swift in Sources */,
 				E00BFE1E1D8FB87C007A6773 /* DepartmentModel.swift in Sources */,
 			);

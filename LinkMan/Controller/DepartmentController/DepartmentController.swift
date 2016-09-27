@@ -8,14 +8,14 @@
 
 import UIKit
 
-class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
+class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate{
     
     
     @IBOutlet weak var searchView: UIView!
-    
     @IBOutlet weak var searchTextField: UITextField!
     
-    
+    var timer:Timer!
+    var token :String!
     
     var dataSoure : [DepartmentData]! = [DepartmentData]()
     var filteredArray : [DepartmentData]! = [DepartmentData]()
@@ -26,36 +26,42 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        token = UserDefaults().object(forKey: userToken) as! String!
+        
         //创建一个重用的单元格
         let nib = UINib(nibName: "ContactsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cellId")
         tableView.separatorStyle = .none
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
         
-        //模拟数据
-        demo()
+        let params = ["token":token!]
+        sendDepartmentRequest(params: params)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(DepartmentController.textFieldDidChange(notification:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
-        
     }
-    func demo(){
+    func sendDepartmentRequest(params: [String:String]){
         
-        let token = UserDefaults().object(forKey: userToken) as! String!
-        NetworkTool.shareNetworkTool.departmentRequest(token!, finishedSel: { (data:[DepartmentData]) in
+        NetworkTool.shareNetworkTool.departmentRequest(params, finishedSel: { (data:[DepartmentData]) in
             
             print("data\(data)")
             
-            self.dataSoure = data
+            if self.shouldShowSearchResults {
+                
+                self.filteredArray = data
+            }else {
+                self.dataSoure = data
+                CoreDataTool.shared.addDepartmentsCoreData(data: data)
+            }
             self.tableView.reloadData()
-            
-            CoreDataTool.shared.addDepartmentsCoreData(data: data)
             
         }) { (error:ETError) in
             
@@ -80,14 +86,51 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
         addContactsVC.type = "添加"
         addContactsVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(addContactsVC, animated: true)
+    }
+    
+    @IBAction func cancelBtnClick(_ sender: AnyObject) {
+        
+        searchTextField.resignFirstResponder()
+        searchTextField.text = ""
+        self.filteredArray.removeAll()
+        shouldShowSearchResults = false
+        
+        tableView.reloadData()
         
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        return true
+    }
+    
+    func timerTextDidChange(){
+        
+        let params = ["token":token!,"name":searchTextField.text!]
+        sendDepartmentRequest(params: params)
+    }
+    func addTimerSearch(){
+        
+        if searchTextField.text != ""{
+            
+            shouldShowSearchResults = true
+            
+            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(DepartmentController.timerTextDidChange), userInfo: nil, repeats:false);
+            timer.fire()
+        }else{
+            shouldShowSearchResults = false
+        }
+    }
+    
+    @objc private func textFieldDidChange(notification:Notification){
+        
+        self.addTimerSearch()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int{
         
         if shouldShowSearchResults {
             return filteredArray.count
-        }
-        else {
+        }else {
             return dataSoure.count
         }
         

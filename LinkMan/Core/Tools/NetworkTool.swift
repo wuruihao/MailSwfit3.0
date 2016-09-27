@@ -110,9 +110,8 @@ class NetworkTool: NSObject {
         }
     }
     //组织结构请求
-    func departmentRequest(_ token: String, finishedSel:@escaping (_ data:[DepartmentData])->(),failedSel:@escaping (_ error:ETError)->()){
+    func departmentRequest(_ params: [String:String], finishedSel:@escaping (_ data:[DepartmentData])->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/user/list"
-        let params = ["token": token]
         print("url: \(url)")
         print("params: \(params)")
         
