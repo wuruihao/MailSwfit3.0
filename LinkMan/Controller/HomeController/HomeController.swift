@@ -54,7 +54,7 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
         }
         let headImage = UserDefaults().object(forKey: userHeadImg) as! String!
         if headImage != nil {
-            sanpImage.sd_setImage(with: URL.init(string: headImage!), placeholderImage: UIImage(named: "Login_male.png"))
+            sanpImage.sd_setImage(with: URL.init(string: headImage!), placeholderImage: UIImage(named: "sanp.png"))
         }
     }
     

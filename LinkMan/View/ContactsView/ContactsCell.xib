@@ -17,10 +17,15 @@
                 <frame key="frameInset" width="320" height="67"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YTN-eU-d8M">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YTN-eU-d8M">
                         <constraints>
                             <constraint firstAttribute="width" secondItem="YTN-eU-d8M" secondAttribute="height" multiplier="1:1" id="Du9-ld-I6U"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="吴瑞豪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXu-1N-Pls">
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -59,7 +64,7 @@
                     <constraint firstAttribute="trailing" secondItem="l2C-yV-tL8" secondAttribute="trailing" id="SPH-aB-D45"/>
                     <constraint firstItem="YTN-eU-d8M" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Tu7-4a-Scz"/>
                     <constraint firstItem="l2C-yV-tL8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="VHd-iM-rbY"/>
-                    <constraint firstItem="YTN-eU-d8M" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="3:4" id="dFk-V4-XJN"/>
+                    <constraint firstItem="YTN-eU-d8M" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="2.5:4" id="dFk-V4-XJN"/>
                     <constraint firstItem="QXu-1N-Pls" firstAttribute="top" secondItem="YTN-eU-d8M" secondAttribute="top" id="laD-pA-20H"/>
                     <constraint firstItem="d83-Ad-khs" firstAttribute="bottom" secondItem="YTN-eU-d8M" secondAttribute="bottom" id="mLy-EF-r0o"/>
                 </constraints>
@@ -69,7 +74,7 @@
                 <outlet property="sanpImage" destination="YTN-eU-d8M" id="oQf-F8-nZR"/>
                 <outlet property="subTitle" destination="d83-Ad-khs" id="PgZ-ka-vgn"/>
             </connections>
-            <point key="canvasLocation" x="382" y="342"/>
+            <point key="canvasLocation" x="391" y="-65"/>
         </tableViewCell>
     </objects>
     <resources>

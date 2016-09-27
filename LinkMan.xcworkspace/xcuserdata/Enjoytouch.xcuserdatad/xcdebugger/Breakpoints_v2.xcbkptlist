@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LinkMan/Controller/MineController/EditNickNameController.swift"
-            timestampString = "496574302.141576"
+            filePath = "LinkMan/Core/Tools/NetworkTool.swift"
+            timestampString = "496641586.272743"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "viewWillAppear(_:)"
+            startingLineNumber = "616"
+            endingLineNumber = "616"
+            landmarkName = "postImageRequest(_:token:finishedSel:failedSel:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

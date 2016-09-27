@@ -14,9 +14,9 @@
                 <outlet property="nameTextField" destination="MYj-uh-5KJ" id="Df9-ug-oU4"/>
                 <outlet property="naviItem" destination="obA-o7-5Su" id="7Cc-LH-Z9C"/>
                 <outlet property="nickNameTextField" destination="liT-7m-5M6" id="8ov-YK-wGF"/>
+                <outlet property="passLabel" destination="TBK-qk-uDo" id="uD9-58-aXg"/>
                 <outlet property="phoneTextField" destination="Ium-mC-Cg6" id="Uae-wo-Ucr"/>
-                <outlet property="sanpImage" destination="FGx-06-cFL" id="k6w-Jf-fPl"/>
-                <outlet property="sexTextField" destination="BHI-s3-n0p" id="2bu-rf-DbP"/>
+                <outlet property="sanpImage" destination="FGx-06-cFL" id="xyc-mZ-bdb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="workmMailbox" destination="tRG-V8-Ah1" id="Ak8-ci-Yol"/>
                 <outletCollection property="itemArray" destination="Fqw-Df-yrj" collectionClass="NSMutableArray" id="U9l-lv-Xx8"/>
@@ -41,7 +41,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="9tr-Fj-wSA"/>
                     </constraints>
-                    <color key="barTintColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="barTintColor" red="0.25490196078431371" green="0.29019607843137252" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </textAttributes>
@@ -72,11 +72,16 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_male.png" translatesAutoresizingMaskIntoConstraints="NO" id="FGx-06-cFL">
+                <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sanp.png" translatesAutoresizingMaskIntoConstraints="NO" id="FGx-06-cFL">
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="FGx-06-cFL" secondAttribute="height" multiplier="1:1" id="FOK-1f-x2O"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outletCollection property="gestureRecognizers" destination="YHX-Us-l7x" appends="YES" id="YZd-7O-iKp"/>
                     </connections>
@@ -91,25 +96,16 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="性别(非必须)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BHI-s3-n0p">
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                     </subviews>
-                    <color key="backgroundColor" red="0.70588235294117641" green="0.8901960784313725" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="BHI-s3-n0p" firstAttribute="top" secondItem="MYj-uh-5KJ" secondAttribute="bottom" constant="10" id="63c-j8-NJz"/>
                         <constraint firstItem="liT-7m-5M6" firstAttribute="height" secondItem="MYj-uh-5KJ" secondAttribute="height" id="CMk-Rc-1Ff"/>
                         <constraint firstItem="MYj-uh-5KJ" firstAttribute="top" secondItem="17M-nT-YEV" secondAttribute="top" constant="10" id="G8P-k6-fiY"/>
-                        <constraint firstItem="BHI-s3-n0p" firstAttribute="height" secondItem="MYj-uh-5KJ" secondAttribute="height" id="L4s-xl-o8p"/>
                         <constraint firstItem="MYj-uh-5KJ" firstAttribute="leading" secondItem="17M-nT-YEV" secondAttribute="leading" constant="10" id="N5T-4U-qEn"/>
                         <constraint firstItem="liT-7m-5M6" firstAttribute="leading" secondItem="MYj-uh-5KJ" secondAttribute="leading" id="QYk-Ws-aXI"/>
-                        <constraint firstItem="BHI-s3-n0p" firstAttribute="width" secondItem="MYj-uh-5KJ" secondAttribute="width" id="SLd-Ge-f8E"/>
                         <constraint firstAttribute="bottom" secondItem="liT-7m-5M6" secondAttribute="bottom" constant="10" id="aaE-2w-ITv"/>
                         <constraint firstAttribute="trailing" secondItem="MYj-uh-5KJ" secondAttribute="trailing" constant="10" id="bmM-hY-WYk"/>
                         <constraint firstItem="liT-7m-5M6" firstAttribute="width" secondItem="MYj-uh-5KJ" secondAttribute="width" id="cnn-lW-hh8"/>
-                        <constraint firstItem="liT-7m-5M6" firstAttribute="top" secondItem="BHI-s3-n0p" secondAttribute="bottom" constant="10" id="o1a-i0-iWV"/>
-                        <constraint firstItem="BHI-s3-n0p" firstAttribute="leading" secondItem="MYj-uh-5KJ" secondAttribute="leading" id="sjV-PS-mDs"/>
+                        <constraint firstItem="liT-7m-5M6" firstAttribute="top" secondItem="MYj-uh-5KJ" secondAttribute="bottom" constant="10" id="rZD-fJ-CSQ"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -119,7 +115,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXm-fi-Y4v" userLabel="部门">
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqw-Df-yrj">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqw-Df-yrj">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -132,7 +128,7 @@
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xB-TK-Ica">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xB-TK-Ica">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -145,7 +141,7 @@
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6U-lO-asP">
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6U-lO-asP">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -158,7 +154,7 @@
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hur-Eo-0UM">
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hur-Eo-0UM">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -171,7 +167,7 @@
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE4-YF-WPb">
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE4-YF-WPb">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -184,7 +180,7 @@
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6f-JT-3bb">
+                        <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6f-JT-3bb">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -197,7 +193,7 @@
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYe-7R-ph5">
+                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYe-7R-ph5">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -210,7 +206,7 @@
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flL-E1-oju">
+                        <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flL-E1-oju">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -230,7 +226,6 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.70588235294117641" green="0.8901960784313725" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="HEA-cf-IJC" firstAttribute="top" secondItem="Hur-Eo-0UM" secondAttribute="top" id="0Uf-do-2pF"/>
                         <constraint firstItem="Fqw-Df-yrj" firstAttribute="width" secondItem="cXm-fi-Y4v" secondAttribute="width" multiplier="1:5" id="2UY-Sr-zYX"/>
@@ -310,7 +305,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gV6-vg-162" userLabel="职位">
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMa-cb-7Pe">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMa-cb-7Pe">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -323,7 +318,7 @@
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEq-Ck-7Mm">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEq-Ck-7Mm">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -336,7 +331,7 @@
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jpg-tb-9mW">
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jpg-tb-9mW">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" image="Recommend_s-off.png"/>
                             <state key="selected" image="Recommend_s-on.png"/>
@@ -360,7 +355,6 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.70588235294117641" green="0.8901960784313725" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="hox-Zo-qZQ" firstAttribute="width" secondItem="Jpg-tb-9mW" secondAttribute="width" multiplier="2:3" id="18O-6s-rRQ"/>
                         <constraint firstItem="nEZ-dv-OnB" firstAttribute="top" secondItem="gV6-vg-162" secondAttribute="top" constant="10" id="54F-hD-CgL"/>
@@ -427,7 +421,6 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.70588235294117641" green="0.8901960784313725" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="TBK-qk-uDo" firstAttribute="leading" secondItem="MEH-CK-nta" secondAttribute="leading" id="0EA-q7-2mp"/>
                         <constraint firstItem="tRG-V8-Ah1" firstAttribute="top" secondItem="M8T-Wg-bmM" secondAttribute="top" id="6zc-Y1-sIO"/>
@@ -463,7 +456,7 @@
                 <constraint firstItem="gV6-vg-162" firstAttribute="top" secondItem="cXm-fi-Y4v" secondAttribute="bottom" constant="10" id="3rb-Kw-feQ"/>
                 <constraint firstAttribute="trailing" secondItem="17M-nT-YEV" secondAttribute="trailing" constant="15" id="52d-jv-s9l"/>
                 <constraint firstItem="pXG-Ws-psW" firstAttribute="leading" secondItem="cXm-fi-Y4v" secondAttribute="leading" id="5Hw-Th-fPf"/>
-                <constraint firstItem="cXm-fi-Y4v" firstAttribute="top" secondItem="pXG-Ws-psW" secondAttribute="bottom" constant="15" id="7X9-2f-EVm"/>
+                <constraint firstItem="cXm-fi-Y4v" firstAttribute="top" secondItem="pXG-Ws-psW" secondAttribute="bottom" id="7X9-2f-EVm"/>
                 <constraint firstItem="dVD-Xi-vgc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7mq-fX-628"/>
                 <constraint firstItem="pXG-Ws-psW" firstAttribute="top" secondItem="17M-nT-YEV" secondAttribute="bottom" constant="15" id="7ud-m3-NTx"/>
                 <constraint firstItem="Ium-mC-Cg6" firstAttribute="leading" secondItem="liT-7m-5M6" secondAttribute="leading" id="91P-pv-Z6M"/>
@@ -490,10 +483,10 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="Login_male.png" width="75" height="75"/>
         <image name="NaviBar_back.png" width="25" height="25"/>
         <image name="Recommend_s-off.png" width="15" height="15"/>
         <image name="Recommend_s-on.png" width="15" height="15"/>
         <image name="clear.png" width="3" height="3"/>
+        <image name="sanp.png" width="75" height="75"/>
     </resources>
 </document>

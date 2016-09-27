@@ -224,8 +224,8 @@ class NetworkTool: NSObject {
         }
     }
     
-    //编辑联系人请求
-    func editContactsRequest(_ params:NSDictionary,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
+    //个人编辑联系人请求
+    func editMyInfoRequest(_ params:[String:String],finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/user/save"
         print("url: \(url)")
         print("params: \(params)")
@@ -256,7 +256,39 @@ class NetworkTool: NSObject {
             failedSel(error)
         }
     }
-    
+    //经理编辑联系人请求
+    func editContactsRequest(_ params:[String:String],finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
+        let url = BASE_URL+"/user/levelSave"
+        print("url: \(url)")
+        print("params: \(params)")
+        
+        NetworkTool.manager.get(url,parameters:params,success: { (task:URLSessionDataTask?, response:Any?) in
+            
+            let result = response as? NSDictionary
+            print("result:\(result)")
+            
+            if self.isRequestSuccess(result!){
+                
+                let success = ETSuccess()
+                success.message = "请求成功"
+                finishedSel(success)
+                
+            }else{
+                
+                let errorDic = result?.object(forKey: "error")
+                let error = ETError.mj_object(withKeyValues: errorDic) as ETError
+                failedSel(error)
+            }
+            
+        }) { (task:URLSessionDataTask?, error:Error?) in
+            
+            print("加载失败...")
+            let error = ETError()
+            error.message = "网络不给力"
+            failedSel(error)
+        }
+    }
+
     //添加联系人请求
     func addFriendsContactsRequest(_ token: String,id: String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/user/add"
@@ -546,13 +578,14 @@ class NetworkTool: NSObject {
     }
     
     //图片上传请求
-    func postImageRequest(_ images: NSArray,finishedSel:@escaping (_ data:ImageData)->(),failedSel:@escaping (_ error:ETError)->()){
-        let url = BASE_URL+"/user/uploadsurl"
+    func postImageRequest(_ images: NSArray,token: String,finishedSel:@escaping (_ data:[ImageData])->(),failedSel:@escaping (_ error:ETError)->()){
+        let url = BASE_URL+"/uploadsurl"
         print("url: \(url)")
-        
+        let params = ["token": token]
+        print("params: \(params)")
         let uploads = self.getImageDatasWithImages(images: images)
         
-        NetworkTool.manager.post(url, parameters: nil, constructingBodyWith: { (formData:AFMultipartFormData?) in
+        NetworkTool.manager.post(url, parameters: params, constructingBodyWith: { (formData:AFMultipartFormData?) in
             
             for i in 0...uploads.count-1 {
                 let proptys = uploads.object(at: i) as! NSArray
@@ -571,7 +604,7 @@ class NetworkTool: NSObject {
                     //json 转化成字典 并进行数据解析
                     let data = result?.object(forKey: "data")
                     // 字典转模型(MJExtension)
-                    let imageData = ImageData.mj_object(withKeyValues: data) as ImageData
+                    let imageData = ImageData.mj_objectArray(withKeyValuesArray: data).mutableCopy() as! [ImageData]
                     finishedSel(imageData)
                 }else{
                     let errorDic = result?.object(forKey: "error")

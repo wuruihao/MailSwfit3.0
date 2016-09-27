@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +24,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="div-DS-lpW">
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_male.png" translatesAutoresizingMaskIntoConstraints="NO" id="dzh-ca-YsC">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sanp.png" translatesAutoresizingMaskIntoConstraints="NO" id="dzh-ca-YsC">
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="dzh-ca-YsC" secondAttribute="height" multiplier="1:1" id="jxM-Ba-BXj"/>
                             </constraints>
@@ -46,17 +45,17 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.25490196078431371" green="0.29019607843137252" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="0op-WB-OOj" firstAttribute="top" secondItem="dzh-ca-YsC" secondAttribute="centerY" id="0AZ-oj-p0m"/>
+                        <constraint firstItem="0op-WB-OOj" firstAttribute="top" secondItem="dzh-ca-YsC" secondAttribute="centerY" multiplier="1.05:1" id="0AZ-oj-p0m"/>
                         <constraint firstItem="nI2-M2-ZLo" firstAttribute="centerX" secondItem="div-DS-lpW" secondAttribute="centerX" id="8zV-Dy-93C"/>
                         <constraint firstItem="dzh-ca-YsC" firstAttribute="height" secondItem="div-DS-lpW" secondAttribute="height" multiplier="1:2.5" id="N5h-Ru-m7v"/>
-                        <constraint firstItem="nI2-M2-ZLo" firstAttribute="width" secondItem="div-DS-lpW" secondAttribute="width" multiplier="1:3" id="Ncp-gI-3kt"/>
-                        <constraint firstItem="dzh-ca-YsC" firstAttribute="leading" secondItem="div-DS-lpW" secondAttribute="leading" constant="20" id="WxZ-3d-FtM"/>
-                        <constraint firstItem="dzh-ca-YsC" firstAttribute="centerY" secondItem="div-DS-lpW" secondAttribute="centerY" id="dNi-LF-Aga"/>
+                        <constraint firstItem="nI2-M2-ZLo" firstAttribute="width" secondItem="div-DS-lpW" secondAttribute="width" multiplier="1:2.5" id="Ncp-gI-3kt"/>
+                        <constraint firstItem="dzh-ca-YsC" firstAttribute="leading" secondItem="div-DS-lpW" secondAttribute="leading" constant="30" id="WxZ-3d-FtM"/>
+                        <constraint firstItem="dzh-ca-YsC" firstAttribute="centerY" secondItem="div-DS-lpW" secondAttribute="centerY" constant="10" id="dNi-LF-Aga"/>
                         <constraint firstItem="0op-WB-OOj" firstAttribute="width" secondItem="nI2-M2-ZLo" secondAttribute="width" id="usH-yL-RWj"/>
                         <constraint firstItem="0op-WB-OOj" firstAttribute="centerX" secondItem="div-DS-lpW" secondAttribute="centerX" id="vWU-vw-8xx"/>
-                        <constraint firstItem="nI2-M2-ZLo" firstAttribute="bottom" secondItem="dzh-ca-YsC" secondAttribute="centerY" multiplier="0.9:1" id="xhA-oF-9Xs"/>
+                        <constraint firstItem="nI2-M2-ZLo" firstAttribute="bottom" secondItem="dzh-ca-YsC" secondAttribute="centerY" multiplier="0.95:1" id="xhA-oF-9Xs"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSu-1A-JTp">
@@ -97,6 +96,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Login_male.png" width="75" height="75"/>
+        <image name="sanp.png" width="75" height="75"/>
     </resources>
 </document>

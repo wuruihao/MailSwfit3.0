@@ -9,7 +9,7 @@
 import UIKit
 
 class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
- 
+    
     
     @IBOutlet weak var searchView: UIView!
     
@@ -46,12 +46,12 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
         
     }
     func demo(){
-
+        
         let token = UserDefaults().object(forKey: userToken) as! String!
         NetworkTool.shareNetworkTool.departmentRequest(token!, finishedSel: { (data:[DepartmentData]) in
             
             print("data\(data)")
-
+            
             self.dataSoure = data
             self.tableView.reloadData()
             
@@ -60,13 +60,18 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
         }) { (error:ETError) in
             
             print("error\(error)")
-            
+            let array = CoreDataTool.shared.printAllDataWithCoreData()
+            let dep = array.mutableCopy() as! [DepartmentData]
+            self.dataSoure = dep
+            self.tableView.reloadData()
         }
         
-        let array = CoreDataTool.shared.printAllDataWithCoreData()
-        let dep = array.mutableCopy() as! [DepartmentData]
-        self.dataSoure = dep
-        self.tableView.reloadData()
+        /*
+         let array = CoreDataTool.shared.printAllDataWithCoreData()
+         let dep = array.mutableCopy() as! [DepartmentData]
+         self.dataSoure = dep
+         self.tableView.reloadData()
+         */
     }
     
     @IBAction func addContacts(_ sender: UIButton) {
@@ -130,7 +135,6 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
         let data = department.members?[(indexPath as NSIndexPath).row] as! MemberData
         
         let staffInformationVC = StaffInformationController()
-        staffInformationVC.type = data.level
         staffInformationVC.memberData = data
         staffInformationVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(staffInformationVC, animated: true)

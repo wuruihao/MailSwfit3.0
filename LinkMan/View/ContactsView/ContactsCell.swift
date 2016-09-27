@@ -27,11 +27,11 @@ class ContactsCell: UITableViewCell {
     }
     
     func setData(data:MemberData){
-        
+
         if data.head_img != nil {
-            sanpImage.sd_setImage(with: URL.init(string: data.head_img!), placeholderImage: UIImage(named: "Login_male.png"))
+            sanpImage.sd_setImage(with: URL.init(string: data.head_img!), placeholderImage: UIImage(named: "sanp.png"))
         }else{
-            sanpImage.image = UIImage(named: "Login_male.png")
+            sanpImage.image = UIImage(named: "sanp.png")
         }
         if data.name != nil {
             name.text = data.name

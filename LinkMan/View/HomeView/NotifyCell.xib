@@ -17,10 +17,15 @@
                 <frame key="frameInset" width="320" height="74"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_male.png" translatesAutoresizingMaskIntoConstraints="NO" id="gdt-JR-7es">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sanp.png" translatesAutoresizingMaskIntoConstraints="NO" id="gdt-JR-7es">
                         <constraints>
                             <constraint firstAttribute="width" secondItem="gdt-JR-7es" secondAttribute="height" multiplier="1:1" id="aXO-46-SyW"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="吴瑞豪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Na-5h-dCs">
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -93,6 +98,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Login_male.png" width="75" height="75"/>
+        <image name="sanp.png" width="75" height="75"/>
     </resources>
 </document>

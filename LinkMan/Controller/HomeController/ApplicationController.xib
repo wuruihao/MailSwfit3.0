@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5Y-w0-MQl">
-                    <color key="backgroundColor" red="0.75686274509999996" green="0.76078431369999999" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.25490196078431371" green="0.29019607843137252" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="我提交的">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -30,7 +30,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MV3-ZB-pKZ">
-                    <color key="backgroundColor" red="0.75686274509999996" green="0.76078431369999999" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.25490196078431371" green="0.29019607843137252" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="待我审批">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -42,7 +42,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="CyG-KH-RCp"/>
                     </constraints>
-                    <color key="barTintColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="barTintColor" red="0.25490196078431371" green="0.29019607843137252" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </textAttributes>
@@ -72,7 +72,7 @@
                     </items>
                 </navigationBar>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzd-h5-tse">
-                    <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="2" id="Cw5-3T-PU7"/>
                     </constraints>
@@ -88,11 +88,11 @@
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.97647058823529409" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="Y5Y-w0-MQl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="01X-Lf-TL3"/>
                 <constraint firstItem="MV3-ZB-pKZ" firstAttribute="height" secondItem="Y5Y-w0-MQl" secondAttribute="height" id="21h-jH-rtd"/>
-                <constraint firstItem="jdS-Y4-KtQ" firstAttribute="top" secondItem="Y5Y-w0-MQl" secondAttribute="bottom" id="6Fn-Mq-bhl"/>
+                <constraint firstItem="jdS-Y4-KtQ" firstAttribute="top" secondItem="Y5Y-w0-MQl" secondAttribute="bottom" constant="2" id="6Fn-Mq-bhl"/>
                 <constraint firstItem="Y5Y-w0-MQl" firstAttribute="top" secondItem="X8L-kI-xni" secondAttribute="bottom" id="EdX-zr-0vi"/>
                 <constraint firstAttribute="trailing" secondItem="jdS-Y4-KtQ" secondAttribute="trailing" id="Ggv-xP-VMz"/>
                 <constraint firstItem="X8L-kI-xni" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="HOM-Y0-G1H"/>
@@ -109,7 +109,7 @@
                 <constraint firstItem="MV3-ZB-pKZ" firstAttribute="leading" secondItem="Y5Y-w0-MQl" secondAttribute="trailing" id="set-cN-p2Y"/>
                 <constraint firstItem="X8L-kI-xni" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="t4f-DP-j0z"/>
             </constraints>
-            <point key="canvasLocation" x="-110" y="9"/>
+            <point key="canvasLocation" x="-110.5" y="8.5"/>
         </view>
     </objects>
     <resources>

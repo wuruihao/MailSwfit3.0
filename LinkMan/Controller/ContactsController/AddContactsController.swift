@@ -11,23 +11,24 @@ import UIKit
 class AddContactsController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var sexTextField: UITextField!
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var workmMailbox: UITextField!
     @IBOutlet weak var companyTextField: UITextField!
     @IBOutlet weak var sanpImage: UIImageView!
+    @IBOutlet weak var passLabel: UILabel!
+    
     @IBOutlet var itemArray: [UIButton]!
     @IBOutlet var levelItems: [UIButton]!
     @IBOutlet weak var naviItem: UINavigationItem!
-
+    
     let imagePickerController: UIImagePickerController = UIImagePickerController()
     
+    var memberData: MemberData!
     var departmentName: String! = String()
     var level: String! = String()
-    
-    var memberData: MemberData!
     var type: String!
+    var sanpurl: String!
     
     override func viewDidLoad() {
         
@@ -44,13 +45,19 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
         
         super.viewWillAppear(animated)
         setEditData()
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.hideHud()
     }
     override func didReceiveMemoryWarning() {
-        
         super.didReceiveMemoryWarning()
     }
     
+    /// 编辑头像
+    ///
+    /// - parameter sender:
     @IBAction func editSanpInfo(_ sender: UITapGestureRecognizer) {
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -63,47 +70,43 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
         alertController.addAction(UIAlertAction(title: "取消", style: .cancel, handler:nil))
         self.present(alertController, animated: true, completion: nil)
     }
-    func openPhotoAction(type: UIImagePickerControllerSourceType){
-       
-        // 判断是否支持相册
-        if UIImagePickerController.isSourceTypeAvailable(type){
-            if type == .photoLibrary {
-                // 设置类型
-                imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
-                //改navigationBar背景色
-                imagePickerController.navigationBar.barTintColor = UIColor(red: 171/255, green: 202/255, blue: 41/255, alpha: 1.0)
-                //改navigationBar标题色
-                imagePickerController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-                //改navigationBar的button字体色
-                imagePickerController.navigationBar.tintColor = UIColor.white
-                self.present(imagePickerController, animated: true, completion: nil)
-            }else{
-                // 设置类型
-                imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
-                self.present(imagePickerController, animated: true, completion: nil)
-            }
-
-        }else{
-            // 创建
-            let alertController = UIAlertController(title: "提示", message: "设备不支持此功能", preferredStyle:.alert)
-            // 设置UIAlertAction
-            let cancelAction = UIAlertAction(title: "知道了", style: .cancel, handler: nil)
-            // 添加
-            alertController.addAction(cancelAction)
-            // 弹出
-            self.present(alertController, animated: true, completion: nil)
-            return
+    
+    /// 返回
+    ///
+    /// - parameter sender:
+    @IBAction func backAction(_ sender: AnyObject) {
+        
+        
+        // 创建
+        let alertController = UIAlertController(title: nil, message:"你确定放弃此次编辑?", preferredStyle:.alert)
+        // 设置UIAlertAction
+        let cancelAction = UIAlertAction(title: "确定", style: .default) { (UIAlertAction) in
+             _ =  self.navigationController?.popViewController(animated: true)
         }
+        let defaulAction = UIAlertAction(title: "取消", style: .cancel, handler:nil)
+        // 添加
+        alertController.addAction(cancelAction)
+        alertController.addAction(defaulAction)
+        // 弹出
+        self.present(alertController, animated: true, completion: nil)
     }
     
+    /// 初始化编辑信息
     func setEditData(){
+        
         if type == "编辑" {
             naviItem.title = "编辑联系人"
             nameTextField.text = memberData.name
             phoneTextField.text = memberData.mobile
             workmMailbox.text = memberData.email
             nickNameTextField.text = memberData.nickname
-            sexTextField.text = memberData.sex
+            if memberData.head_img != nil {
+                self.sanpImage.sd_setImage(with: URL.init(string: memberData.head_img!), placeholderImage: UIImage(named: "sanp.png"))
+            }else{
+                self.sanpImage.image = UIImage(named: "sanp.png")
+            }
+            passLabel.isHidden = true
+            companyTextField.isHidden = true
             for item in itemArray {
                 if item.tag == memberData.department_id {
                     item.isSelected = true
@@ -114,7 +117,6 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
                     departmentName = String(format: "%d", item.tag)
                 }
             }
-            
             for item in levelItems {
                 let index = String(format: "%d", item.tag)
                 if index == memberData.level_id {
@@ -128,25 +130,24 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }else{
             naviItem.title = "新增联系人"
+            passLabel.isHidden = false
+            companyTextField.isHidden = false
         }
     }
     
-    @IBAction func backAction(_ sender: AnyObject) {
-        
-        _ =  self.navigationController?.popViewController(animated: true)
-        
-    }
-    
+    /// textField隐藏
     func textResignFirstResponder(){
         
         nameTextField.resignFirstResponder()
-        sexTextField.resignFirstResponder()
         nickNameTextField.resignFirstResponder()
         phoneTextField.resignFirstResponder()
         workmMailbox.resignFirstResponder()
         companyTextField.resignFirstResponder()
     }
     
+    /// 提交编辑或添加联系人请求
+    ///
+    /// - parameter sender:
     @IBAction func sureSubmitServer(_ sender: UIButton) {
         
         if nameTextField.text == "" {
@@ -174,48 +175,59 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
             self.showHint("请选择职位")
             return
         }
+        if type != "编辑" {
+            if companyTextField.text == "" {
+                self.showHint("请输入账号密码")
+                companyTextField.becomeFirstResponder()
+                return
+            }
+        }
+        sendRequest()
         
-        /*
-         if companyTextField.text == "" {
-         alertView.title = "请输入账号密码"
-         alertView.show()
-         let time: TimeInterval = 1.0
-         let delayTime = DispatchTime.now() + Double(Int64(time * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-         DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-         alertView.dismiss(withClickedButtonIndex: 0, animated: true)
-         }
-         companyTextField.becomeFirstResponder()
-         return
-         }
-         */
+    }
+    
+    /// 网络请求
+    func sendRequest(){
+        
         let token = UserDefaults().object(forKey: userToken) as! String!
         if type == "编辑" {
-            let id = String(format: "%d", memberData.id)
             
-            let params = ["id": id,"token": token!,"mobile": phoneTextField.text!,"email": workmMailbox.text!,"department_id": description,"level_id": level,"head_img":"","nickname":nickNameTextField.text!,"name":nameTextField.text!]
-
-            NetworkTool.shareNetworkTool.editContactsRequest(params as NSDictionary, finishedSel: { (data:ETSuccess) in
-                
-                 _ =  self.navigationController?.popToRootViewController(animated: true)
+            let id = String(format: "%d", memberData.id)
+            let params = ["id": id,"token": token!,"mobile": phoneTextField.text!,"email": workmMailbox.text!,"department_id":  departmentName,"level_id": level,"nickname":nickNameTextField.text!,"name":nameTextField.text!,"uri":sanpurl]
+            self.showHud(in: self.view, hint: messageLogin)
+            NetworkTool.shareNetworkTool.editContactsRequest(params as! [String:String], finishedSel: { (data:ETSuccess) in
+                self.hideHud()
+                _ =  self.navigationController?.popToRootViewController(animated: true)
                 
                 }, failedSel: { (error:ETError) in
+                    self.hideHud()
                     self.showHint(error.message!)
             })
         }else{
+            self.showHud(in: self.view, hint: messageLogin)
             NetworkTool.shareNetworkTool.addContactsRequest(nameTextField.text!,token:token!,mobile: phoneTextField.text!,email: workmMailbox.text!, departmentName: departmentName, level: level,password:companyTextField.text!, finishedSel: { (success:ETSuccess) in
+                self.hideHud()
                 _ =  self.navigationController?.popViewController(animated: true)
                 
             }) { (error:ETError) in
+                self.hideHud()
                 self.showHint(error.message!)
             }
         }
     }
     
+    /// 点击空白隐藏键盘
+    ///
+    /// - parameter touches:
+    /// - parameter event:
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.view.endEditing(true)
     }
     
+    /// 选择部门
+    ///
+    /// - parameter sender:
     @IBAction func selectDepartmentWithTypes(_ sender: UIButton) {
         
         for item in itemArray {
@@ -230,6 +242,9 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
+    /// 选择职位
+    ///
+    /// - parameter sender:
     @IBAction func selectLevelWithTypes(_ sender: UIButton) {
         
         for item in levelItems {
@@ -244,6 +259,89 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
+    /// 打开相机或相册
+    ///
+    /// - parameter type:
+    func openPhotoAction(type: UIImagePickerControllerSourceType){
+        
+        // 判断是否支持相册
+        if UIImagePickerController.isSourceTypeAvailable(type){
+            if type == .photoLibrary {
+                // 设置类型
+                imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                //改navigationBar背景色
+                imagePickerController.navigationBar.barTintColor = UIColor(red: 171/255, green: 202/255, blue: 41/255, alpha: 1.0)
+                //改navigationBar标题色
+                imagePickerController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+                //改navigationBar的button字体色
+                imagePickerController.navigationBar.tintColor = UIColor.white
+                self.present(imagePickerController, animated: true, completion: nil)
+            }else{
+                // 设置类型
+                imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            }
+            
+        }else{
+            // 创建
+            let alertController = UIAlertController(title: "提示", message: "设备不支持此功能", preferredStyle:.alert)
+            // 设置UIAlertAction
+            let cancelAction = UIAlertAction(title: "知道了", style: .cancel, handler: nil)
+            // 添加
+            alertController.addAction(cancelAction)
+            // 弹出
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+    }
+    //实现ImagePicker delegate 事件
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
+        
+        picker.dismiss(animated: true, completion: nil)
+        var image: UIImage!
+        // 判断，图片是否允许修改
+        if(picker.allowsEditing){
+            //裁剪后图片
+            image = info[UIImagePickerControllerEditedImage] as! UIImage
+        }else{
+            //原始图片
+            image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        }
+        /* 此处info 有六个值
+         * UIImagePickerControllerMediaType; // an NSString UTTypeImage)
+         * UIImagePickerControllerOriginalImage;  // a UIImage 原始图片
+         * UIImagePickerControllerEditedImage;    // a UIImage 裁剪后图片
+         * UIImagePickerControllerCropRect;       // an NSValue (CGRect)
+         * UIImagePickerControllerMediaURL;       // an NSURL
+         * UIImagePickerControllerReferenceURL    // an NSURL that references an asset in the AssetsLibrary framework
+         * UIImagePickerControllerMediaMetadata    // an NSDictionary containing metadata from a captured photo
+         */
+        //在这里调用网络通讯方法，上传头像至服务器...
+        
+        let images = NSArray(objects: image,"jpeg")
+        let uploads = NSMutableArray()
+        uploads.add(images)
+        let token = UserDefaults().object(forKey: userToken) as! String!
+        NetworkTool.shareNetworkTool.postImageRequest(uploads, token: token!, finishedSel: { (data:[ImageData]) in
+            self.hideHud()
+            let imageData = data[0]
+            if imageData.uri != nil {
+                self.sanpurl = imageData.uri
+                self.sanpImage.sd_setImage(with: URL.init(string: imageData.url!), placeholderImage: UIImage(named: "sanp.png"))
+            }
+            
+        }) { (error:ETError) in
+            
+            self.hideHud()
+            self.showHint(error.message!)
+            print("error:\(error)")
+        }
+        
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     
     //注册键盘出现
     func registerKeyBoardShow(target: UIViewController) {

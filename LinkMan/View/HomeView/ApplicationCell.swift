@@ -30,7 +30,7 @@ class ApplicationCell: UITableViewCell {
     
     func setData(_ data:LeaveData){
         
-        snap.image = UIImage(named: "Login_male.png")
+        snap.image = UIImage(named: "sanp.png")
         name.text = data.name
         
         /// 这些判断都没有用

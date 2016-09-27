@@ -20,33 +20,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDI-ef-1dI">
-                    <constraints>
-                        <constraint firstAttribute="height" constant="64" id="Yqu-5f-POZ"/>
-                    </constraints>
-                    <color key="barTintColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <textAttributes key="titleTextAttributes">
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </textAttributes>
-                    <items>
-                        <navigationItem title="部门架构" id="aDK-RF-Iyh">
-                            <barButtonItem key="rightBarButtonItem" image="clear.png" id="1f3-OY-ewU">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oK7-ng-6XN">
-                                    <rect key="frame" x="334" y="29" width="25" height="25"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="addContacts.png"/>
-                                    <connections>
-                                        <action selector="addContacts:" destination="-1" eventType="touchUpInside" id="Rxt-yA-j2g"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVy-C4-Yc5">
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMf-kT-hhs">
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.25490196078431371" green="0.29019607843137252" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="取消">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -80,10 +57,10 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.25490196078431371" green="0.29019607843137252" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="FgG-88-Hpo" firstAttribute="leading" secondItem="xVy-C4-Yc5" secondAttribute="leading" constant="15" id="7p5-bv-vdM"/>
-                        <constraint firstAttribute="height" constant="60" id="F2o-Fh-XXn"/>
+                        <constraint firstAttribute="height" constant="50" id="F2o-Fh-XXn"/>
                         <constraint firstItem="FgG-88-Hpo" firstAttribute="top" secondItem="xVy-C4-Yc5" secondAttribute="top" constant="10" id="JED-6t-t46"/>
                         <constraint firstItem="FgG-88-Hpo" firstAttribute="width" secondItem="xVy-C4-Yc5" secondAttribute="width" multiplier="7.5:10" id="Yyk-dN-7cP"/>
                         <constraint firstItem="pMf-kT-hhs" firstAttribute="leading" secondItem="FgG-88-Hpo" secondAttribute="trailing" constant="10" id="haA-IV-836"/>
@@ -99,19 +76,42 @@
                         <outlet property="delegate" destination="-1" id="4tE-Yw-0vf"/>
                     </connections>
                 </tableView>
+                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyh-AH-HP5">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="6ux-LI-VP2"/>
+                    </constraints>
+                    <color key="barTintColor" red="0.25490196079999999" green="0.2901960784" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="部门架构" id="w17-MM-fqH">
+                            <barButtonItem key="rightBarButtonItem" image="clear.png" id="aP2-Or-9gT">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TSS-aB-jh3">
+                                    <rect key="frame" x="334" y="29" width="25" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="addContacts.png"/>
+                                    <connections>
+                                        <action selector="addContacts:" destination="-1" eventType="touchUpInside" id="NZ9-jf-O4q"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="Yyh-AH-HP5" secondAttribute="trailing" id="3Ff-qn-NAo"/>
                 <constraint firstItem="Q8l-zY-e8e" firstAttribute="top" secondItem="xVy-C4-Yc5" secondAttribute="bottom" id="8jz-Ev-pgg"/>
                 <constraint firstAttribute="bottom" secondItem="Q8l-zY-e8e" secondAttribute="bottom" constant="49" id="9JW-BR-jNu"/>
                 <constraint firstAttribute="trailing" secondItem="xVy-C4-Yc5" secondAttribute="trailing" id="HIy-E8-nB5"/>
                 <constraint firstItem="xVy-C4-Yc5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jly-ui-GBS"/>
-                <constraint firstAttribute="trailing" secondItem="zDI-ef-1dI" secondAttribute="trailing" id="Rd7-6M-dxJ"/>
-                <constraint firstItem="zDI-ef-1dI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Wef-Xy-YUL"/>
-                <constraint firstItem="zDI-ef-1dI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Zca-gS-4cf"/>
-                <constraint firstItem="xVy-C4-Yc5" firstAttribute="top" secondItem="zDI-ef-1dI" secondAttribute="bottom" id="fCI-tq-sot"/>
                 <constraint firstAttribute="trailing" secondItem="Q8l-zY-e8e" secondAttribute="trailing" id="kVD-8g-62O"/>
+                <constraint firstItem="xVy-C4-Yc5" firstAttribute="top" secondItem="Yyh-AH-HP5" secondAttribute="bottom" id="m5m-xu-x61"/>
+                <constraint firstItem="Yyh-AH-HP5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pd8-uL-0CW"/>
                 <constraint firstItem="Q8l-zY-e8e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ukm-GB-8QR"/>
+                <constraint firstItem="Yyh-AH-HP5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vJc-Oz-rZ9"/>
             </constraints>
             <point key="canvasLocation" x="62.5" y="74.5"/>
         </view>

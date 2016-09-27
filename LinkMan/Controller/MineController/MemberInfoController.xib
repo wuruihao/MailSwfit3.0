@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MemberInfoController" customModule="LinkMan" customModuleProvider="target">
             <connections>
+                <outlet property="emailLabel" destination="JOf-fl-n8i" id="MPH-mu-ROx"/>
                 <outlet property="nameLabel" destination="Epg-wM-N44" id="XXV-ZQ-8Ae"/>
                 <outlet property="phoneLabel" destination="avF-k6-juq" id="hA2-8N-G4O"/>
                 <outlet property="sanpImage" destination="Pi8-Gg-h8i" id="6PC-vb-jgc"/>
@@ -26,7 +27,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="rPO-90-IaS"/>
                     </constraints>
-                    <color key="barTintColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="barTintColor" red="0.25490196078431371" green="0.29019607843137252" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </textAttributes>
@@ -57,10 +58,15 @@
                                 <constraint firstAttribute="width" secondItem="Bu2-VS-uaT" secondAttribute="height" multiplier="12:13" id="5tU-ge-fh8"/>
                             </constraints>
                         </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_none.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pi8-Gg-h8i">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sanp.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pi8-Gg-h8i">
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Pi8-Gg-h8i" secondAttribute="height" multiplier="1:1" id="ubl-cE-3sT"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -91,7 +97,7 @@
                                 <constraint firstAttribute="width" secondItem="9z0-0i-YCO" secondAttribute="height" multiplier="12:13" id="Bjr-aU-bLM"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某某某" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epg-wM-N44">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epg-wM-N44">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -159,7 +165,7 @@
                                 <constraint firstAttribute="width" secondItem="Hy8-lg-Fmo" secondAttribute="height" multiplier="12:13" id="xNw-xr-DVh"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="156****6623" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avF-k6-juq">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avF-k6-juq">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -193,7 +199,7 @@
                                 <constraint firstAttribute="width" secondItem="Vk5-M9-A6Q" secondAttribute="height" multiplier="12:13" id="ItI-fb-c9H"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1029848519@qq.com" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOf-fl-n8i">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOf-fl-n8i">
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -280,9 +286,9 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="Login_none.png" width="75" height="75"/>
         <image name="Mine_gray_arrow.png" width="27" height="27"/>
         <image name="NaviBar_back.png" width="25" height="25"/>
         <image name="clear.png" width="3" height="3"/>
+        <image name="sanp.png" width="75" height="75"/>
     </resources>
 </document>

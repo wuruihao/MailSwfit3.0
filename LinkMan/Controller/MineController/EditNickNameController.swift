@@ -11,6 +11,9 @@ import UIKit
 class EditNickNameController: UIViewController , UITextFieldDelegate{
     
     @IBOutlet weak var textField: UITextField!
+    
+    var type :String!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -21,11 +24,23 @@ class EditNickNameController: UIViewController , UITextFieldDelegate{
         
         super.viewWillAppear(animated)
         
-        let nickname = UserDefaults().object(forKey: userNickname) as! String!
-        if title != nil {
-            textField.text = nickname
+        var text:String! = nil
+        switch type {
+        case "昵称":
+            text = UserDefaults().object(forKey: userNickname) as! String!
+            break
+        case "手机":
+            //text = UserDefaults().object(forKey: userMobile) as! String!
+            break
+        case "邮箱":
+            text = UserDefaults().object(forKey: userEmail) as! String!
+            break
+        default:
+            break
         }
-        
+        if text != nil {
+            textField.text = text
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,9 +56,10 @@ class EditNickNameController: UIViewController , UITextFieldDelegate{
         
         let token = UserDefaults().object(forKey: userToken) as! String!
         let params = ["token": token,"nickname":textField.text!]
-        NetworkTool.shareNetworkTool.editContactsRequest(params as NSDictionary, finishedSel: { (data:ETSuccess) in
-            
-            _ = self.navigationController?.popToRootViewController(animated: true)
+        NetworkTool.shareNetworkTool.editMyInfoRequest(params as! [String : String], finishedSel: { (data:ETSuccess) in
+
+            UserDefaults().set(self.textField.text! as String, forKey: userNickname)
+            _ = self.navigationController?.popViewController(animated: true)
             
         }) { (error:ETError) in
             self.hideHud()

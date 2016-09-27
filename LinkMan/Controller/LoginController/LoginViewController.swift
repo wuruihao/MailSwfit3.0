@@ -90,5 +90,8 @@ class LoginViewController: UIViewController {
         if data.department != nil {
             defaults.set(data.department! as String, forKey: userDepartment)
         }
+        if data.email != nil {
+            defaults.set(data.email! as String, forKey: userEmail)
+        }
     }
 }

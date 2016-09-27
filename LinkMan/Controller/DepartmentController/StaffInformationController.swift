@@ -15,6 +15,7 @@ class StaffInformationController: UIViewController {
     @IBOutlet weak var phoneNum: UILabel!
     @IBOutlet weak var workMailbox: UILabel!
     @IBOutlet weak var editBtn: UIButton!
+    @IBOutlet weak var sanpImage: UIImageView!
     
     var memberData: MemberData!
     var type: String!
@@ -27,6 +28,7 @@ class StaffInformationController: UIViewController {
         
         super.viewWillAppear(animated)
         
+        type = UserDefaults().object(forKey: userLevel) as! String!
         if type == "经理" {
             editBtn.isHidden = false
         }else {
@@ -108,6 +110,11 @@ class StaffInformationController: UIViewController {
         subTitle.text = data.department
         phoneNum.text = data.mobile
         workMailbox.text = data.email
+        if data.head_img != nil {
+            sanpImage.sd_setImage(with: URL.init(string: data.head_img!), placeholderImage: UIImage(named: "sanp.png"))
+        }else{
+            sanpImage.image = UIImage(named: "sanp.png")
+        }
     }
     
 }

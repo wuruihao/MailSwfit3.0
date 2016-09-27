@@ -18,13 +18,12 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var sexLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     
     let imagePickerController: UIImagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        sanpImage.layer.cornerRadius = sanpImage.width*0.5
         
         imagePickerController.delegate = self;
         imagePickerController.allowsEditing = true
@@ -40,27 +39,27 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
         
         let headImage = UserDefaults().object(forKey: userHeadImg) as! String!
         if headImage != nil {
-            sanpImage.sd_setImage(with: URL.init(string: headImage!), placeholderImage: UIImage(named: "Login_male.png"))
+            sanpImage.sd_setImage(with: URL.init(string: headImage!), placeholderImage: UIImage(named: "sanp.png"))
         }
         let nickname = UserDefaults().object(forKey: userNickname) as! String!
         if nickname != nil {
             nameLabel.text = nickname
         }
-
+        
         let sex = UserDefaults().object(forKey: userSex) as! String!
         if sex != nil {
-            if sex == "1" {
-                sexLabel.text = "男"
-            }else{
-                sexLabel.text = "女"
-            }
+            sexLabel.text = sex
         }
-
-        //let mobile = UserDefaults().object(forKey: userMobile) as! String!
-        //if mobile != nil {
-        //    phoneLabel.text = mobile
-       // }
-
+        
+        let mobile = UserDefaults().object(forKey: userMobile) as! String!
+        if mobile != nil {
+            phoneLabel.text = mobile
+        }
+        
+        let email = UserDefaults().object(forKey: userEmail) as! String!
+        if email != nil {
+            emailLabel.text = email
+        }
     }
     
     @IBAction func backAction(_ sender: AnyObject) {
@@ -87,33 +86,76 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
             break
         //昵称编辑
         case 1:
-            self.navigationController?.pushViewController(EditNickNameController(), animated: true)
+            let editNickNameVC = EditNickNameController()
+            editNickNameVC.type = "昵称"
+            self.navigationController?.pushViewController(editNickNameVC, animated: true)
             break
         case 2:
             
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             alertController.addAction(UIAlertAction(title: "男", style: .default, handler: { (action:UIAlertAction) in
                 self.sexLabel.text = "男"
+                UserDefaults().set(self.sexLabel.text! as String, forKey: userSex)
             }))
             alertController.addAction(UIAlertAction(title: "女", style: .default, handler: { (action:UIAlertAction) in
                 self.sexLabel.text = "女"
+                UserDefaults().set(self.sexLabel.text! as String, forKey: userSex)
             }))
             alertController.addAction(UIAlertAction(title: "取消", style: .cancel, handler:nil))
             self.present(alertController, animated: true, completion: nil)
             
             break
         case 3:
-            
+            let editNickNameVC = EditNickNameController()
+            editNickNameVC.type = "手机"
+            self.navigationController?.pushViewController(editNickNameVC, animated: true)
             break
         case 4:
-            
+            let editNickNameVC = EditNickNameController()
+            editNickNameVC.type = "邮箱"
+            self.navigationController?.pushViewController(editNickNameVC, animated: true)
             break
         default:
             break
         }
         
     }
+    func sendEditRequest(params:[String:String]){
+        
+        NetworkTool.shareNetworkTool.editMyInfoRequest(params , finishedSel: { (data:ETSuccess) in
+            
+            _ = self.navigationController?.popViewController(animated: true)
+            
+        }) { (error:ETError) in
+            self.hideHud()
+            self.showHint(error.message!)
+            print("error:\(error)")
+        }
+        
+    }
+    
     func openPhotoAction(type: UIImagePickerControllerSourceType){
+        
+        
+        let authStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        
+        if authStatus == .restricted || authStatus == .denied {
+            
+            // 创建
+            let alertController = UIAlertController(title: "无法访问相机", message: "请在'设置->隐私->相机'设置为打开状态", preferredStyle:.alert)
+            // 设置UIAlertAction
+            let cancelAction = UIAlertAction(title: "稍后再说", style: .cancel, handler: nil)
+            let defaulAction = UIAlertAction(title: "设置", style: .default, handler: { (UIAlertAction) in
+                
+                UIApplication.shared.open(URL.init(string: "prefs:root=Privacy")!, options: [:], completionHandler: nil)
+            })
+            // 添加
+            alertController.addAction(cancelAction)
+            alertController.addAction(defaulAction)
+            // 弹出
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
         
         
         // 判断是否支持相册
@@ -181,15 +223,16 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
         let images = NSArray(objects: image,"jpeg")
         let uploads = NSMutableArray()
         uploads.add(images)
-        NetworkTool.shareNetworkTool.postImageRequest(uploads, finishedSel: { (data:ImageData) in
+        let token = UserDefaults().object(forKey: userToken) as! String!
+        self.showHud(in: self.view, hint: messageLogin)
+        NetworkTool.shareNetworkTool.postImageRequest(uploads, token: token!, finishedSel: { (data:[ImageData]) in
             
-            if data.url != nil {
-                self.sanpImage.sd_setImage(with: URL.init(string: data.url!), placeholderImage: UIImage(named: "Login_male.png"))
-                
-                UserDefaults().set(data.url! as String, forKey: userHeadImg)
-                let token = UserDefaults().object(forKey: userToken) as! String!
-                NetworkTool.shareNetworkTool.snapImageRequest(token!, uri: data.uri!, finishedSel: { (data:ETSuccess) in
-                    
+            let imageData = data[0]
+            if imageData.url != nil {
+                NetworkTool.shareNetworkTool.snapImageRequest(token!, uri: imageData.uri!, finishedSel: { (data:ETSuccess) in
+                    self.hideHud()
+                    self.sanpImage.sd_setImage(with: URL.init(string: imageData.url!), placeholderImage: UIImage(named: "sanp.png"))
+                    UserDefaults().set(imageData.url! as String, forKey: userHeadImg)
                     self.showHint(data.message!)
                     
                     }, failedSel: { (error:ETError) in

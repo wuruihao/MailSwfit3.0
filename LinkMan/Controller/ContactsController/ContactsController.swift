@@ -190,7 +190,7 @@ class ContactsController: UIViewController, UITableViewDelegate, UITableViewData
                 if data.head_img != nil {
                     cell.sanpImage.image = UIImage(named: data.head_img!)
                 }else{
-                    cell.sanpImage.image = UIImage(named: "Login_male.png")
+                    cell.sanpImage.image = UIImage(named: "sanp.png")
                 }
                 if data.nickname != nil {
                     cell.name.text = data.nickname

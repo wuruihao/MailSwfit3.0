@@ -26,7 +26,7 @@ class MemberCell: UITableViewCell {
         sanpImage.width = self.height*0.8
         sanpImage.height = self.height*0.8
         sanpImage.centerY = kFitHeight(value: 95);
-        sanpImage.image = UIImage(named: "Login_male.png")
+        sanpImage.image = UIImage(named: "sanp.png")
         addSubview(sanpImage)
         
         nameLabel.text = "吴瑞豪"

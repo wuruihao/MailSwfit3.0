@@ -56,13 +56,7 @@ class ApplyleaveController: UIViewController {
             break
         //未通过
         case "3":
-            if type == "待我审批" {
-                self.actionView.isHidden = true
-            }else{
-                self.actionView.isHidden = false
-                self.cancelButton.setTitle("删除", for: .normal)
-                self.connectButton.setTitle("再次编辑", for: .normal)
-            }
+            self.actionView.isHidden = true
             break
         case "4":
             if type == "待我审批" {

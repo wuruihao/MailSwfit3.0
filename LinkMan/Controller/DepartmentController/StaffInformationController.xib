@@ -14,6 +14,7 @@
                 <outlet property="editBtn" destination="hE2-5E-Nuk" id="KoF-vv-nsp"/>
                 <outlet property="name" destination="c9g-Vz-S5l" id="Glb-Rq-nHZ"/>
                 <outlet property="phoneNum" destination="SSs-Wh-9dQ" id="PRE-qy-RGI"/>
+                <outlet property="sanpImage" destination="tKe-Ie-smb" id="yJG-Bm-0oZ"/>
                 <outlet property="subTitle" destination="rrd-Ro-Ehi" id="oei-D7-iYu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="workMailbox" destination="Opf-sI-h2N" id="jWH-ql-IeT"/>
@@ -28,7 +29,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="Oxr-bM-mzN"/>
                     </constraints>
-                    <color key="barTintColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="barTintColor" red="0.25490196078431371" green="0.29019607843137252" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </textAttributes>
@@ -60,14 +61,19 @@
                     </items>
                 </navigationBar>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic.png" translatesAutoresizingMaskIntoConstraints="NO" id="349-Cr-n2B"/>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_male.png" translatesAutoresizingMaskIntoConstraints="NO" id="tKe-Ie-smb">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sanp.png" translatesAutoresizingMaskIntoConstraints="NO" id="tKe-Ie-smb">
                     <constraints>
                         <constraint firstAttribute="width" secondItem="tKe-Ie-smb" secondAttribute="height" multiplier="1:1" id="dhC-EN-yEJ"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HN测试" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9g-Vz-S5l">
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS部门" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrd-Ro-Ehi">
@@ -220,6 +226,7 @@
                 <constraint firstAttribute="trailing" secondItem="349-Cr-n2B" secondAttribute="trailing" id="Dmv-5P-hE1"/>
                 <constraint firstItem="Nx7-x5-lDQ" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="1:2.5" id="L4B-BU-sgw"/>
                 <constraint firstAttribute="trailing" secondItem="wKV-e3-ONf" secondAttribute="trailing" id="LwR-TP-0ra"/>
+                <constraint firstItem="tKe-Ie-smb" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:10" id="Nuz-yB-KvS"/>
                 <constraint firstItem="tKe-Ie-smb" firstAttribute="centerY" secondItem="349-Cr-n2B" secondAttribute="bottom" id="O2T-rY-ar8"/>
                 <constraint firstItem="c9g-Vz-S5l" firstAttribute="leading" secondItem="tKe-Ie-smb" secondAttribute="trailing" constant="10" id="PBD-OL-zsa"/>
                 <constraint firstItem="Nx7-x5-lDQ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.7:10" id="UoU-37-Z3a"/>
@@ -228,7 +235,7 @@
                 <constraint firstItem="rrd-Ro-Ehi" firstAttribute="leading" secondItem="c9g-Vz-S5l" secondAttribute="leading" id="gOK-M4-vQa"/>
                 <constraint firstItem="Nx7-x5-lDQ" firstAttribute="top" secondItem="tKe-Ie-smb" secondAttribute="bottom" constant="30" id="gfr-by-w8O"/>
                 <constraint firstItem="Nx7-x5-lDQ" firstAttribute="leading" secondItem="tKe-Ie-smb" secondAttribute="leading" id="h9F-6c-VY7"/>
-                <constraint firstItem="rrd-Ro-Ehi" firstAttribute="top" secondItem="349-Cr-n2B" secondAttribute="bottom" constant="2" id="has-Cj-yLr"/>
+                <constraint firstItem="rrd-Ro-Ehi" firstAttribute="top" secondItem="349-Cr-n2B" secondAttribute="bottom" constant="5" id="has-Cj-yLr"/>
                 <constraint firstAttribute="bottom" secondItem="QLg-3T-utm" secondAttribute="bottom" id="mLJ-eT-nDr"/>
                 <constraint firstItem="349-Cr-n2B" firstAttribute="top" secondItem="wKV-e3-ONf" secondAttribute="bottom" id="v8Q-u4-ZSy"/>
                 <constraint firstItem="QLg-3T-utm" firstAttribute="top" secondItem="Nx7-x5-lDQ" secondAttribute="bottom" id="vUV-Xp-7v1"/>
@@ -239,11 +246,11 @@
         </view>
     </objects>
     <resources>
-        <image name="Login_male.png" width="75" height="75"/>
         <image name="NaviBar_back.png" width="25" height="25"/>
         <image name="clear.png" width="3" height="3"/>
         <image name="message.png" width="98" height="98"/>
         <image name="phone.png" width="94" height="94"/>
         <image name="pic.png" width="411" height="177"/>
+        <image name="sanp.png" width="75" height="75"/>
     </resources>
 </document>

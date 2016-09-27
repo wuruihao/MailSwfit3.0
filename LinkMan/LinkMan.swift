@@ -17,6 +17,8 @@ let userLevel = "userLevel"
 let userHeadImg = "userHeadImg"
 let userNickname = "userNickname"
 let userDepartment = "userDepartment"
+let userEmail = "userEmail"
+
 
 let messageLogin = "加载中..."
 let messageLoading = "正在登录中…"
