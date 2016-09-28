@@ -29,21 +29,45 @@ class CoreDataTool: NSObject {
     //增
     func addCoreData(data:DepartmentData){
         
-        let entity = NSEntityDescription.insertNewObject(forEntityName: EntityName, into: appDelegate.managedObjectContext) as! Contacts
-        
-        entity.departmentId = String(format: "%d", data.id)
-        entity.departmentName = data.name
-        entity.departmenNumber = String(format: "%d", data.number!)
-        
-        let dic = data.mj_keyValues()
-        entity.departmentjson = dic?.mj_JSONString()
-
-        do{
-            try appDelegate.managedObjectContext.save()
-            print("添加成功 ~ ~ ")
-        }catch{
-            print("添加失败！！")
+        //查找数据库是否存在
+        let array = self.selectDataFromCoreData(departmentId: data.id)
+        if array.count <= 0 {
+            let entity = NSEntityDescription.insertNewObject(forEntityName: EntityName, into: appDelegate.managedObjectContext) as! Contacts
+            
+            entity.departmentId = String(format: "%d", data.id)
+            entity.departmentName = data.name
+            entity.departmenNumber = String(format: "%d", data.number!)
+            
+            let dic = data.mj_keyValues()
+            entity.departmentjson = dic?.mj_JSONString()
+            
+            do{
+                try appDelegate.managedObjectContext.save()
+                print("添加成功 ~ ~ ")
+            }catch{
+                print("添加失败！！")
+            }
         }
+    }
+    
+    func selectDataFromCoreData(departmentId:Int) -> NSArray{
+        
+        var dataSource = NSArray()
+        let request : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest()
+        let entity:NSEntityDescription? = NSEntityDescription.entity(forEntityName: EntityName, in: appDelegate.managedObjectContext)
+        request.entity = entity
+        let condition = String(format: "departmentId='%d'", departmentId)
+        let predicate = NSPredicate(format: condition, "")
+        request.predicate = predicate
+        do{
+            //查询满足条件的联系人
+            dataSource = try appDelegate.managedObjectContext.fetch(request) as! [Contacts] as NSArray
+            print("数据读取成功 ~ ~")
+        }catch{
+            print("get_coredata_fail!")
+        }
+        
+        return dataSource
     }
     
     //删
@@ -122,7 +146,7 @@ class CoreDataTool: NSObject {
             let user = item as! Contacts
             let des = DepartmentData.mj_object(withKeyValues: user.departmentjson) as DepartmentData
             
-           let memberData = MemberData.mj_objectArray(withKeyValuesArray: des.members)
+            let memberData = MemberData.mj_objectArray(withKeyValuesArray: des.members)
             des.members = memberData
             
             data.add(des)

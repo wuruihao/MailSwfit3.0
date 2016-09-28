@@ -8,14 +8,17 @@
 //
 
 import UIKit
+import AFNetworking
 
 class MineController: UIViewController {
-
+    
     @IBOutlet weak var snapImage: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var online: UILabel!
+    
+    // var reachability: AFNetworkReachabilityManager!
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
     }
     
@@ -30,12 +33,56 @@ class MineController: UIViewController {
         if realName != nil {
             name.text = realName
         }
-        online.text = NetworkTool.shareNetworkTool.judgeNetWork()
-
+        
+        networkStatusListener()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        removeNotificationCenter()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func networkStatusListener() {
+        
+        // 1、设置网络状态消息监听
+        NotificationCenter.default.addObserver(self, selector: #selector(self.networkStatusChange), name: NSNotification.Name.AFNetworkingReachabilityDidChange, object: nil);
+        // 2、获得网络Reachability对象
+        // Reachability必须一直存在，所以需要设置为全局变量
+        // 3、开启网络状态消息监听
+        AFNetworkReachabilityManager.shared().startMonitoring()
+    }
+    
+    func networkStatusChange() {
+        
+        if AFNetworkReachabilityManager.shared().isReachable { // 判断网络连接状态
+            print("网络连接：可用")
+            if AFNetworkReachabilityManager.shared().isReachableViaWiFi { // 判断网络连接类型
+                online.text = "WiFi网络"
+            } else if AFNetworkReachabilityManager.shared().isReachableViaWWAN {
+                online.text = "移动网络"
+            }
+        }else{
+            print("网络连接：不可用")
+            print("连接类型：没有网络连接")
+            online.text = "网络不给力"
+        }
+    }
+    
+    /**
+     移除消息通知
+     */
+    func removeNotificationCenter(){
+        print("移除消息通知")
+        // 关闭网络状态消息监听
+        AFNetworkReachabilityManager.shared().stopMonitoring()
+        // 移除网络状态消息通知
+        NotificationCenter.default.removeObserver(self);
+    }
+    
     /*个人资料*/
     @IBAction func chickSeeMyInfo(_ sender: AnyObject) {
         
@@ -52,7 +99,7 @@ class MineController: UIViewController {
     /*设置*/
     @IBAction func setupConfigure(_ sender: AnyObject) {
         
-         self.showHint("设置")
+        self.showHint("设置")
     }
     /*注销*/
     @IBAction func logout(_ sender: AnyObject) {

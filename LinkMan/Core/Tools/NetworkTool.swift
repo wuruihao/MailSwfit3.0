@@ -70,7 +70,7 @@ class NetworkTool: NSObject {
             message = messageViaWiFi
             break
         }
-        AFNetworkReachabilityManager.shared().stopMonitoring()
+
         return message
     }
     
@@ -554,7 +554,7 @@ class NetworkTool: NSObject {
     func snapImageRequest(_ token: String,uri: String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/user/saveHeadImg"
         print("url: \(url)")
-        let params = ["token": token,"uri": uri]
+        let params = ["token": token,"url": uri]
         print("params: \(params)")
         NetworkTool.manager.get(url,parameters:params,success: { (task:URLSessionDataTask?, response:Any?) in
             let result = response as? NSDictionary
