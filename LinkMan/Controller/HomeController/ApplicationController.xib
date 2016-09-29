@@ -62,7 +62,7 @@
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XBq-rI-VPX">
                                     <rect key="frame" x="334" y="29" width="25" height="25"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="Brand_sort.png"/>
+                                    <state key="normal" image="home_sort.png"/>
                                     <connections>
                                         <action selector="selectedSortList:" destination="-1" eventType="touchUpInside" id="3pw-3x-bV1"/>
                                     </connections>
@@ -101,7 +101,7 @@
                 <constraint firstItem="Y5Y-w0-MQl" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:15" id="Kid-7Q-AXd"/>
                 <constraint firstAttribute="bottom" secondItem="jdS-Y4-KtQ" secondAttribute="bottom" id="OtW-mZ-AJO"/>
                 <constraint firstItem="Rzd-h5-tse" firstAttribute="leading" secondItem="Y5Y-w0-MQl" secondAttribute="leading" id="UdI-Gx-mET"/>
-                <constraint firstItem="Rzd-h5-tse" firstAttribute="bottom" secondItem="Y5Y-w0-MQl" secondAttribute="bottom" id="V2A-sR-kXo"/>
+                <constraint firstItem="Rzd-h5-tse" firstAttribute="bottom" secondItem="Y5Y-w0-MQl" secondAttribute="bottom" constant="-1" id="V2A-sR-kXo"/>
                 <constraint firstAttribute="trailing" secondItem="X8L-kI-xni" secondAttribute="trailing" id="amU-oB-UBN"/>
                 <constraint firstItem="jdS-Y4-KtQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oTp-KD-PYp"/>
                 <constraint firstItem="MV3-ZB-pKZ" firstAttribute="width" secondItem="Y5Y-w0-MQl" secondAttribute="width" id="qyB-wF-Kab"/>
@@ -113,8 +113,8 @@
         </view>
     </objects>
     <resources>
-        <image name="Brand_sort.png" width="25" height="25"/>
         <image name="NaviBar_back.png" width="25" height="25"/>
         <image name="clear.png" width="3" height="3"/>
+        <image name="home_sort.png" width="25" height="25"/>
     </resources>
 </document>

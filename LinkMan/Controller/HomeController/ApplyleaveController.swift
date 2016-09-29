@@ -32,6 +32,7 @@ class ApplyleaveController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var connectButton: UIButton!
     @IBOutlet weak var actionView: UIView!
+    @IBOutlet weak var snapImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,8 +90,13 @@ class ApplyleaveController: UIViewController {
         NetworkTool.shareNetworkTool.leaveDetailsRequest(token!, id: leave_id, finishedSel: { (data:LeaveData) in
             
             self.hideHud()
+             self.leaveData = data
             
-            self.leaveData = data
+            if data.head_img != nil {
+                self.snapImage.sd_setImage(with: URL.init(string: data.head_img!), placeholderImage: UIImage(named: "sanp.png"))
+            }else{
+                self.snapImage.image = UIImage(named: "sanp.png")
+            }
             self.nameLabel.text = data.name
             self.phoneLabel.text = data.mobile
             self.timeLabel.text = String(format: "%d天", data.time)
@@ -172,7 +178,7 @@ class ApplyleaveController: UIViewController {
         }else{
             
             switch sender.tag {
-            case 1:
+            case 3:
                 //调用删除接口
                 NetworkTool.shareNetworkTool.deleteleaveRequest(token!, id: leave_id, finishedSel: { (data:ETSuccess) in
 

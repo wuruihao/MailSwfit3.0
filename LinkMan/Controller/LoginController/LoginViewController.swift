@@ -52,6 +52,7 @@ class LoginViewController: UIViewController {
             self.hideHud()
             self.saveUserDefaults(data)
             UIApplication.shared.keyWindow?.rootViewController = ETTabBarController()
+            UserDefaults.standard.set(true, forKey: YMFirstLaunch)
             
         }) { (error:ETError) in
             
@@ -66,9 +67,8 @@ class LoginViewController: UIViewController {
         var defaults:UserDefaults!
         defaults = UserDefaults()
         defaults.set(data.id as Int, forKey: userID)
-        if data.sex != nil {
-            defaults.set(data.sex! as String, forKey: userSex)
-        }
+        defaults.set(data.sex as Int, forKey: userSex)
+
         if data.name != nil {
             defaults.set(data.name! as String, forKey: userRealName)
         }

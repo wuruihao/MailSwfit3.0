@@ -86,7 +86,7 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
         let data =  HomeData(name: "公告通知", sanp: "notify.png")
         let data2 =  HomeData(name: "通讯录", sanp: "txl.png")
         let data3 =  HomeData(name: "申请请假", sanp: "txl.png")
-        let data4 =  HomeData(name: "个人中心", sanp: "member.png")
+        let data4 =  HomeData(name: "个人中心", sanp: "home_member.png")
         let data5 =  HomeData(name: "备忘录", sanp: "txl.png")
         let data6 =  HomeData(name: "辅助工具", sanp: "notify.png")
         

@@ -21,6 +21,7 @@
                 <outlet property="naviItem" destination="unh-ys-l9L" id="Kbb-yb-WVG"/>
                 <outlet property="phoneLabel" destination="93u-yP-raJ" id="TJe-QI-2BF"/>
                 <outlet property="reasonLabel" destination="Rlu-r0-Acz" id="2lp-Cd-9OY"/>
+                <outlet property="snapImage" destination="XkP-1Q-AeZ" id="C8p-bl-JLc"/>
                 <outlet property="startedLabel" destination="k23-ul-3Qv" id="jQJ-Pq-nrC"/>
                 <outlet property="statusLabel" destination="Msq-ty-0hr" id="arg-8l-wrS"/>
                 <outlet property="timeLabel" destination="4bh-Vk-oMd" id="qy5-HZ-cOR"/>
@@ -59,7 +60,7 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ago-0O-Wpx">
                             <subviews>
-                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ttq-Fa-Hcs">
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ttq-Fa-Hcs">
                                     <color key="backgroundColor" red="0.75686274509999996" green="0.76078431369999999" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title="删除">
                                         <color key="titleColor" red="0.96470588239999999" green="0.10980392160000001" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -75,7 +76,9 @@
                                 </button>
                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9r-zk-XYK">
                                     <color key="backgroundColor" red="0.47843137250000001" green="0.75686274509999996" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <state key="normal" title="再次编辑"/>
+                                    <state key="normal" title="再次编辑">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                             <integer key="value" value="5"/>
@@ -117,10 +120,15 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sanp.png" translatesAutoresizingMaskIntoConstraints="NO" id="XkP-1Q-AeZ">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sanp.png" translatesAutoresizingMaskIntoConstraints="NO" id="XkP-1Q-AeZ">
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="XkP-1Q-AeZ" secondAttribute="height" multiplier="1:1" id="46x-ul-gsq"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Msq-ty-0hr">
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -137,7 +145,7 @@
                                             <color key="textColor" red="0.36470588235294116" green="0.36470588235294116" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mine_gray_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="g5A-Pb-rBp">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g5A-Pb-rBp">
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="g5A-Pb-rBp" secondAttribute="height" multiplier="12:13" id="5En-H8-lYJ"/>
                                             </constraints>
@@ -313,10 +321,9 @@
         </view>
     </objects>
     <resources>
-        <image name="Mine_gray_arrow.png" width="27" height="27"/>
         <image name="NaviBar_back.png" width="25" height="25"/>
         <image name="backline.png" width="1034" height="54"/>
         <image name="clear.png" width="3" height="3"/>
-        <image name="sanp.png" width="27" height="27"/>
+        <image name="sanp.png" width="75" height="75"/>
     </resources>
 </document>

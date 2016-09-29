@@ -10,11 +10,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddContactsController" customModule="LinkMan" customModuleProvider="target">
             <connections>
-                <outlet property="companyTextField" destination="nMX-Ug-z1r" id="6xh-sE-N6y"/>
+                <outlet property="deleteButton" destination="7Vk-eR-kqx" id="fLB-zC-7kq"/>
                 <outlet property="nameTextField" destination="MYj-uh-5KJ" id="Df9-ug-oU4"/>
                 <outlet property="naviItem" destination="obA-o7-5Su" id="7Cc-LH-Z9C"/>
                 <outlet property="nickNameTextField" destination="liT-7m-5M6" id="8ov-YK-wGF"/>
                 <outlet property="passLabel" destination="TBK-qk-uDo" id="uD9-58-aXg"/>
+                <outlet property="passwordTextField" destination="nMX-Ug-z1r" id="4YW-9p-nFO"/>
                 <outlet property="phoneTextField" destination="Ium-mC-Cg6" id="Uae-wo-Ucr"/>
                 <outlet property="sanpImage" destination="FGx-06-cFL" id="xyc-mZ-bdb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -30,6 +31,8 @@
                 <outletCollection property="levelItems" destination="pEq-Ck-7Mm" collectionClass="NSMutableArray" id="hBe-KF-8as"/>
                 <outletCollection property="levelItems" destination="Jpg-tb-9mW" collectionClass="NSMutableArray" id="Ofs-Oz-xe6"/>
                 <outletCollection property="itemArray" destination="flL-E1-oju" collectionClass="NSMutableArray" id="Zjq-0p-9N1"/>
+                <outletCollection property="sexItems" destination="k4I-My-EPv" collectionClass="NSMutableArray" id="t9O-bz-ZlX"/>
+                <outletCollection property="sexItems" destination="SI9-t4-jMA" collectionClass="NSMutableArray" id="LpH-Tp-vpd"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -96,16 +99,57 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4I-My-EPv">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" image="Recommend_s-off.png"/>
+                            <state key="selected" image="Recommend_s-on.png"/>
+                            <connections>
+                                <action selector="selectDepartmentWithTypes:" destination="-1" eventType="touchUpInside" id="hj4-kk-gHt"/>
+                                <action selector="selectSexWithTypes:" destination="-1" eventType="touchUpInside" id="qHe-MS-Zx1"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="男" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NS-Ei-5ls">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SI9-t4-jMA">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" image="Recommend_s-off.png"/>
+                            <state key="selected" image="Recommend_s-on.png"/>
+                            <connections>
+                                <action selector="selectDepartmentWithTypes:" destination="-1" eventType="touchUpInside" id="SVa-wh-0rD"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="女" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ja-9M-V7Y">
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="k4I-My-EPv" firstAttribute="width" secondItem="17M-nT-YEV" secondAttribute="width" multiplier="1:5" id="4AW-ga-gkC"/>
+                        <constraint firstItem="1ja-9M-V7Y" firstAttribute="trailing" secondItem="SI9-t4-jMA" secondAttribute="trailing" id="6wm-EG-mHf"/>
+                        <constraint firstItem="0NS-Ei-5ls" firstAttribute="bottom" secondItem="k4I-My-EPv" secondAttribute="bottom" id="9Oa-RE-sb2"/>
+                        <constraint firstItem="k4I-My-EPv" firstAttribute="top" secondItem="liT-7m-5M6" secondAttribute="bottom" constant="10" id="AyV-o0-iL2"/>
                         <constraint firstItem="liT-7m-5M6" firstAttribute="height" secondItem="MYj-uh-5KJ" secondAttribute="height" id="CMk-Rc-1Ff"/>
+                        <constraint firstItem="0NS-Ei-5ls" firstAttribute="trailing" secondItem="k4I-My-EPv" secondAttribute="trailing" id="FK9-BK-9O7"/>
                         <constraint firstItem="MYj-uh-5KJ" firstAttribute="top" secondItem="17M-nT-YEV" secondAttribute="top" id="G8P-k6-fiY"/>
+                        <constraint firstItem="SI9-t4-jMA" firstAttribute="width" secondItem="k4I-My-EPv" secondAttribute="width" id="GP7-U4-hMh"/>
+                        <constraint firstItem="0NS-Ei-5ls" firstAttribute="top" secondItem="k4I-My-EPv" secondAttribute="top" id="Mtg-Bh-VF0"/>
                         <constraint firstItem="MYj-uh-5KJ" firstAttribute="leading" secondItem="17M-nT-YEV" secondAttribute="leading" constant="10" id="N5T-4U-qEn"/>
                         <constraint firstItem="liT-7m-5M6" firstAttribute="leading" secondItem="MYj-uh-5KJ" secondAttribute="leading" id="QYk-Ws-aXI"/>
-                        <constraint firstAttribute="bottom" secondItem="liT-7m-5M6" secondAttribute="bottom" constant="10" id="aaE-2w-ITv"/>
+                        <constraint firstItem="1ja-9M-V7Y" firstAttribute="bottom" secondItem="SI9-t4-jMA" secondAttribute="bottom" id="StU-w8-UNC"/>
+                        <constraint firstItem="SI9-t4-jMA" firstAttribute="leading" secondItem="k4I-My-EPv" secondAttribute="trailing" constant="10" id="Xtg-Cq-TKX"/>
+                        <constraint firstItem="1ja-9M-V7Y" firstAttribute="top" secondItem="SI9-t4-jMA" secondAttribute="top" id="Zcg-aF-Z2D"/>
                         <constraint firstAttribute="trailing" secondItem="MYj-uh-5KJ" secondAttribute="trailing" constant="10" id="bmM-hY-WYk"/>
                         <constraint firstItem="liT-7m-5M6" firstAttribute="width" secondItem="MYj-uh-5KJ" secondAttribute="width" id="cnn-lW-hh8"/>
+                        <constraint firstItem="1ja-9M-V7Y" firstAttribute="width" secondItem="SI9-t4-jMA" secondAttribute="width" multiplier="2:3" id="dYR-ZV-cPM"/>
+                        <constraint firstItem="k4I-My-EPv" firstAttribute="leading" secondItem="17M-nT-YEV" secondAttribute="leading" constant="15" id="dpB-b7-uRd"/>
+                        <constraint firstItem="SI9-t4-jMA" firstAttribute="top" secondItem="k4I-My-EPv" secondAttribute="top" id="hTS-9R-mSt"/>
                         <constraint firstItem="liT-7m-5M6" firstAttribute="top" secondItem="MYj-uh-5KJ" secondAttribute="bottom" constant="10" id="rZD-fJ-CSQ"/>
+                        <constraint firstItem="0NS-Ei-5ls" firstAttribute="width" secondItem="k4I-My-EPv" secondAttribute="width" multiplier="2:3" id="xS3-0b-vgj"/>
+                        <constraint firstAttribute="bottom" secondItem="k4I-My-EPv" secondAttribute="bottom" constant="10" id="xsd-ob-K1d"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -450,6 +494,23 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Vk-eR-kqx">
+                    <color key="backgroundColor" red="0.75686274509803919" green="0.76078431372549016" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="23a-qM-I4k"/>
+                    </constraints>
+                    <state key="normal" title="删除联系人">
+                        <color key="titleColor" red="0.96470588239999999" green="0.10980392160000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="deleteContacts:" destination="-1" eventType="touchUpInside" id="yNp-Ea-rCQ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -458,14 +519,17 @@
                 <constraint firstItem="pXG-Ws-psW" firstAttribute="leading" secondItem="cXm-fi-Y4v" secondAttribute="leading" id="5Hw-Th-fPf"/>
                 <constraint firstItem="cXm-fi-Y4v" firstAttribute="top" secondItem="pXG-Ws-psW" secondAttribute="bottom" id="7X9-2f-EVm"/>
                 <constraint firstItem="dVD-Xi-vgc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7mq-fX-628"/>
-                <constraint firstItem="pXG-Ws-psW" firstAttribute="top" secondItem="17M-nT-YEV" secondAttribute="bottom" constant="15" id="7ud-m3-NTx"/>
+                <constraint firstItem="pXG-Ws-psW" firstAttribute="top" secondItem="17M-nT-YEV" secondAttribute="bottom" id="7ud-m3-NTx"/>
                 <constraint firstItem="Ium-mC-Cg6" firstAttribute="leading" secondItem="liT-7m-5M6" secondAttribute="leading" id="91P-pv-Z6M"/>
                 <constraint firstItem="FGx-06-cFL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="EHE-K5-253"/>
                 <constraint firstItem="dVD-Xi-vgc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Eup-F3-1oE"/>
                 <constraint firstItem="pXG-Ws-psW" firstAttribute="trailing" secondItem="cXm-fi-Y4v" secondAttribute="trailing" id="H5B-HC-tV5"/>
                 <constraint firstItem="pXG-Ws-psW" firstAttribute="trailing" secondItem="17M-nT-YEV" secondAttribute="trailing" id="JKG-Sh-LU0"/>
                 <constraint firstAttribute="trailing" secondItem="dVD-Xi-vgc" secondAttribute="trailing" id="LQ0-jf-rHt"/>
+                <constraint firstItem="7Vk-eR-kqx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="MFr-ON-B5v"/>
+                <constraint firstItem="7Vk-eR-kqx" firstAttribute="top" secondItem="gV6-vg-162" secondAttribute="bottom" constant="30" id="Rfo-UV-kcL"/>
                 <constraint firstItem="FGx-06-cFL" firstAttribute="top" secondItem="dVD-Xi-vgc" secondAttribute="bottom" constant="30" id="VcE-RL-FcX"/>
+                <constraint firstItem="7Vk-eR-kqx" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="3:5" id="XtY-H6-77d"/>
                 <constraint firstItem="17M-nT-YEV" firstAttribute="leading" secondItem="FGx-06-cFL" secondAttribute="trailing" constant="10" id="Yfs-g1-DwS"/>
                 <constraint firstItem="Ium-mC-Cg6" firstAttribute="trailing" secondItem="liT-7m-5M6" secondAttribute="trailing" id="agb-BN-4rn"/>
                 <constraint firstItem="17M-nT-YEV" firstAttribute="top" secondItem="FGx-06-cFL" secondAttribute="top" id="arH-ra-W3n"/>

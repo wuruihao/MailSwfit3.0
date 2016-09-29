@@ -46,9 +46,13 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
             nameLabel.text = nickname
         }
         
-        let sex = UserDefaults().object(forKey: userSex) as! String!
-        if sex != nil {
-            sexLabel.text = sex
+        let sex = UserDefaults().object(forKey: userSex) as! Int!
+        if sex == 1 {
+            sexLabel.text = "男"
+        }else if sex == 2 {
+            sexLabel.text = "女"
+        }else{
+            sexLabel.text = "未填写"
         }
         
         let mobile = UserDefaults().object(forKey: userMobile) as! String!
@@ -91,15 +95,19 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
             self.navigationController?.pushViewController(editNickNameVC, animated: true)
             break
         case 2:
-            
+            let token = UserDefaults().object(forKey: userToken) as! String!
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             alertController.addAction(UIAlertAction(title: "男", style: .default, handler: { (action:UIAlertAction) in
                 self.sexLabel.text = "男"
-                UserDefaults().set(self.sexLabel.text! as String, forKey: userSex)
+                let params = ["token": token!,"sex":"1"]
+                self.sendEditRequest(params: params)
+                UserDefaults().set(1 as Int, forKey: userSex)
             }))
             alertController.addAction(UIAlertAction(title: "女", style: .default, handler: { (action:UIAlertAction) in
                 self.sexLabel.text = "女"
-                UserDefaults().set(self.sexLabel.text! as String, forKey: userSex)
+                let params = ["token": token!,"sex":"2"]
+                self.sendEditRequest(params: params)
+                UserDefaults().set(2 as Int, forKey: userSex)
             }))
             alertController.addAction(UIAlertAction(title: "取消", style: .cancel, handler:nil))
             self.present(alertController, animated: true, completion: nil)
@@ -299,14 +307,4 @@ class MemberInfoController: UIViewController, UIImagePickerControllerDelegate, U
             UIView.commitAnimations()
         }
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

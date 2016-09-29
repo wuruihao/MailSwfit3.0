@@ -13,6 +13,7 @@
                 <outlet property="name" destination="Kzm-P9-9li" id="5gR-BN-0ho"/>
                 <outlet property="online" destination="EHU-nu-EBG" id="KWB-Jz-Tb3"/>
                 <outlet property="snapImage" destination="c04-42-tzM" id="ccr-D9-N6V"/>
+                <outlet property="subTitle" destination="R8s-Db-l9m" id="oSt-YH-NLE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -49,18 +50,25 @@
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mine_gray_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="MRW-KS-8Ei">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MRW-KS-8Ei">
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="MRW-KS-8Ei" secondAttribute="height" multiplier="12:13" id="1xe-i1-1cv"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机在线" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHU-nu-EBG">
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8s-Db-l9m">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstItem="R8s-Db-l9m" firstAttribute="leading" secondItem="Kzm-P9-9li" secondAttribute="trailing" constant="15" id="1uM-wd-B87"/>
                         <constraint firstItem="c04-42-tzM" firstAttribute="leading" secondItem="Jv4-Nj-fE6" secondAttribute="leading" constant="20" id="A8T-zk-Q3B"/>
                         <constraint firstItem="EHU-nu-EBG" firstAttribute="bottom" secondItem="c04-42-tzM" secondAttribute="bottom" id="Ff7-1R-Hbb"/>
                         <constraint firstAttribute="trailing" secondItem="MRW-KS-8Ei" secondAttribute="trailing" constant="10" id="K5a-c1-Pcb"/>
@@ -69,6 +77,7 @@
                         <constraint firstItem="c04-42-tzM" firstAttribute="height" secondItem="Jv4-Nj-fE6" secondAttribute="height" multiplier="1:2" id="iat-HX-DAQ"/>
                         <constraint firstItem="Kzm-P9-9li" firstAttribute="top" secondItem="c04-42-tzM" secondAttribute="top" id="kyc-o1-kQe"/>
                         <constraint firstItem="MRW-KS-8Ei" firstAttribute="height" secondItem="Jv4-Nj-fE6" secondAttribute="height" multiplier="1:8" id="p9f-nZ-C2N"/>
+                        <constraint firstItem="R8s-Db-l9m" firstAttribute="top" secondItem="Kzm-P9-9li" secondAttribute="top" id="pcB-bl-WAw"/>
                         <constraint firstItem="EHU-nu-EBG" firstAttribute="leading" secondItem="Kzm-P9-9li" secondAttribute="leading" id="u9c-Dc-OqI"/>
                         <constraint firstItem="Kzm-P9-9li" firstAttribute="leading" secondItem="c04-42-tzM" secondAttribute="trailing" constant="10" id="ypK-nW-xP9"/>
                     </constraints>
@@ -179,8 +188,9 @@
                                 <constraint firstAttribute="width" secondItem="c2j-FR-oSz" secondAttribute="height" multiplier="30:31" id="RLo-dr-JiL"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注销" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jA4-5o-mdS">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退出" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jA4-5o-mdS">
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.96470588239999999" green="0.10980392160000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mine_gray_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="J77-Pc-76T">

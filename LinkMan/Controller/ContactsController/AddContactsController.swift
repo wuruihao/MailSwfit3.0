@@ -14,21 +14,28 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var workmMailbox: UITextField!
-    @IBOutlet weak var companyTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var sanpImage: UIImageView!
     @IBOutlet weak var passLabel: UILabel!
     
+    @IBOutlet var sexItems: [UIButton]!
     @IBOutlet var itemArray: [UIButton]!
     @IBOutlet var levelItems: [UIButton]!
     @IBOutlet weak var naviItem: UINavigationItem!
+    
+    
+    @IBOutlet weak var deleteButton: UIButton!
+    
     
     let imagePickerController: UIImagePickerController = UIImagePickerController()
     
     var memberData: MemberData!
     var departmentName: String! = String()
     var level: String! = String()
+    var sexName: String! = String()
     var type: String!
     var sanpurl: String!
+    var token: String!
     
     override func viewDidLoad() {
         
@@ -36,6 +43,9 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
         
         //registerKeyBoardShow(target: self)
         //registerKeyBoardHide(target: self)
+        
+        token = UserDefaults().object(forKey: userToken) as! String!
+        
         
         imagePickerController.delegate = self;
         imagePickerController.allowsEditing = true
@@ -81,7 +91,7 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
         let alertController = UIAlertController(title: nil, message:"你确定放弃此次编辑?", preferredStyle:.alert)
         // 设置UIAlertAction
         let cancelAction = UIAlertAction(title: "确定", style: .default) { (UIAlertAction) in
-             _ =  self.navigationController?.popViewController(animated: true)
+            _ =  self.navigationController?.popViewController(animated: true)
         }
         let defaulAction = UIAlertAction(title: "取消", style: .cancel, handler:nil)
         // 添加
@@ -95,7 +105,9 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
     func setEditData(){
         
         if type == "编辑" {
+            
             naviItem.title = "编辑联系人"
+            sanpurl = memberData.head_img
             nameTextField.text = memberData.name
             phoneTextField.text = memberData.mobile
             workmMailbox.text = memberData.email
@@ -106,7 +118,17 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
                 self.sanpImage.image = UIImage(named: "sanp.png")
             }
             passLabel.isHidden = true
-            companyTextField.isHidden = true
+            passwordTextField.isHidden = true
+            for item in sexItems {
+                if item.tag == memberData.sex {
+                    item.isSelected = true
+                }else{
+                    item.isSelected = false
+                }
+                if item.isSelected == true {
+                    sexName = String(format: "%d", item.tag)
+                }
+            }
             for item in itemArray {
                 if item.tag == memberData.department_id {
                     item.isSelected = true
@@ -128,10 +150,14 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
                     level = String(format: "%d", item.tag)
                 }
             }
+            
+            deleteButton.isHidden = false
+            
         }else{
             naviItem.title = "新增联系人"
             passLabel.isHidden = false
-            companyTextField.isHidden = false
+            passwordTextField.isHidden = false
+            deleteButton.isHidden = true
         }
     }
     
@@ -142,7 +168,7 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
         nickNameTextField.resignFirstResponder()
         phoneTextField.resignFirstResponder()
         workmMailbox.resignFirstResponder()
-        companyTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     
     /// 提交编辑或添加联系人请求
@@ -176,9 +202,9 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
             return
         }
         if type != "编辑" {
-            if companyTextField.text == "" {
+            if passwordTextField.text == "" {
                 self.showHint("请输入账号密码")
-                companyTextField.becomeFirstResponder()
+                passwordTextField.becomeFirstResponder()
                 return
             }
         }
@@ -186,14 +212,40 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
         
     }
     
-    /// 网络请求
+    @IBAction func deleteContacts(_ sender: UIButton) {
+        
+        // 创建
+        let alertController = UIAlertController(title: nil, message:"你确定删除此联系人?", preferredStyle:.alert)
+        // 设置UIAlertAction
+        let cancelAction = UIAlertAction(title: "确定", style: .default) { (UIAlertAction) in
+            self.deleteContactsRequest()
+            _ =  self.navigationController?.popToRootViewController(animated: true)
+        }
+        let defaulAction = UIAlertAction(title: "取消", style: .cancel, handler:nil)
+        // 添加
+        alertController.addAction(cancelAction)
+        alertController.addAction(defaulAction)
+        // 弹出
+        self.present(alertController, animated: true, completion: nil)
+    }
+    //删除
+    func deleteContactsRequest(){
+        self.showHud(in: self.view, hint: messageLogin)
+        let userId = String(format: "%d", memberData.id)
+        NetworkTool.shareNetworkTool.deleteFriendsContactsRequest(token!, id: userId, finishedSel: { (data:ETSuccess) in
+            self.hideHud()
+        }) { (error:ETError) in
+            self.hideHud()
+            self.showHint(error.message!)
+        }
+    }
+    //请求
     func sendRequest(){
         
-        let token = UserDefaults().object(forKey: userToken) as! String!
         if type == "编辑" {
-            
-            let id = String(format: "%d", memberData.id)
-            let params = ["id": id,"token": token!,"mobile": phoneTextField.text!,"email": workmMailbox.text!,"department_id":  departmentName,"level_id": level,"nickname":nickNameTextField.text!,"name":nameTextField.text!,"uri":sanpurl]
+            //编辑
+            let userId = String(format: "%d", memberData.id)
+            let params = ["id": userId,"token": token!,"mobile": phoneTextField.text!,"email": workmMailbox.text!,"department_id":  departmentName,"level_id": level,"nickname":nickNameTextField.text!,"name":nameTextField.text!,"uri":sanpurl,"sex":sexName!]
             self.showHud(in: self.view, hint: messageLogin)
             NetworkTool.shareNetworkTool.editContactsRequest(params as! [String:String], finishedSel: { (data:ETSuccess) in
                 self.hideHud()
@@ -204,8 +256,15 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
                     self.showHint(error.message!)
             })
         }else{
+            //添加
             self.showHud(in: self.view, hint: messageLogin)
-            NetworkTool.shareNetworkTool.addContactsRequest(nameTextField.text!,token:token!,mobile: phoneTextField.text!,email: workmMailbox.text!, departmentName: departmentName, level: level,password:companyTextField.text!, finishedSel: { (success:ETSuccess) in
+            if sanpurl == nil {
+                sanpurl = ""
+            }
+            let params = ["token": token!,"mobile": phoneTextField.text!,"email": workmMailbox.text!,"department_id":  departmentName!,"level_id": level!,"nickname":nickNameTextField.text!,"name":nameTextField.text!,"uri":sanpurl!,"sex":sexName!,"password":passwordTextField.text!]
+            
+            NetworkTool.shareNetworkTool.addContactsRequest(params, finishedSel: { (data:ETSuccess) in
+                
                 self.hideHud()
                 _ =  self.navigationController?.popViewController(animated: true)
                 
@@ -223,6 +282,20 @@ class AddContactsController: UIViewController, UIImagePickerControllerDelegate, 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.view.endEditing(true)
+    }
+    @IBAction func selectSexWithTypes(_ sender: UIButton) {
+        
+        for item in sexItems {
+            if sender == item {
+                item.isSelected = true
+            }else{
+                item.isSelected = false
+            }
+            if item.isSelected == true {
+                sexName = String(format: "%d", item.tag)
+            }
+        }
+        
     }
     
     /// 选择部门

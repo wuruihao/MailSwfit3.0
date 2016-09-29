@@ -30,7 +30,18 @@ class ApplicationCell: UITableViewCell {
     
     func setData(_ data:LeaveData){
         
-        snap.image = UIImage(named: "sanp.png")
+        var headImage:String!
+        if type == "我提交的" {
+            headImage = UserDefaults().object(forKey: userHeadImg) as! String!
+        }else{
+            headImage = data.head_img
+        }
+        
+        if headImage != nil {
+            snap.sd_setImage(with: URL.init(string: headImage!), placeholderImage: UIImage(named: "sanp.png"))
+        }else{
+            snap.image = UIImage(named: "sanp.png")
+        }
         name.text = data.name
         
         /// 这些判断都没有用

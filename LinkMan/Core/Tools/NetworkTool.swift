@@ -73,7 +73,41 @@ class NetworkTool: NSObject {
 
         return message
     }
-    
+    //个人信息详情请求
+    func userInfoRequest(_ token: String, finishedSel:@escaping (_ data: MemberData)->(),failedSel:@escaping (_ error: ETError)->()){
+        
+        let url = BASE_URL+"/user/self"
+        let params = ["token": token]
+        print("url: \(url)")
+        print("params: \(params)")
+        
+        NetworkTool.manager.get(url,parameters: params,success: { (task:URLSessionDataTask?, response:Any?) in
+            
+            let result = response as? NSDictionary
+            print("result:\(result)")
+            
+            if self.isRequestSuccess(result!){
+                //json 转化成字典 并进行数据解析
+                let data = result?.object(forKey: "data")
+                // 字典转模型(MJExtension)
+                let loginData = MemberData.mj_object(withKeyValues: data)
+                finishedSel(loginData!)
+            }else{
+                let errorDic = result?.object(forKey: "error")
+                let error = ETError.mj_object(withKeyValues: errorDic) as ETError
+                
+                failedSel(error)
+            }
+            
+        }) { (task:URLSessionDataTask?, error:Error?) in
+            
+            print("加载失败...")
+            let error = ETError()
+            error.message = "服务器加载失败..."
+            failedSel(error)
+        }
+    }
+
     //登陆请求
     func loginRequest(_ phone: String, password: String, finishedSel:@escaping (_ data: MemberData)->(),failedSel:@escaping (_ error: ETError)->()){
         
@@ -105,7 +139,7 @@ class NetworkTool: NSObject {
             
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
@@ -147,7 +181,7 @@ class NetworkTool: NSObject {
             
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
@@ -183,16 +217,15 @@ class NetworkTool: NSObject {
             
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
     
     
     //新增联系人请求
-    func addContactsRequest(_ name: String,token:String,mobile: String,email: String,departmentName: String,level: String,password: String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
+    func addContactsRequest(_ params:[String:String],finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/user/add"
-        let params = ["name": name,"token": token,"mobile": mobile,"email": email,"department_id": departmentName,"level_id": level,"password":password]
         print("url: \(url)")
         print("params: \(params)")
         
@@ -218,7 +251,7 @@ class NetworkTool: NSObject {
             
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
@@ -251,7 +284,7 @@ class NetworkTool: NSObject {
             
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
@@ -283,14 +316,14 @@ class NetworkTool: NSObject {
             
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
 
-    //添加联系人请求
-    func addFriendsContactsRequest(_ token: String,id: String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
-        let url = BASE_URL+"/user/add"
+    //删除联系人请求
+    func deleteFriendsContactsRequest(_ token: String,id: String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
+        let url = BASE_URL+"/user/delete"
         let params = ["token": token,"id": id]
         print("url: \(url)")
         print("params: \(params)")
@@ -301,14 +334,11 @@ class NetworkTool: NSObject {
             print("result:\(result)")
             
             if self.isRequestSuccess(result!){
-                //json 转化成字典 并进行数据解析
-                let data = result?.object(forKey: "data") as! NSArray
-                // 字典转模型(MJExtension)
-                let success = ETSuccess.mj_object(withKeyValues: data) as ETSuccess
+                let success = ETSuccess()
+                success.message = "请求成功"
                 finishedSel(success)
                 
             }else{
-                
                 let errorDic = result?.object(forKey: "error")
                 let error = ETError.mj_object(withKeyValues: errorDic) as ETError
                 failedSel(error)
@@ -318,11 +348,11 @@ class NetworkTool: NSObject {
             
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
-    
+
     //请假列表请求
     func applyleaveListRequest(_ token: String, status: Int, isMust: Bool,finishedSel:@escaping (_ data:[LeaveData])->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/leave/self"
@@ -360,7 +390,7 @@ class NetworkTool: NSObject {
             
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
@@ -393,7 +423,7 @@ class NetworkTool: NSObject {
             
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
@@ -428,7 +458,7 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
@@ -461,7 +491,7 @@ class NetworkTool: NSObject {
             
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
@@ -490,7 +520,7 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
@@ -517,7 +547,7 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
@@ -546,10 +576,37 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
+    
+    //修改密码请求
+    func editPasswordRequest(_ params: [String:String],finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
+        let url = BASE_URL+"/user/savePassword"
+        print("url: \(url)")
+        print("params: \(params)")
+        NetworkTool.manager.get(url,parameters:params,success: { (task:URLSessionDataTask?, response:Any?) in
+            let result = response as? NSDictionary
+            print("result:\(result)")
+            if self.isRequestSuccess(result!){
+                let success = ETSuccess()
+                success.message = "请求成功"
+                finishedSel(success)
+            }else{
+                let errorDic = result?.object(forKey: "error")
+                let error = ETError.mj_object(withKeyValues: errorDic) as ETError
+                failedSel(error)
+            }
+        }) { (task:URLSessionDataTask?, error:Error?) in
+            print("加载失败...")
+            
+            let error = ETError()
+            error.message = "服务器加载失败..."
+            failedSel(error)
+        }
+    }
+
     //头像上传请求
     func snapImageRequest(_ token: String,uri: String,finishedSel:@escaping (_ data:ETSuccess)->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/user/saveHeadImg"
@@ -571,7 +628,7 @@ class NetworkTool: NSObject {
         }) { (task:URLSessionDataTask?, error:Error?) in
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }
@@ -615,7 +672,7 @@ class NetworkTool: NSObject {
             
             print("加载失败...")
             let error = ETError()
-            error.message = "网络不给力"
+            error.message = "服务器加载失败..."
             failedSel(error)
         }
     }

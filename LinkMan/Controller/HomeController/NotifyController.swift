@@ -26,10 +26,10 @@ class NotifyController: UIViewController,UITableViewDataSource, UITableViewDeleg
 
     func demoData(){
         
-        let data1 =  NotifyData(n: "吴瑞豪", s: "chat.png", t: "13:10", st: "1", ti: "申请请假批准", subTi: "ios部门")
-        let data2 =  NotifyData(n: "陈华", s: "chat.png", t: "10:10", st: "1", ti: "申请请假批准", subTi: "ios部门")
-        let data3 =  NotifyData(n: "叶晨", s: "chat.png", t: "13:10", st: "1", ti: "申请请假批准", subTi: "安卓部门")
-        let data4 =  NotifyData(n: "程福兴", s: "chat.png", t: "09:10", st: "1", ti: "申请请假批准", subTi: "PHP部门")
+        let data1 =  NotifyData(n: "吴瑞豪", s: "sanp.png", t: "13:10", st: "1", ti: "申请请假批准", subTi: "ios部门")
+        let data2 =  NotifyData(n: "陈华", s: "sanp.png", t: "10:10", st: "1", ti: "申请请假批准", subTi: "ios部门")
+        let data3 =  NotifyData(n: "叶晨", s: "sanp.png", t: "13:10", st: "1", ti: "申请请假批准", subTi: "安卓部门")
+        let data4 =  NotifyData(n: "程福兴", s: "sanp.png", t: "09:10", st: "1", ti: "申请请假批准", subTi: "PHP部门")
         
         dataSoure = NSMutableArray(objects: data1,data2,data3,data4)
         
@@ -59,6 +59,9 @@ class NotifyController: UIViewController,UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let applyleaveVC = ApplyleaveController()
+        applyleaveVC.type = "待我审批"
+        applyleaveVC.statusType = "2"
+        applyleaveVC.leave_id = 2
         self.navigationController?.pushViewController(applyleaveVC, animated: true)
     }
     

@@ -21,14 +21,16 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
     var dataSoure : [DepartmentData]! = [DepartmentData]()
     var filteredArray : [DepartmentData]! = [DepartmentData]()
     var shouldShowSearchResults = false
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         token = UserDefaults().object(forKey: userToken) as! String!
-        
+        if token == nil{
+            token = ""
+        }
         //创建一个重用的单元格
         let nib = UINib(nibName: "ContactsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cellId")
@@ -127,6 +129,7 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
             
             print("error\(error)")
             self.hideHud()
+            self.showHint(error.message)
             let array = CoreDataTool.shared.printAllDataWithCoreData()
             let dep = array.mutableCopy() as! [DepartmentData]
             self.dataSoure = dep
@@ -263,7 +266,7 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
         }else{
             department = self.dataSoure[section]
         }
-        if department.number == "0" {
+        if department.members!.count == 0 {
             return 0.1
         }
         
@@ -278,7 +281,7 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
         }else{
             department = self.dataSoure[section]
         }
-        if department.number == "0" {
+        if department.members!.count == 0 {
             return ""
         }
         return department.name
@@ -291,10 +294,26 @@ class DepartmentController: UIViewController ,UITableViewDataSource,UITableViewD
         
         let view = UIView(frame: CGRect(x: 0,y: 0,width: kScreenWidth,height: kScreenHeight*0.05))
         view.backgroundColor = RGBA(r: 242.0, g: 242.0, b: 242.0, a: 1.0)
-        let label = UILabel(frame: CGRect(x: kScreenWidth*0.05,y: 0, width: view.width,height: kScreenHeight*0.05))
+        let label = UILabel(frame: CGRect(x: kScreenWidth*0.05,y: 0, width: view.width*0.5,height: kScreenHeight*0.05))
         label.textColor = RGBA(r: 111.0, g: 116.0, b: 118.0, a: 1.0)
         label.text = self .tableView(tableView, titleForHeaderInSection: section)
         view.addSubview(label)
+        var department:DepartmentData
+        if shouldShowSearchResults {
+            department = self.filteredArray[section]
+        }else{
+            department = self.dataSoure[section]
+        }
+        if department.members?.count != 0 {
+            let number = UILabel(frame: CGRect(x:0,y: 0, width: view.width*0.1,height: kScreenHeight*0.05))
+            number.x = view.width-number.width-kScreenWidth*0.05
+            number.font = kFontSize(value: 15)
+            number.textAlignment = .right
+            number.textColor = RGBA(r: 111.0, g: 116.0, b: 118.0, a: 1.0)
+            number.text = String(format: "%d人", (department.members!.count))
+            view.addSubview(number)
+        }
+        
         return view
     }
 }

@@ -16,6 +16,7 @@ class MineController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var online: UILabel!
     
+    @IBOutlet weak var subTitle: UILabel!
     // var reachability: AFNetworkReachabilityManager!
     
     override func viewDidLoad() {
@@ -28,6 +29,11 @@ class MineController: UIViewController {
         let headImage = UserDefaults().object(forKey: userHeadImg) as! String!
         if headImage != nil {
             snapImage.sd_setImage(with: URL.init(string: headImage!), placeholderImage: UIImage(named: "sanp.png"))
+        }
+        let department = UserDefaults().object(forKey: userDepartment) as! String!
+        let level = UserDefaults().object(forKey: userLevel) as! String!
+        if level != nil || department != nil {
+            subTitle.text = String(format: "%@ %@", department!,level!)
         }
         let realName = UserDefaults().object(forKey: userRealName) as! String!
         if realName != nil {
@@ -93,8 +99,10 @@ class MineController: UIViewController {
     }
     /*修改密码*/
     @IBAction func modifyPassword(_ sender: AnyObject) {
-        
-        self.showHint("修改密码")
+
+        let editPasswordVC = EditPasswordController()
+        editPasswordVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(editPasswordVC, animated: true)
     }
     /*设置*/
     @IBAction func setupConfigure(_ sender: AnyObject) {
@@ -104,7 +112,27 @@ class MineController: UIViewController {
     /*注销*/
     @IBAction func logout(_ sender: AnyObject) {
         
-        self.showHint("注销")
+        // 创建
+        let alertController = UIAlertController(title: "提示", message: "确认退出此用户", preferredStyle:.alert)
+        // 设置UIAlertAction
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let defaultAction = UIAlertAction(title: "确认", style: .default) { (UIAlertAction) in
+            
+            let defaults = UserDefaults.standard
+            
+            let dic = defaults.dictionaryRepresentation()
+            for key in dic.keys {
+                defaults.removeObject(forKey: key)
+            }
+            defaults.synchronize()
+            UIApplication.shared.keyWindow?.rootViewController = LoginViewController()
+        }
+        // 添加
+        alertController.addAction(cancelAction)
+        alertController.addAction(defaultAction)
+        
+        // 弹出
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
