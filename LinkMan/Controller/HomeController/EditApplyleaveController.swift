@@ -17,6 +17,8 @@ class EditApplyleaveController: UIViewController {
     @IBOutlet weak var reasonTextView: UITextView!
     @IBOutlet weak var naviItem: UINavigationItem!
     
+    @IBOutlet weak var mainView: UIScrollView!
+    
     var backView: UIView!
     var datePicker: UIDatePicker!
     var fromDate: Date! = Date()
@@ -31,6 +33,9 @@ class EditApplyleaveController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
+        registerKeyBoardShow(target: self)
+        registerKeyBoardHide(target: self)
         
         if type == "再次编辑" {
             
@@ -50,6 +55,14 @@ class EditApplyleaveController: UIViewController {
         }else{
             naviItem.title = "添加请假信息"
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        
+        removeKeyboardNotifications(target: self)
+        removeKeyboardHideNotifications(target: self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -121,6 +134,7 @@ class EditApplyleaveController: UIViewController {
         })
     }
     
+    //请假类型
     @IBAction func selectedLeaveType(_ sender: UITapGestureRecognizer) {
         
         
@@ -165,6 +179,8 @@ class EditApplyleaveController: UIViewController {
     }
     @IBAction func beginTime(_ sender: UIButton) {
         
+        reasonTextView.resignFirstResponder()
+        
         addDatePicker(1)
         UIView.animate(withDuration: 0.4, animations: {
             self.datePicker.y = kScreenHeight*0.7
@@ -172,10 +188,74 @@ class EditApplyleaveController: UIViewController {
     }
     @IBAction func endTime(_ sender: UIButton) {
         
+        reasonTextView.resignFirstResponder()
+
         addDatePicker(2)
         UIView.animate(withDuration: 0.4, animations: {
             self.datePicker.y = kScreenHeight*0.7
         })
+    }
+    //注册键盘出现
+    func registerKeyBoardShow(target: UIViewController) {
+        
+        NotificationCenter.default.addObserver(target, selector: #selector(AddContactsController.keyboardWillShowNotification(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    }
+    
+    // 注册键盘隐藏
+    func registerKeyBoardHide(target: UIViewController) {
+        NotificationCenter.default.addObserver(target, selector: #selector(AddContactsController.keyboardWillHideNotification(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    // 移除键盘出现通知
+    func removeKeyboardNotifications(target: UIViewController) {
+        NotificationCenter.default.removeObserver(target, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    }
+    
+    // 移除键盘隐藏通知
+    func removeKeyboardHideNotifications(target: UIViewController) {
+        NotificationCenter.default.removeObserver(target, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    // 返回键盘高度
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        
+        return keyboardSize.cgRectValue.height
+    }
+    
+    // 返回键盘上拉动画持续时间
+    func getKeyBoardDuration(notification: NSNotification) -> Double {
+        let userInfo = notification.userInfo
+        let keyboardDuration = userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
+        
+        return keyboardDuration
+    }
+    
+    // 返回键盘动画曲线
+    func getKeyBoardAnimationCurve(notification: NSNotification) -> NSObject {
+        let userInfo = notification.userInfo
+        let keyboardTranstionAnimationCurve = userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSValue
+        
+        return keyboardTranstionAnimationCurve
+    }
+    func keyboardWillShowNotification(notification:NSNotification){
+        
+        let rect = getKeyboardHeight(notification: notification)
+        
+        self.mainView.contentOffset = CGPoint(x: 0, y: rect-100)
+    }
+    
+    func keyboardWillHideNotification(notification: NSNotification) {
+        
+        self.mainView.contentOffset = CGPoint(x: 0, y: 0)
+    }
+
+    
+    @IBAction func endEditingTextView(_ sender: UITapGestureRecognizer) {
+        
+        reasonTextView.resignFirstResponder()
+        
     }
     
     /*

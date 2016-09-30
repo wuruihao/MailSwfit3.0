@@ -14,6 +14,7 @@
                 <outlet property="endDay" destination="alX-aY-QBQ" id="LMb-pV-ibP"/>
                 <outlet property="leaveDay" destination="Kc7-A6-NY7" id="vtw-gb-wb4"/>
                 <outlet property="leaveType" destination="Fse-LR-q9u" id="6Rc-xe-ikl"/>
+                <outlet property="mainView" destination="cZc-8L-6wy" id="zSP-cf-Rw0"/>
                 <outlet property="naviItem" destination="lAd-j3-AVK" id="T7v-06-0qI"/>
                 <outlet property="reasonTextView" destination="53K-KU-w9I" id="f94-6W-970"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -302,6 +303,7 @@
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="0.25490196078431371" green="0.29019607843137252" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="2se-r2-nck" firstAttribute="top" secondItem="cZc-8L-6wy" secondAttribute="top" constant="15" id="E2u-8c-LMV"/>
                         <constraint firstAttribute="trailing" secondItem="2se-r2-nck" secondAttribute="trailing" constant="15" id="l6J-Zv-YJI"/>
@@ -309,6 +311,9 @@
                         <constraint firstAttribute="bottom" secondItem="2se-r2-nck" secondAttribute="bottom" constant="15" id="xjn-Ic-XV4"/>
                         <constraint firstItem="2se-r2-nck" firstAttribute="leading" secondItem="cZc-8L-6wy" secondAttribute="leading" constant="15" id="xou-sS-pIA"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="1nu-zk-nCy" appends="YES" id="P0C-YW-6N8"/>
+                    </connections>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -331,6 +336,11 @@
             <connections>
                 <action selector="selectedLeaveType:" destination="-1" id="1Iv-Md-Hhp"/>
                 <outlet property="delegate" destination="-1" id="07G-Zh-jSl"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="1nu-zk-nCy">
+            <connections>
+                <action selector="endEditingTextView:" destination="-1" id="eSB-yE-9do"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

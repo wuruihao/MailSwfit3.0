@@ -57,14 +57,23 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
     }
     func sendMyleaveListRequest(status:Int, isMust:Bool){
         
+        self.showHud(in: self.view, hint: messageLogin)
+        
         let token = UserDefaults().object(forKey: userToken) as! String!
-        NetworkTool.shareNetworkTool.applyleaveListRequest(token!, status: status, isMust: isMust, finishedSel: { (data:[LeaveData]) in
-
+        let params:[String : Any]
+        if isMust == true {
+            params = ["token": token!,"status": status]
+        }else{
+            params = ["token": token!]
+        }
+        NetworkTool.shareNetworkTool.applyleaveListRequest(params, finishedSel: { (data:[LeaveData]) in
+            
+            self.hideHud()
             self.dataSoure = data
             self.tableView.reloadData()
             
         }) { (error:ETError) in
-
+            self.hideHud()
             self.showHint(error.message!)
         }
     }
@@ -72,20 +81,18 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
         
         let token = UserDefaults().object(forKey: userToken) as! String!
         NetworkTool.shareNetworkTool.examinedAndApprovedLeaveRequest(token!, status: status, isMust: isMust, finishedSel: { (data:[LeaveData]) in
-            
             self.dataArray = data
             self.tableView.reloadData()
             
         }) { (error:ETError) in
-
+            
             self.showHint(error.message!)
         }
     }
     @IBAction func selectType(_ sender: UIButton) {
         
-        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
-            self.selectLine.x = sender.frame.origin.x
-            }, completion: nil)
+        self.hideHud()
+        
         switch sender.tag {
         case 0:
             if selectedType != "我提交的" {
@@ -109,6 +116,9 @@ class ApplicationController: UIViewController ,UITableViewDataSource, UITableVie
         default:
             break
         }
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: {
+            self.selectLine.x = sender.frame.origin.x
+            }, completion: nil)
     }
     
     @IBAction func backAction(_ sender: AnyObject) {

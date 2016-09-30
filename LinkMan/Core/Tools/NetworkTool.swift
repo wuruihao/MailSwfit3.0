@@ -354,16 +354,8 @@ class NetworkTool: NSObject {
     }
 
     //请假列表请求
-    func applyleaveListRequest(_ token: String, status: Int, isMust: Bool,finishedSel:@escaping (_ data:[LeaveData])->(),failedSel:@escaping (_ error:ETError)->()){
+    func applyleaveListRequest(_ params :[String:Any],finishedSel:@escaping (_ data:[LeaveData])->(),failedSel:@escaping (_ error:ETError)->()){
         let url = BASE_URL+"/leave/self"
-        
-        let params:[String : Any]
-        if isMust == true {
-            params = ["token": token,"status": status] as [String : Any]
-        }else{
-            params = ["token": token]
-        }
-        
         print("url: \(url)")
         print("params: \(params)")
         

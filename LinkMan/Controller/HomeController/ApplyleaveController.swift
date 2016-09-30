@@ -12,6 +12,7 @@ class ApplyleaveController: UIViewController {
     
     @IBOutlet weak var naviItem: UINavigationItem!
     @IBOutlet weak var mainView: UIScrollView!
+    @IBOutlet weak var numberLabel: UILabel!
     
     var leave_id: Int!
     var type: String!
@@ -90,7 +91,7 @@ class ApplyleaveController: UIViewController {
         NetworkTool.shareNetworkTool.leaveDetailsRequest(token!, id: leave_id, finishedSel: { (data:LeaveData) in
             
             self.hideHud()
-             self.leaveData = data
+            self.leaveData = data
             
             if data.head_img != nil {
                 self.snapImage.sd_setImage(with: URL.init(string: data.head_img!), placeholderImage: UIImage(named: "sanp.png"))
@@ -100,6 +101,7 @@ class ApplyleaveController: UIViewController {
             self.nameLabel.text = data.name
             self.phoneLabel.text = data.mobile
             self.timeLabel.text = String(format: "%d天", data.time)
+            self.reasonLabel.text = data.reason
             if data.created != " " || data.created != nil || data.created != "nil" || !(data.created?.isEmpty)!{
                 let array = data.started?.components(separatedBy: " ")
                 self.startedLabel.text = array?[0]
@@ -108,13 +110,16 @@ class ApplyleaveController: UIViewController {
                 let array = data.ended?.components(separatedBy: " ")
                 self.endedLabel.text = array?[0]
             }
-            self.reasonLabel.text = data.reason
+            
             if data.created != " " || data.created != nil || data.created != "nil" || !(data.created?.isEmpty)!{
                 
                 let array = data.created?.components(separatedBy: " ")
-                let strArray = array?[0].components(separatedBy: "-")
-                let created = String(format: "%@月%@日", (strArray?[1])!,(strArray?[2])!)
+                let dayArray = array?[0].components(separatedBy: "-")
+                let hourArray = array?[1].components(separatedBy: ":")
+                let created = String(format: "%@月%@日", (dayArray?[1])!,(dayArray?[2])!)
                 self.createdLabel.text = created
+                
+                self.numberLabel.text =  String(format: "No.QJ%@%@%@%@%@%@",(dayArray?[0])!, (dayArray?[1])!,(dayArray?[2])!,(hourArray?[0])!,(hourArray?[1])!,(hourArray?[2])!)
             }
             
             
@@ -155,7 +160,7 @@ class ApplyleaveController: UIViewController {
             
             self.hideHud()
             
-             _ = self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
             
         }) { (error:ETError) in
             
@@ -181,8 +186,8 @@ class ApplyleaveController: UIViewController {
             case 3:
                 //调用删除接口
                 NetworkTool.shareNetworkTool.deleteleaveRequest(token!, id: leave_id, finishedSel: { (data:ETSuccess) in
-
-                     _ = self.navigationController?.popViewController(animated: true)
+                    
+                    _ = self.navigationController?.popViewController(animated: true)
                     
                     }, failedSel: { (error:ETError) in
                         self.showHint(error.message!)

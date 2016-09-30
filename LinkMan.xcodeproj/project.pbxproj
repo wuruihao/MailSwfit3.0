@@ -120,6 +120,7 @@
 		E00BFE461D8FB87C007A6773 /* MemberInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00BFDC81D8FB87C007A6773 /* MemberInfoController.xib */; };
 		E00BFE471D8FB87C007A6773 /* MineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00BFDC91D8FB87C007A6773 /* MineController.swift */; };
 		E00BFE481D8FB87C007A6773 /* MineController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00BFDCA1D8FB87C007A6773 /* MineController.xib */; };
+		E00DCAA11D9E12E100C2884B /* ETMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DCAA01D9E12E100C2884B /* ETMessageView.swift */; };
 		E01324A71D98CAD300295509 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01324A51D98CAD300295509 /* HomeCell.swift */; };
 		E01324A81D98CAD300295509 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E01324A61D98CAD300295509 /* HomeCell.xib */; };
 		E01324AE1D98F33B00295509 /* home_find@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E01324AB1D98F33B00295509 /* home_find@3x.png */; };
@@ -322,6 +323,7 @@
 		E00BFDC91D8FB87C007A6773 /* MineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineController.swift; sourceTree = "<group>"; };
 		E00BFDCA1D8FB87C007A6773 /* MineController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineController.xib; sourceTree = "<group>"; };
 		E00BFE4E1D8FB9F7007A6773 /* LinkMan-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LinkMan-Bridging-Header.h"; sourceTree = "<group>"; };
+		E00DCAA01D9E12E100C2884B /* ETMessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETMessageView.swift; sourceTree = "<group>"; };
 		E01324A51D98CAD300295509 /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		E01324A61D98CAD300295509 /* HomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
 		E01324AB1D98F33B00295509 /* home_find@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_find@3x.png"; sourceTree = "<group>"; };
@@ -752,6 +754,7 @@
 			children = (
 				E00BFDA51D8FB87C007A6773 /* ETNavigationController.swift */,
 				E00BFDA61D8FB87C007A6773 /* ETTabBarController.swift */,
+				E00DCAA01D9E12E100C2884B /* ETMessageView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1229,6 +1232,7 @@
 				E00BFE371D8FB87C007A6773 /* ApplicationController.swift in Sources */,
 				E00BFD331D8FB55B007A6773 /* LinkMan.swift in Sources */,
 				E00BFE2B1D8FB87C007A6773 /* ETTabBarController.swift in Sources */,
+				E00DCAA11D9E12E100C2884B /* ETMessageView.swift in Sources */,
 				E0D313EA1D910CA60053CEA7 /* SDWebImageDecoder.m in Sources */,
 				E00BFE231D8FB87C007A6773 /* MyCollectionViewLayout.swift in Sources */,
 				E0D313F31D910CA60053CEA7 /* UIImageView+HighlightedWebCache.m in Sources */,

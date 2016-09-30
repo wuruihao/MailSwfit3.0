@@ -81,6 +81,18 @@ extension UIView {
         }
     }
     
+    /// origin
+    var origin: CGPoint {
+        get {
+            return frame.origin
+        }
+        set(newValue) {
+            var tempFrame: CGRect = frame
+            tempFrame.origin = newValue
+            frame = tempFrame
+        }
+    }
+
     /// centerX
     var centerX: CGFloat {
         get {

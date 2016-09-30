@@ -19,6 +19,7 @@
                 <outlet property="mainView" destination="Ulc-cw-flA" id="hoL-iV-e3X"/>
                 <outlet property="nameLabel" destination="Ajn-BY-kYG" id="OgS-C2-JQI"/>
                 <outlet property="naviItem" destination="unh-ys-l9L" id="Kbb-yb-WVG"/>
+                <outlet property="numberLabel" destination="Mej-G7-0Qr" id="4gL-Fd-Srx"/>
                 <outlet property="phoneLabel" destination="93u-yP-raJ" id="TJe-QI-2BF"/>
                 <outlet property="reasonLabel" destination="Rlu-r0-Acz" id="2lp-Cd-9OY"/>
                 <outlet property="snapImage" destination="XkP-1Q-AeZ" id="C8p-bl-JLc"/>
@@ -155,10 +156,20 @@
                                             <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="状态" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCd-NE-iKE">
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="状态" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCd-NE-iKE">
+                                            <color key="backgroundColor" red="0.15294117647058825" green="0.53725490196078429" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="3b1-ON-8aB"/>
+                                                <constraint firstAttribute="width" constant="50" id="FOB-jA-tGK"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -184,7 +195,7 @@
                                         <constraint firstItem="Mej-G7-0Qr" firstAttribute="top" secondItem="16l-JK-sS5" secondAttribute="top" id="mur-zN-YQO"/>
                                         <constraint firstAttribute="trailing" secondItem="g5A-Pb-rBp" secondAttribute="trailing" constant="15" id="qLm-rZ-fZH"/>
                                         <constraint firstAttribute="trailing" secondItem="ZZy-an-jf3" secondAttribute="trailing" id="sEB-Fp-BgD"/>
-                                        <constraint firstItem="Mej-G7-0Qr" firstAttribute="leading" secondItem="16l-JK-sS5" secondAttribute="leading" id="sq6-nH-NDm"/>
+                                        <constraint firstItem="Mej-G7-0Qr" firstAttribute="leading" secondItem="16l-JK-sS5" secondAttribute="leading" constant="15" id="sq6-nH-NDm"/>
                                         <constraint firstItem="Ajn-BY-kYG" firstAttribute="bottom" secondItem="XkP-1Q-AeZ" secondAttribute="centerY" multiplier="9.5:10" id="zzb-Ox-bUa"/>
                                     </constraints>
                                 </view>

@@ -20,7 +20,8 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         //模拟数据
         demoData()
         
@@ -150,6 +151,8 @@ class HomeController: UIViewController,UICollectionViewDelegate,UICollectionView
             break
         case 4:
             self.showHint("备忘录")
+            ETMessageView.share.hide()
+            
             break
         case 5:
             self.showHint("辅助工具")
